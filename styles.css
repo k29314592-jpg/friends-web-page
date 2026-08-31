@@ -591,3 +591,164 @@ body {
   background: #C9A227;
   border-radius: 4px;
 }
+
+/* ==========================================================================
+   11. MOBILE PHONE & TABLET RESPONSIVE SYSTEM
+   ========================================================================== */
+
+/* Mobile Bottom Navigation Dock (Phones < 768px) */
+.mobile-nav-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(201, 162, 39, 0.4);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 60;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #a8a29e;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  font-weight: 700;
+  gap: 2px;
+  min-width: 54px;
+  min-height: 48px;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover,
+.mobile-nav-item:active {
+  color: #F1D78B;
+  transform: translateY(-2px);
+}
+
+.mobile-nav-item .nav-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Ensure body doesn't hide content behind the mobile dock on small screens */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Optimize font sizes on phone screens */
+  h1, .text-4xl, .text-5xl, .text-6xl {
+    font-size: clamp(1.65rem, 6vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  h2, .text-3xl {
+    font-size: clamp(1.35rem, 5vw, 1.85rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  h3, .text-2xl {
+    font-size: clamp(1.15rem, 4vw, 1.4rem) !important;
+  }
+
+  /* Prevent inputs from triggering auto-zoom on iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Mobile drawers convert to bottom sheets on phones */
+  .drawer-panel {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    height: 85vh;
+    border-left: none;
+    border-top: 1.5px solid rgba(201, 162, 39, 0.5);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transform: translateY(100%);
+  }
+
+  .drawer-panel.open {
+    transform: translateY(0);
+  }
+
+  /* Search modal full width on phone */
+  .search-modal-backdrop {
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .search-modal-panel {
+    border-radius: 1.25rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Grid adjustments for phones */
+  .grid-cols-2, .grid-cols-3, .grid-cols-4, .grid-cols-6 {
+    gap: 0.75rem !important;
+  }
+
+  /* Smooth horizontal scrolling for chips and categories */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  /* Touch buttons min 44px height */
+  button, .btn-gold, .btn-outline-gold, a.btn-gold, a.btn-outline-gold {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Compact tracking timeline on small phones */
+  .timeline-node {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  /* Map container height for small phone screens */
+  #ff-tracking-leaflet-map {
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .palace-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Proclamation bar compact size */
+  #proclamationBar {
+    font-size: 9px !important;
+    padding: 4px 6px !important;
+  }
+}
+

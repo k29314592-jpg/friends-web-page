@@ -1313,6 +1313,41 @@
       `;
       document.body.insertAdjacentHTML('beforeend', trackingModalHtml);
     }
+
+    // Inject Responsive Mobile Phone Navigation Dock
+    if (!document.getElementById('ff-mobile-nav-dock')) {
+      const currentPath = window.location.pathname.toLowerCase();
+      const mobileDockHtml = `
+        <nav id="ff-mobile-nav-dock" class="mobile-nav-dock md:hidden" aria-label="Mobile Navigation">
+          <a href="index.html" class="mobile-nav-item ${currentPath.endsWith('index.html') || currentPath === '/' || currentPath.endsWith('/') ? 'active' : ''}">
+            <span class="nav-icon">🏰</span>
+            <span>Palace</span>
+          </a>
+          <a href="categories.html" class="mobile-nav-item ${currentPath.includes('categories') ? 'active' : ''}">
+            <span class="nav-icon">🛋️</span>
+            <span>Catalog</span>
+          </a>
+          <a href="furniture-twin.html" class="mobile-nav-item ${currentPath.includes('twin') ? 'active' : ''}">
+            <span class="nav-icon">🪞</span>
+            <span>Twin™</span>
+          </a>
+          <a href="smart-studio.html" class="mobile-nav-item ${currentPath.includes('studio') ? 'active' : ''}">
+            <span class="nav-icon">✨</span>
+            <span>Studio</span>
+          </a>
+          <a href="#" onclick="event.preventDefault(); window.FF_Cart.openDrawer();" class="mobile-nav-item relative">
+            <span class="nav-icon">🛒</span>
+            <span>Cart</span>
+            <span class="ff-cart-count hidden absolute top-1 right-2 bg-antiqueGold text-black font-bold text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+          </a>
+          <a href="customer-dashboard.html" class="mobile-nav-item ${currentPath.includes('dashboard') ? 'active' : ''}">
+            <span class="nav-icon">👑</span>
+            <span>Account</span>
+          </a>
+        </nav>
+      `;
+      document.body.insertAdjacentHTML('beforeend', mobileDockHtml);
+    }
   }
 
   // --- 11. GLOBAL INITIALIZATION ---

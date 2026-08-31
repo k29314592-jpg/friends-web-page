@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friends Furniture Smart Studio | AI Recommendation, 3D Preview & Customization</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ 1. TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 border-b border-antiqueGold/30 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Platform Core Apps & Portals -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+          <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>👑</span> Palace Dashboard
+          </a>
+          <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🪞</span> Furniture Twin
+          </a>
+          <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+            <span>✨</span> Smart Studio
+          </a>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🧬</span> Digital Passport
+          </a>
+          <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛍️</span> Categories
+          </a>
+          <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛋️</span> Products
+          </a>
+        </div>
+
+        <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+        <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🏰 Home
+          </a>
+          <a href="furniture-twin.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🪞 Furniture Twin
+          </a>
+          <a href="categories.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛍️ Categories
+          </a>
+          <a href="living-room.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛋️ Products
+          </a>
+          <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne whitespace-nowrap">
+            ✨ Smart Studio
+          </a>
+          <a href="customer-dashboard.html#ordersSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🚚 Track Order
+          </a>
+          <a href="customer-dashboard.html#memberSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            💎 Rewards
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Session Status -->
+      <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+        <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+          👑 VIP Gold (4,250 PTS)
+        </span>
+        <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+          <span>🔔</span> Notifications
+          <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+        </button>
+        <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+          🚪 Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 2. MAIN STICKY NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl sticky top-9 z-40">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Smart Studio • Intelligent Furniture Technology
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Search Trigger -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-4 relative cursor-pointer ff-search-trigger">
+        <span class="absolute left-3.5 text-stone-400 text-sm">🔍</span>
+        <input 
+          type="text" 
+          readonly
+          placeholder="Search by smart feature, room style, 3D preview..." 
+          class="w-full bg-black/70 border border-antiqueGold/40 rounded-2xl py-2 pl-10 pr-4 text-xs text-white placeholder-stone-500 cursor-pointer focus:outline-none font-sans"
+        />
+        <span class="absolute right-3 text-[10px] text-stone-400 font-mono bg-white/10 px-1.5 py-0.5 rounded">Ctrl+K</span>
+      </div>
+
+      <!-- Quick Action Utilities -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button onclick="FF_Wishlist.toggle('ff-101')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-stone-200 relative transition" title="Royal Wishlist">
+          <span class="text-base">❤️</span>
+          <span class="ff-wishlist-badge absolute top-1 right-1 w-4 h-4 bg-antiqueGold text-black text-[9px] font-black rounded-full flex items-center justify-center">2</span>
+        </button>
+
+        <button class="ff-cart-trigger btn-gold px-3.5 py-2 rounded-xl text-xs font-cinzel font-black shadow-xl flex items-center gap-1.5">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Palace Cart</span>
+          <span class="ff-cart-badge bg-black text-antiqueGold text-[10px] font-black px-1.5 py-0.2 rounded-full">1</span>
+        </button>
+
+        <a href="customer-dashboard.html" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-champagne transition hidden sm:flex items-center gap-1.5 text-xs font-cinzel font-bold">
+          <span>👑</span> Dashboard
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🌟 3. MAIN SMART STUDIO INTERFACE -->
+  <main class="w-full space-y-12 pb-24">
+
+    <!-- 👑 STUDIO HERO BANNER -->
+    <section class="relative w-full py-10 bg-gradient-to-b from-royalNavy/60 via-[#050505] to-[#050505] border-b border-antiqueGold/30">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 badge-gold text-[9px] font-cinzel font-bold px-3 py-1 rounded-full uppercase">
+              <span>✨</span> PROPRIETARY SMART FURNITURE TECHNOLOGY PLATFORM
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text">
+              FRIENDS FURNITURE SMART STUDIO
+            </h1>
+            <p class="text-xs sm:text-sm text-stone-300 font-sans leading-relaxed">
+              Design, preview, simulate, and calibrate heirloom Nilambur teak masterpieces with AI recommendations, 
+              interactive 3D spatial staging, dynamic customizer, comparison matrices, and zero-cost EMI intelligence.
+            </p>
+          </div>
+
+          <!-- Quick Navigation Chips to 6 Studio Modules -->
+          <div class="flex flex-wrap gap-2">
+            <a href="#recommendationsSec" class="interactive-chip active text-xs">🤖 AI Recommendations</a>
+            <a href="#customizerSec" class="interactive-chip text-xs">🎨 Live Customizer</a>
+            <a href="#roomPreviewSec" class="interactive-chip text-xs">🛋️ 3D Room Preview</a>
+            <a href="#compareSec" class="interactive-chip text-xs">⚖️ Compare</a>
+            <a href="#emiSec" class="interactive-chip text-xs">💳 EMI Calculator</a>
+            <a href="#deliverySec" class="interactive-chip text-xs">🚚 AI Delivery</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 1: 🤖 AI FURNITURE RECOMMENDATIONS & PREFERENCE TUNER
+         ========================================================================== -->
+    <section id="recommendationsSec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">AI CURATION ENGINE</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            RECOMMENDED FOR YOU
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Calibrated using your browsing history, royal wishlist, chamber dimensions, and style preferences.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] font-cinzel text-champagne">AI Profile: <strong>Grand Palace Modern</strong></span>
+        </div>
+      </div>
+
+      <!-- Recommendation Preference Tuner -->
+      <div class="p-4 bg-black/60 rounded-2xl border border-antiqueGold/30 grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs font-cinzel">
+        <!-- Room Selector -->
+        <div>
+          <label class="block text-[10px] text-stone-400 mb-1.5">CHAMBER / ROOM TYPE</label>
+          <select id="recomRoomFilter" onchange="filterRecommendations()" class="palace-input text-xs font-sans">
+            <option value="all">All Chambers (Living, Bed, Dining, Office)</option>
+            <option value="Living Room" selected>Living Room Salon (22x18ft)</option>
+            <option value="Bedroom">Master Heritage Suite (24x20ft)</option>
+            <option value="Dining">Imperial Banquet Hall (28x16ft)</option>
+            <option value="Office">Executive Study (16x14ft)</option>
+          </select>
+        </div>
+
+        <!-- Budget Range Slider -->
+        <div>
+          <div class="flex justify-between items-center mb-1.5 text-[10px] text-stone-400">
+            <span>MAX BUDGET</span>
+            <span id="budgetDisplay" class="text-champagne font-mono font-bold">₹1,50,000</span>
+          </div>
+          <input type="range" min="30000" max="200000" step="5000" value="150000" id="budgetRange" oninput="document.getElementById('budgetDisplay').innerText = window.formatINR(this.value); filterRecommendations();" class="w-full accent-antiqueGold cursor-pointer" />
+        </div>
+
+        <!-- Style Preference -->
+        <div>
+          <label class="block text-[10px] text-stone-400 mb-1.5">STYLE AESTHETIC</label>
+          <select id="recomStyleFilter" onchange="filterRecommendations()" class="palace-input text-xs font-sans">
+            <option value="all">Royal Heritage & Classical</option>
+            <option value="velvet">Opulent Royal Velvet & 24K Gold</option>
+            <option value="sheesham">Live-Edge Solid Sheesham</option>
+            <option value="minimal">Minimal Modern Luxury</option>
+          </select>
+        </div>
+
+        <!-- Sort / Optimize -->
+        <div>
+          <label class="block text-[10px] text-stone-400 mb-1.5">AI OPTIMIZATION GOAL</label>
+          <select class="palace-input text-xs font-sans">
+            <option>Highest Spatial Chi & Clearance (98%)</option>
+            <option>Fastest Delivery (Under 4 Days)</option>
+            <option>Lowest 0% EMI Installment</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Personalized Recommendations Cards Grid -->
+      <div id="recommendationsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 2: 🎨 REAL-TIME INTERACTIVE FURNITURE CUSTOMIZER
+         ========================================================================== -->
+    <section id="customizerSec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">BESPOKE ATELIER</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            FURNITURE CUSTOMIZER & VISUALIZER
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Calibrate fabric, royal color, seasoned wood finishes, cushion styles, and 24K gold legs with dynamic price calculations.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="badge-gold text-[9px]">LIVE 2D/3D RENDERING</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Interactive Visual Preview Canvas (7 cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="saas-card-featured p-5 relative overflow-hidden rounded-3xl group">
+            <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black/90 relative flex items-center justify-center border border-antiqueGold/40 shadow-2xl">
+              <img id="customizerMainImg" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Customizer Preview" class="w-full h-full object-cover transition duration-700" />
+              
+              <!-- Ambient Color Glow Overlay based on selected color -->
+              <div id="customizerGlow" class="absolute inset-0 bg-blue-900/20 mix-blend-color pointer-events-none transition duration-500"></div>
+
+              <!-- Top Floating Spec Chips -->
+              <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                <span id="badgeMaterial" class="badge-gold text-[9px]">Velvet • Royal Blue</span>
+                <span id="badgeWood" class="badge-gold text-[9px]">Nilambur Seasoned Teak</span>
+              </div>
+
+              <!-- Live Spatial Ruler Bottom Overlay -->
+              <div class="absolute bottom-4 left-4 right-4 bg-black/85 backdrop-blur-md p-3 rounded-xl border border-white/10 flex items-center justify-between text-xs">
+                <div>
+                  <span class="text-[10px] text-stone-400 block font-cinzel">CALIBRATED SPECS</span>
+                  <span id="displaySpecs" class="font-mono text-champagne font-bold text-xs">92" L x 38" W x 36" H • 3-Seater</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-stone-400 block font-cinzel">CURRENT ESTIMATE</span>
+                  <span id="customizerPriceDisplay" class="font-mono text-base font-black text-emerald-400">₹89,999</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Thumbnails -->
+            <div class="flex items-center gap-3 mt-4 overflow-x-auto">
+              <button onclick="setCustomizerAngle(0)" class="w-16 h-16 rounded-xl overflow-hidden border-2 border-antiqueGold shrink-0">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" />
+              </button>
+              <button onclick="setCustomizerAngle(1)" class="w-16 h-16 rounded-xl overflow-hidden border border-white/20 hover:border-antiqueGold transition shrink-0">
+                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" />
+              </button>
+              <button onclick="setCustomizerAngle(2)" class="w-16 h-16 rounded-xl overflow-hidden border border-white/20 hover:border-antiqueGold transition shrink-0">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Customization Controls Panel (5 cols) -->
+        <div class="lg:col-span-5 palace-card p-6 space-y-6">
+          <div class="border-b border-antiqueGold/30 pb-3">
+            <span class="badge-gold text-[8px] uppercase">STEP-BY-STEP CALIBRATION</span>
+            <h3 class="font-cinzel font-bold text-lg text-white">THE IMPERIAL SOFA ATELIER</h3>
+          </div>
+
+          <!-- 1. Color Palette Swatches -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-cinzel font-bold text-champagne">1. COLOR PALETTE</span>
+              <span id="selectedColorLabel" class="text-stone-300 font-mono text-[11px]">Royal Blue</span>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <button onclick="updateColor('Royal Blue', '#1e3a8a', 0)" class="swatch-btn active bg-blue-900" title="Royal Blue"></button>
+              <button onclick="updateColor('Emerald Palace', '#064e3b', 2500)" class="swatch-btn bg-emerald-900" title="Emerald Palace (+₹2,500)"></button>
+              <button onclick="updateColor('Midnight Obsidian', '#09090b', 0)" class="swatch-btn bg-neutral-950" title="Midnight Obsidian"></button>
+              <button onclick="updateColor('Imperial Burgundy', '#4c0519', 3000)" class="swatch-btn bg-rose-950" title="Imperial Burgundy (+₹3,000)"></button>
+              <button onclick="updateColor('Champagne Gold', '#d97706', 4500)" class="swatch-btn bg-amber-600" title="Champagne Gold (+₹4,500)"></button>
+              <button onclick="updateColor('Pearl Ivory', '#fef3c7', 2000)" class="swatch-btn bg-amber-100" title="Pearl Ivory (+₹2,000)"></button>
+            </div>
+          </div>
+
+          <!-- 2. Fabric Options -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-cinzel font-bold text-champagne">2. LUXURY FABRIC</span>
+              <span id="selectedFabricLabel" class="text-stone-300 font-mono text-[11px]">Royal Velvet</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs font-sans">
+              <button onclick="updateFabric('Royal Velvet', 0)" class="fabric-btn active p-2.5 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-white font-bold text-left">
+                Royal Velvet <span class="text-[10px] text-stone-400 block font-normal">Included</span>
+              </button>
+              <button onclick="updateFabric('Belgian Linen', 4500)" class="fabric-btn p-2.5 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                Belgian Linen <span class="text-[10px] text-champagne block">+₹4,500</span>
+              </button>
+              <button onclick="updateFabric('Sculptural Bouclé', 6000)" class="fabric-btn p-2.5 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                Sculptural Bouclé <span class="text-[10px] text-champagne block">+₹6,000</span>
+              </button>
+              <button onclick="updateFabric('Italian Full-Grain Leather', 18000)" class="fabric-btn p-2.5 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                Italian Leather <span class="text-[10px] text-champagne block">+₹18,000</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Wood Finish -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-cinzel font-bold text-champagne">3. SOLID TIMBER FINISH</span>
+              <span id="selectedWoodLabel" class="text-stone-300 font-mono text-[11px]">Nilambur Teak</span>
+            </div>
+            <select id="woodFinishSelect" onchange="updateWoodFinish(this.value)" class="palace-input text-xs font-sans">
+              <option value="Nilambur Teak|0">Kiln-Dried Seasoned Nilambur Teak (Standard)</option>
+              <option value="Royal Sheesham|3500">Royal Sheesham Walnut Finish (+₹3,500)</option>
+              <option value="Smoked Oak|5000">Deep Smoked Charcoal Oak (+₹5,000)</option>
+              <option value="Ebony Blackwood|7500">Hand-Rubbed Ebony Blackwood (+₹7,500)</option>
+            </select>
+          </div>
+
+          <!-- 4. Size & Seating Configuration -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-cinzel font-bold text-champagne">4. SIZE CONFIGURATION</span>
+              <span id="selectedSizeLabel" class="text-stone-300 font-mono text-[11px]">3-Seater Grand (92")</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <button onclick="updateSize('Compact 2-Seater (74\")', -12000)" class="size-btn p-2 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                2-Seater (74") <span class="text-[10px] text-stone-400 block">-₹12,000</span>
+              </button>
+              <button onclick="updateSize('Standard 3-Seater (92\")', 0)" class="size-btn active p-2 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-white font-bold text-left">
+                3-Seater (92") <span class="text-[10px] text-stone-400 block">Standard</span>
+              </button>
+              <button onclick="updateSize('Sovereign 4-Seater (108\")', 15000)" class="size-btn p-2 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                4-Seater (108") <span class="text-[10px] text-champagne block">+₹15,000</span>
+              </button>
+              <button onclick="updateSize('Palace L-Sectional (120\"x84\")', 32000)" class="size-btn p-2 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left">
+                L-Sectional <span class="text-[10px] text-champagne block">+₹32,000</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Cushion & Leg Styles -->
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block font-cinzel font-bold text-champagne text-[11px] mb-1">CUSHION STYLE</label>
+              <select onchange="updateCushion(this.value)" class="palace-input text-xs font-sans">
+                <option value="Diamond Tufted|0">Diamond Tufted</option>
+                <option value="Feather Plush|3500">Feather Plush (+₹3.5k)</option>
+                <option value="Fluted Modern|2000">Fluted Modern (+₹2k)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-cinzel font-bold text-champagne text-[11px] mb-1">LEG / BASE OPTION</label>
+              <select onchange="updateLegs(this.value)" class="palace-input text-xs font-sans">
+                <option value="24K Gold Sabots|0">24K Gold Sabots</option>
+                <option value="Fluted Brass|2500">Fluted Brass (+₹2.5k)</option>
+                <option value="Sculpted Teak|0">Sculpted Teak</option>
+                <option value="Matte Black|0">Matte Obsidian</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-4 border-t border-antiqueGold/30 space-y-2">
+            <button onclick="saveCustomDesign()" class="btn-gold w-full text-xs py-3.5 rounded-xl shadow-2xl">
+              <span>🛒</span> ADD CUSTOM PIECE TO CART ( <span id="customBtnPrice">₹89,999</span> )
+            </button>
+            <div class="flex gap-2">
+              <button onclick="FF_EMI.openModal(currentCustomPrice, 'Custom Imperial Sofa Atelier')" class="btn-outline-gold text-xs py-2 rounded-xl flex-1">
+                <span>⚡</span> 0% EMI: <strong id="customEmiMonthly">₹3,750/mo</strong>
+              </button>
+              <button onclick="window.FF_Toast('Custom design blueprint saved to your vault! 🧬')" class="btn-ghost-gold text-xs py-2 rounded-xl">
+                💾 Save Blueprint
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 3: 🛋️ 3D / ROOM PREVIEW & SPATIAL STAGING
+         ========================================================================== -->
+    <section id="roomPreviewSec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">3D SPATIAL INTELLIGENCE</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            ROOM PREVIEW & STAGING STUDIO
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Test furniture scale, perimeter walking clearance, wall tones, and lighting conditions in simulated luxury chambers.
+          </p>
+        </div>
+        
+        <!-- Chamber Switcher -->
+        <div class="flex items-center gap-1.5 bg-black/60 p-1 rounded-xl border border-antiqueGold/30 overflow-x-auto text-xs font-cinzel">
+          <button id="roomTabLiving" onclick="setRoomChamber('living')" class="px-3 py-1.5 rounded-lg bg-antiqueGold text-black font-black">🛋️ Living Room</button>
+          <button id="roomTabBed" onclick="setRoomChamber('bedroom')" class="px-3 py-1.5 rounded-lg text-stone-300 hover:text-white">🛏️ Bedroom</button>
+          <button id="roomTabDining" onclick="setRoomChamber('dining')" class="px-3 py-1.5 rounded-lg text-stone-300 hover:text-white">🍽️ Dining Room</button>
+          <button id="roomTabOffice" onclick="setRoomChamber('office')" class="px-3 py-1.5 rounded-lg text-stone-300 hover:text-white">💼 Office</button>
+        </div>
+      </div>
+
+      <!-- 3D Stage Canvas & Controls -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-8">
+          <div id="roomStageCanvas" class="room-canvas-stage relative flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80');">
+            
+            <!-- Dynamic Room Lighting Filter -->
+            <div id="roomLightingOverlay" class="absolute inset-0 bg-black/20 pointer-events-none transition duration-500"></div>
+
+            <!-- Staged Furniture Overlay Object -->
+            <div id="stagedFurnitureObj" class="relative z-10 transform scale-100 transition duration-300 max-w-sm sm:max-w-md drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)]">
+              <img id="stagedFurnitureImg" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" class="w-full h-auto rounded-2xl border-2 border-antiqueGold/40" />
+              <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black/90 px-3 py-1 rounded-full border border-antiqueGold text-[10px] font-cinzel font-bold text-champagne whitespace-nowrap shadow-lg">
+                <span id="stagedItemTitle">The Imperial Sofa</span> • 4.5ft Clearance ✅
+              </div>
+            </div>
+
+            <!-- Stage HUD Elements -->
+            <div class="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-2 rounded-xl border border-antiqueGold/30 text-xs">
+              <span id="chamberTitleHud" class="font-cinzel font-bold text-champagne block">CHAMBER 1: GRAND ROYAL SALON</span>
+              <span class="text-[10px] text-stone-400 font-mono">Dimensions: 22ft × 18ft (396 sq.ft)</span>
+            </div>
+
+            <div class="absolute top-4 right-4 flex gap-2">
+              <button onclick="toggleLighting('sunrise')" class="interactive-chip text-[10px]">☀️ Sunrise</button>
+              <button onclick="toggleLighting('chandelier')" class="interactive-chip active text-[10px]">👑 Chandelier</button>
+              <button onclick="toggleLighting('night')" class="interactive-chip text-[10px]">🌙 Night Glow</button>
+            </div>
+
+            <div class="absolute bottom-4 left-4 bg-emerald-950/80 border border-emerald-500/50 px-3 py-1.5 rounded-xl text-emerald-300 text-[10px] font-cinzel font-bold flex items-center gap-1.5">
+              <span>🛡️</span> Doorway Clearance Verified (36" Passage Clean)
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Stage Inspector (4 cols) -->
+        <div class="lg:col-span-4 palace-card p-6 space-y-5 text-xs">
+          <div class="border-b border-antiqueGold/30 pb-3">
+            <span class="badge-gold text-[8px]">SPATIAL FIT TELEMETRY</span>
+            <h3 class="font-cinzel font-bold text-base text-white mt-1">CHAMBER FIT AUDIT</h3>
+          </div>
+
+          <div class="space-y-3 font-sans">
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 flex justify-between items-center">
+              <span class="text-stone-300">Room Footprint:</span>
+              <span class="font-mono font-bold text-white">22ft × 18ft (396 sq.ft)</span>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 flex justify-between items-center">
+              <span class="text-stone-300">Perimeter Walking Space:</span>
+              <span class="font-mono font-bold text-emerald-400">4.5 ft (Optimal Chi)</span>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 flex justify-between items-center">
+              <span class="text-stone-300">Natural Sun Exposure:</span>
+              <span class="font-mono font-bold text-champagne">Morning East Light</span>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 flex justify-between items-center">
+              <span class="text-stone-300">Doorway / Elevator Pass:</span>
+              <span class="font-mono font-bold text-emerald-400">100% Pass (0 Disassembly)</span>
+            </div>
+          </div>
+
+          <div class="pt-2 space-y-2">
+            <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold w-full text-xs py-3 rounded-xl">
+              Add This Room Staging Set to Cart
+            </button>
+            <a href="customer-dashboard.html" class="btn-outline-gold w-full text-xs py-2 rounded-xl text-center">
+              Open Full Chamber Genome
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 4: ⚖️ SMART 3-PRODUCT COMPARISON
+         ========================================================================== -->
+    <section id="compareSec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">SIDE-BY-SIDE MATRIX</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            SMART PRODUCT COMPARISON ENGINE
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Compare specs, solid timber grade, warranties, ratings, trust scores, and 0% EMI side by side.
+          </p>
+        </div>
+        <button onclick="FF_Compare.openModal()" class="btn-gold text-xs px-4 py-2 rounded-xl">
+          Open Full Matrix Modal →
+        </button>
+      </div>
+
+      <!-- Comparison Previews 3 Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Item 1: Imperial Sofa -->
+        <div class="palace-card p-5 space-y-4 relative">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" />
+          </div>
+          <span class="badge-gold text-[8px]">Living Room Masterpiece</span>
+          <h3 class="font-cinzel font-bold text-sm text-white">THE IMPERIAL ROYAL SOFA</h3>
+          <div class="font-mono text-base font-bold text-champagne">₹89,999 <span class="text-xs text-stone-400 font-normal line-through">₹1,14,999</span></div>
+          
+          <ul class="text-xs space-y-2 text-stone-300 font-sans border-t border-white/10 pt-3">
+            <li>🌳 <strong>Material:</strong> Solid Nilambur Teak & Velvet</li>
+            <li>📏 <strong>Dimensions:</strong> 92" L x 38" W x 36" H</li>
+            <li>🛡️ <strong>Warranty:</strong> 10-Year Royal Structural</li>
+            <li>⭐ <strong>Rating:</strong> 4.9 / 5.0 (184 reviews)</li>
+            <li>💳 <strong>0% EMI:</strong> ₹3,750 / mo (24 mos)</li>
+          </ul>
+
+          <div class="flex gap-2 pt-2">
+            <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold text-[10px] flex-1 py-2 rounded-lg">Add to Cart</button>
+            <button data-compare-btn="ff-101" onclick="FF_Compare.toggle('ff-101')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+          </div>
+        </div>
+
+        <!-- Item 2: Sovereign Dining Suite -->
+        <div class="palace-card p-5 space-y-4 relative">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" />
+          </div>
+          <span class="badge-gold text-[8px]">Banquet & Dining</span>
+          <h3 class="font-cinzel font-bold text-sm text-white">THE SOVEREIGN DINING SUITE</h3>
+          <div class="font-mono text-base font-bold text-champagne">₹94,999 <span class="text-xs text-stone-400 font-normal line-through">₹1,25,000</span></div>
+          
+          <ul class="text-xs space-y-2 text-stone-300 font-sans border-t border-white/10 pt-3">
+            <li>🌳 <strong>Material:</strong> Live-Edge Solid Sheesham & Brass</li>
+            <li>📏 <strong>Dimensions:</strong> 84" L x 42" W x 30" H (Seats 8)</li>
+            <li>🛡️ <strong>Warranty:</strong> 10-Year Solid Timber</li>
+            <li>⭐ <strong>Rating:</strong> 4.9 / 5.0 (112 reviews)</li>
+            <li>💳 <strong>0% EMI:</strong> ₹3,958 / mo (24 mos)</li>
+          </ul>
+
+          <div class="flex gap-2 pt-2">
+            <button onclick="FF_Cart.addItem('ff-102')" class="btn-gold text-[10px] flex-1 py-2 rounded-lg">Add to Cart</button>
+            <button data-compare-btn="ff-102" onclick="FF_Compare.toggle('ff-102')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+          </div>
+        </div>
+
+        <!-- Item 3: Majesty Canopy Bed -->
+        <div class="palace-card p-5 space-y-4 relative">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" />
+          </div>
+          <span class="badge-gold text-[8px]">Bedroom Sanctuary</span>
+          <h3 class="font-cinzel font-bold text-sm text-white">THE MAJESTY CANOPY BED</h3>
+          <div class="font-mono text-base font-bold text-champagne">₹1,19,999 <span class="text-xs text-stone-400 font-normal line-through">₹1,59,999</span></div>
+          
+          <ul class="text-xs space-y-2 text-stone-300 font-sans border-t border-white/10 pt-3">
+            <li>🌳 <strong>Material:</strong> Four-Poster Teak & 24K Gold Inlays</li>
+            <li>📏 <strong>Dimensions:</strong> 86" L x 80" W x 88" H (King)</li>
+            <li>🛡️ <strong>Warranty:</strong> 15-Year Master Guarantee</li>
+            <li>⭐ <strong>Rating:</strong> 5.0 / 5.0 (88 reviews)</li>
+            <li>💳 <strong>0% EMI:</strong> ₹4,999 / mo (24 mos)</li>
+          </ul>
+
+          <div class="flex gap-2 pt-2">
+            <button onclick="FF_Cart.addItem('ff-103')" class="btn-gold text-[10px] flex-1 py-2 rounded-lg">Add to Cart</button>
+            <button data-compare-btn="ff-103" onclick="FF_Compare.toggle('ff-103')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 5: 💳 SMART 0% EMI CALCULATOR & FINANCIAL ADVISOR
+         ========================================================================== -->
+    <section id="emiSec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">FINANCIAL FLEXIBILITY</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            SMART 0% NO-COST EMI CALCULATOR
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Choose between 3, 6, 12, 18, and 24 month plans with instant real-time amortization breakdowns.
+          </p>
+        </div>
+      </div>
+
+      <div class="palace-card p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-5">
+          <div>
+            <span class="text-[10px] font-cinzel font-bold text-stone-400 block mb-1">SELECT HEIRLOOM TO CALCULATE</span>
+            <select id="studioEmiProductSelect" onchange="updateStudioEmiPrice(this.value)" class="palace-input text-xs font-sans">
+              <option value="89999">The Imperial Royal Sofa (₹89,999)</option>
+              <option value="94999">The Sovereign Dining Suite (₹94,999)</option>
+              <option value="119999">The Majesty King Canopy Bed (₹1,19,999)</option>
+              <option value="64999">The Chancellor Executive Desk (₹64,999)</option>
+              <option value="34999">The Empress Bouclé Armchair (₹34,999)</option>
+            </select>
+          </div>
+
+          <!-- Tenure Buttons (3, 6, 12, 18, 24) -->
+          <div class="space-y-2">
+            <span class="text-xs font-cinzel font-bold text-champagne block">CHOOSE INSTALLMENT TENURE</span>
+            <div class="grid grid-cols-5 gap-2">
+              <button onclick="setStudioEmiTenure(3)" id="studioTenure3" class="studio-emi-btn px-3 py-2.5 rounded-xl bg-black/60 text-stone-300 border border-antiqueGold/30 font-cinzel font-bold text-xs">3 Mo</button>
+              <button onclick="setStudioEmiTenure(6)" id="studioTenure6" class="studio-emi-btn px-3 py-2.5 rounded-xl bg-black/60 text-stone-300 border border-antiqueGold/30 font-cinzel font-bold text-xs">6 Mo</button>
+              <button onclick="setStudioEmiTenure(12)" id="studioTenure12" class="studio-emi-btn px-3 py-2.5 rounded-xl bg-black/60 text-stone-300 border border-antiqueGold/30 font-cinzel font-bold text-xs">12 Mo</button>
+              <button onclick="setStudioEmiTenure(18)" id="studioTenure18" class="studio-emi-btn px-3 py-2.5 rounded-xl bg-black/60 text-stone-300 border border-antiqueGold/30 font-cinzel font-bold text-xs">18 Mo</button>
+              <button onclick="setStudioEmiTenure(24)" id="studioTenure24" class="studio-emi-btn active px-3 py-2.5 rounded-xl bg-gradient-to-r from-antiqueGold to-champagne text-black font-cinzel font-black text-xs shadow-lg border border-white/30">24 Mo</button>
+            </div>
+          </div>
+
+          <!-- Down Payment Slider -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-stone-400 font-cinzel">DOWN PAYMENT (OPTIONAL)</span>
+              <span id="studioDownPaymentDisplay" class="font-mono text-champagne font-bold">₹0</span>
+            </div>
+            <input type="range" min="0" max="50000" step="5000" value="0" id="studioDownPaymentRange" oninput="updateStudioDownPayment(this.value)" class="w-full accent-antiqueGold cursor-pointer" />
+          </div>
+        </div>
+
+        <!-- Right Summary Output Card (5 cols) -->
+        <div class="lg:col-span-5 p-6 bg-gradient-to-br from-royalNavy via-royalPurple to-black rounded-3xl border border-antiqueGold/60 text-center space-y-4 shadow-2xl">
+          <span class="badge-gold text-[9px] uppercase">0% NO-COST EMI GUARANTEE</span>
+          <div>
+            <span class="text-xs text-stone-300 font-sans block">Monthly Installment</span>
+            <div id="studioMonthlyAmountDisplay" class="text-3xl sm:text-4xl font-cinzel font-black text-white gold-gradient-text mt-1">₹3,750</div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-white/10 text-xs font-mono text-left">
+            <div class="p-2.5 bg-black/40 rounded-xl">
+              <span class="text-[10px] text-stone-400 block font-sans">Product Price</span>
+              <span id="studioTotalProductPrice" class="text-champagne font-bold">₹89,999</span>
+            </div>
+            <div class="p-2.5 bg-black/40 rounded-xl">
+              <span class="text-[10px] text-stone-400 block font-sans">Total Payable</span>
+              <span id="studioTotalPayableDisplay" class="text-emerald-400 font-bold">₹89,999</span>
+            </div>
+          </div>
+
+          <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold w-full text-xs py-3 rounded-xl">
+            Proceed with 0% EMI Plan →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODULE 6: 🚚 AI DELIVERY INTELLIGENCE & PINCODE TRACKER
+         ========================================================================== -->
+    <section id="deliverySec" class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">LOGISTICS TELEMETRY</span>
+          <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            AI DELIVERY INTELLIGENCE & ESTIMATOR
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Real-time transit prediction based on air-suspension fleet availability, weather corridors, and guild dispatch queues.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Pincode Checker (6 cols) -->
+        <div class="lg:col-span-6 palace-card p-6 space-y-4">
+          <h3 class="font-cinzel font-bold text-sm text-champagne">CHECK PINCODE DELIVERY WINDOW</h3>
+          <p class="text-xs text-stone-300 font-sans">Enter your delivery postal code for instant AI route confidence calculation.</p>
+          
+          <div class="flex gap-2">
+            <input id="studioPincodeInput" type="text" placeholder="Enter 6-digit PIN code (e.g. 500034)" class="palace-input text-xs font-mono" maxlength="6" value="500034" />
+            <button onclick="FF_Delivery.evaluatePincode(document.getElementById('studioPincodeInput').value)" class="btn-gold text-xs px-5 rounded-xl shrink-0">
+              Calculate 🚚
+            </button>
+          </div>
+
+          <div id="ff-delivery-calc-result" class="pt-2">
+            <div class="p-3.5 bg-black/80 rounded-xl border border-antiqueGold/40 space-y-2 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-cinzel font-bold text-champagne">Estimated Delivery: 2–3 Days (Express White-Glove)</span>
+                <span class="badge-gold text-[9px] text-emerald-400">🛡️ 98% Confidence</span>
+              </div>
+              <p class="text-stone-300 font-sans text-[11px]">Dispatch Hub: <strong>Hyderabad Gachibowli Logistics Hub</strong> via White-Glove Air-Suspension Fleet.</p>
+              <div class="flex items-center justify-between text-[10px] text-stone-400 pt-1 border-t border-white/10">
+                <span>Supplier Reliability: <strong>98/100 Guild</strong></span>
+                <span>Transit Delay Risk: <strong class="text-emerald-400">Ultra-Low (&lt; 0.5%)</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6-Stage Timeline Live Demonstration (6 cols) -->
+        <div class="lg:col-span-6 palace-card p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-antiqueGold/30 pb-2">
+            <span class="font-cinzel font-bold text-xs text-champagne">6-STAGE LIVE ORDER LIFECYCLE</span>
+            <span class="text-[10px] text-emerald-400 font-mono">Simulated Transit Active</span>
+          </div>
+
+          <!-- Visual 6-Stage Timeline -->
+          <div class="pt-4 space-y-3">
+            <div class="timeline-track">
+              <div class="timeline-progress-bar" style="width: 80%;"></div>
+              <div class="timeline-node completed" title="Order Confirmed">✓</div>
+              <div class="timeline-node completed" title="Processing">✓</div>
+              <div class="timeline-node completed" title="Packed">✓</div>
+              <div class="timeline-node completed" title="Shipped">✓</div>
+              <div class="timeline-node active" title="Out for Delivery">🚚</div>
+              <div class="timeline-node" title="Delivered">🏠</div>
+            </div>
+
+            <div class="grid grid-cols-6 text-center text-[9px] font-cinzel font-bold">
+              <span class="text-champagne">Confirmed</span>
+              <span class="text-champagne">Processing</span>
+              <span class="text-champagne">Packed</span>
+              <span class="text-champagne">Shipped</span>
+              <span class="text-emerald-400">Out for Delivery</span>
+              <span class="text-stone-500">Delivered</span>
+            </div>
+          </div>
+
+          <div class="p-3 bg-black/60 rounded-xl border border-white/10 text-xs flex justify-between items-center">
+            <span class="text-stone-300">Active Fleet: <strong>Van #WF-402 (Air-Suspension)</strong></span>
+            <button onclick="FF_Tracking.openModal('FF-2026-9948')" class="btn-outline-gold text-[10px] px-3 py-1 rounded-lg">View Full GPS →</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 🏛️ 4. STANDARDIZED LUXURY FOOTER -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-12">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] bg-black shrink-0">
+              <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <span class="font-cinzelDecor text-lg font-black gold-gradient-text block">FRIENDS FURNITURE</span>
+              <span class="font-pinyon text-sm text-champagne block -mt-1">Where Luxury Meets Comfort • Smart Studio</span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-400 font-sans leading-relaxed max-w-sm">
+            India’s premier luxury smart-furniture platform. Handcrafted Nilambur teak heirlooms 
+            powered by AI recommendations, spatial room previews, and 0-Damage white-glove delivery.
+          </p>
+        </div>
+
+        <!-- Directory Links -->
+        <div class="md:col-span-3 space-y-2 font-cinzel">
+          <strong class="text-white text-xs block mb-2">PALACE PORTALS</strong>
+          <ul class="space-y-1.5 text-stone-400 text-xs">
+            <li><a href="customer-dashboard.html" class="hover:text-champagne transition">👑 Palace Dashboard</a></li>
+            <li><a href="smart-studio.html" class="hover:text-champagne transition text-champagne">✨ Smart Studio</a></li>
+            <li><a href="furniture-passport.html?id=FF-2026-00125" class="hover:text-champagne transition">🧬 Digital Life Passport</a></li>
+            <li><a href="categories.html" class="hover:text-champagne transition">🛍️ Furniture Suites</a></li>
+            <li><a href="living-room.html" class="hover:text-champagne transition">🛋️ Products Catalog</a></li>
+            <li><a href="admin-passport.html" class="hover:text-champagne transition">⚙️ Master Guild Console</a></li>
+          </ul>
+        </div>
+
+        <!-- Dispatch Newsletter -->
+        <div class="md:col-span-4 space-y-3">
+          <strong class="text-white text-xs font-cinzel block">SMART STUDIO UPDATES</strong>
+          <p class="text-xs text-stone-400">Receive private auction previews and new Nilambur teak harvest allocations.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Enter royal email..." class="bg-black/80 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-champagne flex-1" />
+            <button onclick="window.FF_Toast('Subscribed to Palace Gazette!')" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black">
+              JOIN 👑
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10 text-[11px] font-cinzel">
+        <span>© 2026 FRIENDS FURNITURE • All Rights Reserved</span>
+        <span class="text-champagne">256-Bit Encrypted Smart Supply Chain Intelligence</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Master Shared Scripts -->
+  <script src="assets/app-shared.js"></script>
+
+  <!-- Interactive Smart Studio Scripts -->
+  <script>
+    // --- STATE MANAGEMENT ---
+    let currentCustomPrice = 89999;
+    let basePrice = 89999;
+    let selectedColorName = "Royal Blue";
+    let selectedColorPrice = 0;
+    let selectedFabricName = "Royal Velvet";
+    let selectedFabricPrice = 0;
+    let selectedWoodName = "Nilambur Teak";
+    let selectedWoodPrice = 0;
+    let selectedSizeName = "Standard 3-Seater (92\")";
+    let selectedSizePrice = 0;
+    let selectedCushionPrice = 0;
+    let selectedLegsPrice = 0;
+
+    const angleImages = [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    const chamberRoomData = {
+      living: {
+        bg: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
+        title: "CHAMBER 1: GRAND ROYAL SALON",
+        item: "The Imperial Sofa",
+        img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
+      },
+      bedroom: {
+        bg: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80",
+        title: "CHAMBER 2: MASTER HERITAGE SUITE",
+        item: "The Majesty Canopy Bed",
+        img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+      },
+      dining: {
+        bg: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80",
+        title: "CHAMBER 3: IMPERIAL BANQUET HALL",
+        item: "The Sovereign Dining Suite",
+        img: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80"
+      },
+      office: {
+        bg: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80",
+        title: "CHAMBER 4: EXECUTIVE CHANCELLOR STUDY",
+        item: "The Chancellor Executive Desk",
+        img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
+      }
+    };
+
+    function setCustomizerAngle(idx) {
+      document.getElementById('customizerMainImg').src = angleImages[idx] || angleImages[0];
+    }
+
+    function updateColor(name, hex, addPrice) {
+      selectedColorName = name;
+      selectedColorPrice = addPrice;
+      document.getElementById('selectedColorLabel').innerText = name + (addPrice > 0 ? ` (+₹${addPrice})` : '');
+      document.getElementById('badgeMaterial').innerText = `${selectedFabricName} • ${name}`;
+      
+      const glow = document.getElementById('customizerGlow');
+      if (glow) glow.style.backgroundColor = hex + '33';
+
+      document.querySelectorAll('.swatch-btn').forEach(btn => {
+        if (btn.title.startsWith(name)) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      recalcCustomizerPrice();
+    }
+
+    function updateFabric(name, addPrice) {
+      selectedFabricName = name;
+      selectedFabricPrice = addPrice;
+      document.getElementById('selectedFabricLabel').innerText = name;
+      document.getElementById('badgeMaterial').innerText = `${name} • ${selectedColorName}`;
+      
+      document.querySelectorAll('.fabric-btn').forEach(b => {
+        if (b.innerText.includes(name)) {
+          b.className = 'fabric-btn active p-2.5 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-white font-bold text-left';
+        } else {
+          b.className = 'fabric-btn p-2.5 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left';
+        }
+      });
+      recalcCustomizerPrice();
+    }
+
+    function updateWoodFinish(val) {
+      const parts = val.split('|');
+      selectedWoodName = parts[0];
+      selectedWoodPrice = parseInt(parts[1], 10) || 0;
+      document.getElementById('selectedWoodLabel').innerText = selectedWoodName;
+      document.getElementById('badgeWood').innerText = selectedWoodName;
+      recalcCustomizerPrice();
+    }
+
+    function updateSize(name, deltaPrice) {
+      selectedSizeName = name;
+      selectedSizePrice = deltaPrice;
+      document.getElementById('selectedSizeLabel').innerText = name;
+      document.getElementById('displaySpecs').innerText = `${name} • Custom Build`;
+
+      document.querySelectorAll('.size-btn').forEach(b => {
+        if (b.innerText.includes(name.slice(0, 8))) {
+          b.className = 'size-btn active p-2 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-white font-bold text-left';
+        } else {
+          b.className = 'size-btn p-2 rounded-xl border border-white/10 bg-black/50 hover:border-antiqueGold text-stone-300 text-left';
+        }
+      });
+      recalcCustomizerPrice();
+    }
+
+    function updateCushion(val) {
+      const parts = val.split('|');
+      selectedCushionPrice = parseInt(parts[1], 10) || 0;
+      recalcCustomizerPrice();
+    }
+
+    function updateLegs(val) {
+      const parts = val.split('|');
+      selectedLegsPrice = parseInt(parts[1], 10) || 0;
+      recalcCustomizerPrice();
+    }
+
+    function recalcCustomizerPrice() {
+      currentCustomPrice = basePrice + selectedColorPrice + selectedFabricPrice + selectedWoodPrice + selectedSizePrice + selectedCushionPrice + selectedLegsPrice;
+      const formatted = window.formatINR(currentCustomPrice);
+      document.getElementById('customizerPriceDisplay').innerText = formatted;
+      document.getElementById('customBtnPrice').innerText = formatted;
+      document.getElementById('customEmiMonthly').innerText = `${window.formatINR(Math.round(currentCustomPrice / 24))}/mo`;
+    }
+
+    function saveCustomDesign() {
+      FF_Cart.addItem('ff-101', 1, selectedColorName, selectedFabricName, {
+        price: currentCustomPrice,
+        woodFinish: selectedWoodName,
+        size: selectedSizeName
+      });
+    }
+
+    // --- 3D ROOM PREVIEW LOGIC ---
+    function setRoomChamber(key) {
+      const data = chamberRoomData[key] || chamberRoomData.living;
+      document.getElementById('roomStageCanvas').style.backgroundImage = `url('${data.bg}')`;
+      document.getElementById('chamberTitleHud').innerText = data.title;
+      document.getElementById('stagedItemTitle').innerText = data.item;
+      document.getElementById('stagedFurnitureImg').src = data.img;
+
+      ['living', 'bedroom', 'dining', 'office'].forEach(k => {
+        const tab = document.getElementById(`roomTab${k.charAt(0).toUpperCase() + k.slice(1)}`);
+        if (tab) {
+          if (k === key) tab.className = "px-3 py-1.5 rounded-lg bg-antiqueGold text-black font-black";
+          else tab.className = "px-3 py-1.5 rounded-lg text-stone-300 hover:text-white";
+        }
+      });
+    }
+
+    function toggleLighting(mode) {
+      const overlay = document.getElementById('roomLightingOverlay');
+      if (mode === 'sunrise') overlay.style.backgroundColor = 'rgba(251, 146, 60, 0.15)';
+      else if (mode === 'chandelier') overlay.style.backgroundColor = 'rgba(245, 158, 11, 0.15)';
+      else if (mode === 'night') overlay.style.backgroundColor = 'rgba(15, 23, 42, 0.55)';
+    }
+
+    // --- STUDIO EMI CALCULATOR ---
+    let studioEmiPrice = 89999;
+    let studioEmiTenure = 24;
+    let studioDownPayment = 0;
+
+    function updateStudioEmiPrice(val) {
+      studioEmiPrice = parseInt(val, 10) || 89999;
+      recalcStudioEmi();
+    }
+
+    function setStudioEmiTenure(months) {
+      studioEmiTenure = months;
+      [3, 6, 12, 18, 24].forEach(m => {
+        const btn = document.getElementById(`studioTenure${m}`);
+        if (btn) {
+          if (m === months) btn.className = 'studio-emi-btn active px-3 py-2.5 rounded-xl bg-gradient-to-r from-antiqueGold to-champagne text-black font-cinzel font-black text-xs shadow-lg border border-white/30';
+          else btn.className = 'studio-emi-btn px-3 py-2.5 rounded-xl bg-black/60 text-stone-300 border border-antiqueGold/30 font-cinzel font-bold text-xs';
+        }
+      });
+      recalcStudioEmi();
+    }
+
+    function updateStudioDownPayment(val) {
+      studioDownPayment = parseInt(val, 10) || 0;
+      document.getElementById('studioDownPaymentDisplay').innerText = window.formatINR(studioDownPayment);
+      recalcStudioEmi();
+    }
+
+    function recalcStudioEmi() {
+      const principal = Math.max(0, studioEmiPrice - studioDownPayment);
+      const monthly = Math.round(principal / studioEmiTenure);
+      document.getElementById('studioMonthlyAmountDisplay').innerText = window.formatINR(monthly);
+      document.getElementById('studioTotalProductPrice').innerText = window.formatINR(studioEmiPrice);
+      document.getElementById('studioTotalPayableDisplay').innerText = window.formatINR(studioEmiPrice);
+    }
+
+    // --- RECOMMENDATIONS RENDERER ---
+    function filterRecommendations() {
+      const container = document.getElementById('recommendationsGrid');
+      if (!container) return;
+
+      const room = document.getElementById('recomRoomFilter').value;
+      const maxBudget = parseInt(document.getElementById('budgetRange').value, 10);
+      const style = document.getElementById('recomStyleFilter').value;
+
+      const all = [
+        {
+          id: "ff-101",
+          name: "THE IMPERIAL SOFA",
+          category: "Living Room",
+          price: 89999,
+          originalPrice: 114999,
+          matchScore: 98,
+          reason: "Recommended because you viewed luxury palace velvet sofas.",
+          image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80",
+          specs: "Solid Nilambur Teak • Royal Blue Velvet • 92\" L"
+        },
+        {
+          id: "ff-102",
+          name: "THE SOVEREIGN DINING SUITE",
+          category: "Dining",
+          price: 94999,
+          originalPrice: 125000,
+          matchScore: 96,
+          reason: "Recommended for spacious 18x14ft banquet hall with 8-guest seating.",
+          image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80",
+          specs: "Live-Edge Sheesham • Brass Sled Base • Seats 8"
+        },
+        {
+          id: "ff-103",
+          name: "THE MAJESTY CANOPY BED",
+          category: "Bedroom",
+          price: 119999,
+          originalPrice: 159999,
+          matchScore: 95,
+          reason: "Recommended based on your interest in Master Heritage Bedroom suites.",
+          image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80",
+          specs: "Four-Poster Seasoned Teak • 24K Gold Foil • King"
+        },
+        {
+          id: "ff-105",
+          name: "THE EMPRESS BOUCLÉ ARMCHAIR",
+          category: "Living Room",
+          price: 34999,
+          originalPrice: 45000,
+          matchScore: 94,
+          reason: "Tactile companion match for The Imperial Sofa with brass swivel.",
+          image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80",
+          specs: "Sculptural Ivory Bouclé • Brushed Brass Swivel"
+        },
+        {
+          id: "ff-106",
+          name: "THE VERSAILLES MARBLE TABLE",
+          category: "Living Room",
+          price: 42999,
+          originalPrice: 56000,
+          matchScore: 92,
+          reason: "Proportional height alignment (18\" table with 19\" sofa seat).",
+          image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80",
+          specs: "Italian Calacatta Gold Marble • 24K Gold Frame"
+        },
+        {
+          id: "ff-104",
+          name: "THE CHANCELLOR EXECUTIVE DESK",
+          category: "Office",
+          price: 64999,
+          originalPrice: 82999,
+          matchScore: 91,
+          reason: "Seasoned Nilambur teak and brass pulls for grand executive studies.",
+          image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
+          specs: "Solid Teak • Italian Leather Blotter • 72\" L"
+        }
+      ];
+
+      const filtered = all.filter(item => {
+        const matchesRoom = (room === 'all' || item.category === room);
+        const matchesBudget = item.price <= maxBudget;
+        return matchesRoom && matchesBudget;
+      });
+
+      container.innerHTML = filtered.map(p => `
+        <div class="palace-card p-5 space-y-3 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+              <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-2 left-2 badge-gold text-[8px]">
+                🤖 ${p.matchScore}% AI Match
+              </div>
+              <button onclick="FF_Wishlist.toggle('${p.id}')" data-wishlist-btn="${p.id}" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/70 flex items-center justify-center text-xs hover:bg-black transition">
+                🤍
+              </button>
+            </div>
+            
+            <div>
+              <span class="text-[9px] text-stone-400 font-cinzel uppercase block">${p.category}</span>
+              <h3 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition truncate">${p.name}</h3>
+              <p class="text-[11px] text-stone-400 font-sans mt-0.5 truncate">${p.specs}</p>
+            </div>
+
+            <!-- AI Reason Tag -->
+            <div class="p-2.5 bg-antiqueGold/10 rounded-xl border border-antiqueGold/30 text-[10px] text-champagne font-sans leading-relaxed">
+              💡 ${p.reason}
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-3 border-t border-white/10">
+            <div class="flex items-baseline justify-between">
+              <div>
+                <span class="font-mono text-base font-bold text-champagne">${window.formatINR(p.price)}</span>
+                <span class="text-xs text-stone-500 line-through font-mono ml-1.5">${window.formatINR(p.originalPrice)}</span>
+              </div>
+              <span class="text-[10px] text-amber-300 font-cinzel">⚡ ${window.formatINR(Math.round(p.price / 24))}/mo</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('${p.id}')" class="btn-gold text-[10px] py-2 rounded-xl">Add to Cart</button>
+              <button data-compare-btn="${p.id}" onclick="FF_Compare.toggle('${p.id}')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      FF_Compare.updateButtons();
+      FF_Wishlist.updateCardButtons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      filterRecommendations();
+      recalcCustomizerPrice();
+      recalcStudioEmi();
+    });
+  </script>
+
+  <!-- Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+
+</body>
+</html>

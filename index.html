@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRIENDS FURNITURE — Where Luxury Meets Comfort | Smart Furniture E-Commerce</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS for OpenStreetMap (100% Free) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Lucide Icons (Free & Open Source) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .hero-glow {
+      background: radial-gradient(circle at 50% 30%, rgba(201, 162, 39, 0.25) 0%, rgba(7, 20, 47, 0.8) 50%, rgba(5, 5, 5, 0.98) 100%);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ 1. TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 border-b border-antiqueGold/30 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Platform Core Apps & Portals -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+          <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>👑</span> Palace Dashboard
+          </a>
+          <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🪞</span> Furniture Twin
+          </a>
+          <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>✨</span> Smart Studio
+          </a>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🧬</span> Digital Passport
+          </a>
+          <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛍️</span> Categories
+          </a>
+          <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛋️</span> Products
+          </a>
+        </div>
+
+        <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+        <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black whitespace-nowrap">
+            🏰 Home
+          </a>
+          <a href="furniture-twin.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🪞 Furniture Twin
+          </a>
+          <a href="categories.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛍️ Categories
+          </a>
+          <a href="living-room.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛋️ Products
+          </a>
+          <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            ✨ Smart Studio
+          </a>
+          <a href="customer-dashboard.html#ordersSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🚚 Track Order
+          </a>
+          <a href="customer-dashboard.html#memberSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            💎 Rewards
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Session Status -->
+      <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+        <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+          👑 VIP Gold (4,250 PTS)
+        </span>
+        <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+          <span>🔔</span> Notifications
+          <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+        </button>
+        <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+          🚪 Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 2. MAIN STICKY NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl sticky top-9 z-40">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Where Luxury Meets Comfort • Showroom
+          </span>
+        </div>
+      </a>
+
+      <!-- Search Trigger -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-4 relative cursor-pointer ff-search-trigger">
+        <span class="absolute left-3.5 text-stone-400 text-sm">🔍</span>
+        <input 
+          type="text" 
+          readonly
+          placeholder="Search by furniture name, solid wood, room style..." 
+          class="w-full bg-black/70 border border-antiqueGold/40 rounded-2xl py-2 pl-10 pr-4 text-xs text-white placeholder-stone-500 cursor-pointer focus:outline-none font-sans"
+        />
+        <span class="absolute right-3 text-[10px] text-stone-400 font-mono bg-white/10 px-1.5 py-0.5 rounded">Ctrl+K</span>
+      </div>
+
+      <!-- Quick Action Utilities -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button onclick="FF_Wishlist.toggle('ff-101')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-stone-200 relative transition" title="Royal Wishlist">
+          <span class="text-base">❤️</span>
+          <span class="ff-wishlist-badge absolute top-1 right-1 w-4 h-4 bg-antiqueGold text-black text-[9px] font-black rounded-full flex items-center justify-center">2</span>
+        </button>
+
+        <button class="ff-cart-trigger btn-gold px-3.5 py-2 rounded-xl text-xs font-cinzel font-black shadow-xl flex items-center gap-1.5">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Palace Cart</span>
+          <span class="ff-cart-badge bg-black text-antiqueGold text-[10px] font-black px-1.5 py-0.2 rounded-full">1</span>
+        </button>
+
+        <a href="customer-dashboard.html" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-champagne transition hidden sm:flex items-center gap-1.5 text-xs font-cinzel font-bold">
+          <span>👑</span> Command Center
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🌟 3. MAIN SHOWROOM HOMEPAGE CONTENT -->
+  <main class="w-full space-y-16 pb-12">
+    
+    <!-- 👑 HERO SECTION: GRAND LUXURY SHOWROOM BANNER -->
+    <section class="relative w-full py-16 sm:py-24 hero-glow border-b border-antiqueGold/30 overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <div class="inline-flex items-center gap-2 badge-gold text-[10px] font-cinzel font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+            <span>⚜️</span> IMMUTABLE SOLID NILAMBUR TEAK • SMART HOME INTELLIGENCE 2.0
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight drop-shadow-[0_4px_25px_rgba(201,162,39,0.35)]">
+            WHERE LUXURY MEETS COMFORT
+          </h1>
+          
+          <p class="text-base sm:text-xl text-champagne font-pinyon leading-relaxed">
+            “Furniture That Has a Memory. Handcrafted for Palace Residences with Cryptographic Digital Twin Passports.”
+          </p>
+
+          <p class="text-xs sm:text-sm text-stone-300 font-sans max-w-xl leading-relaxed">
+            Experience timeless heirloom craftsmanship made with 100-year seasoned Nilambur teak, 
+            monitored by real-time spatial micro-climate telemetry and dispatched via 0-Damage air suspension logistics.
+          </p>
+
+          <!-- Call to Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="smart-studio.html" class="btn-gold px-6 py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl flex items-center gap-2">
+              <span>✨</span> LAUNCH SMART STUDIO
+            </a>
+            <a href="living-room.html" class="btn-outline-gold px-6 py-3.5 rounded-xl font-cinzel font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+              <span>🛋️</span> EXPLORE SHOWROOM
+            </a>
+            <a href="customer-dashboard.html#ordersSec" class="btn-outline-gold px-6 py-3.5 rounded-xl font-cinzel font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+              <span>🚚</span> TRACK DELIVERY
+            </a>
+          </div>
+
+          <!-- Hero KPI Ticker -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-xs font-cinzel max-w-lg">
+            <div>
+              <span class="text-2xl font-cinzel font-black text-champagne block">100%</span>
+              <span class="text-[10px] text-stone-400">Seasoned Teak</span>
+            </div>
+            <div>
+              <span class="text-2xl font-cinzel font-black text-emerald-400 block">0.02G</span>
+              <span class="text-[10px] text-stone-400">0-Damage Fleet</span>
+            </div>
+            <div>
+              <span class="text-2xl font-cinzel font-black text-champagne block">₹4.85L</span>
+              <span class="text-[10px] text-stone-400">Avg Portfolio ROI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D Staging Visual Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="saas-card-featured p-4 relative overflow-hidden rounded-3xl group">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-black/80 relative">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80" alt="Palace Living Room Showroom" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <div>
+                  <span class="badge-gold text-[8px]">SPOTLIGHT MASTERPIECE</span>
+                  <h3 class="font-cinzel font-bold text-sm text-white mt-0.5">The Imperial Royal Sofa</h3>
+                  <span class="text-champagne font-mono text-xs font-bold">₹89,999 • Solid Teak</span>
+                </div>
+                <a href="smart-studio.html#customizerSec" class="btn-gold px-3 py-1.5 rounded-lg text-[10px] font-cinzel font-bold">
+                  Customize In Studio →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ✨ NEW SPOTLIGHT SECTION: FRIENDS FURNITURE SMART STUDIO -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="saas-card-featured p-8 rounded-3xl border border-antiqueGold/60 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 badge-gold text-[9px] font-cinzel font-bold px-3 py-1 rounded-full uppercase">
+            <span>✨</span> FLAGSHIP TECHNOLOGY PRODUCT
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text">
+            FRIENDS FURNITURE SMART STUDIO
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-300 font-sans leading-relaxed">
+            Experience our next-generation furniture intelligence suite. Combine AI recommendations, 
+            interactive 2D/3D customization, 4-chamber spatial staging, side-by-side product comparison, 
+            and real-time zero-cost EMI calculations in one dedicated command center.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-cinzel">
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 space-y-1">
+              <span class="text-champagne font-bold block">🤖 AI Curation</span>
+              <span class="text-[10px] text-stone-400 font-sans">Contextual room & style match</span>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 space-y-1">
+              <span class="text-champagne font-bold block">🎨 Live Customizer</span>
+              <span class="text-[10px] text-stone-400 font-sans">Dynamic fabric, finish & size</span>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10 space-y-1">
+              <span class="text-champagne font-bold block">🛋️ 3D Room Preview</span>
+              <span class="text-[10px] text-stone-400 font-sans">Spatial scale & walking chi</span>
+            </div>
+          </div>
+
+          <div class="pt-3">
+            <a href="smart-studio.html" class="btn-gold px-7 py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl inline-flex items-center gap-2">
+              <span>🚀</span> OPEN DEDICATED SMART STUDIO →
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-black border border-antiqueGold/40 shadow-2xl relative group">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md p-3.5 rounded-xl border border-antiqueGold/40 flex justify-between items-center text-xs">
+              <div>
+                <span class="font-cinzel font-bold text-white block">Smart Studio Telemetry</span>
+                <span class="text-[10px] text-champagne font-mono">6 Connected Technology Modules</span>
+              </div>
+              <a href="smart-studio.html" class="btn-gold text-[10px] px-3 py-1.5 rounded-lg font-bold">Launch</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 🤖 NEW SECTION: AI RECOMMENDED FOR YOU CAROUSEL -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">AI REASONING ENGINE</span>
+          <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            RECOMMENDED FOR YOU
+          </h2>
+        </div>
+        <a href="smart-studio.html#recommendationsSec" class="text-xs text-champagne font-cinzel font-bold hover:underline">
+          Tune AI Recommendations in Studio →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Rec Card 1 -->
+        <div class="palace-card p-5 space-y-3 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">🤖 98% AI Match</span>
+              <button onclick="FF_Wishlist.toggle('ff-101')" data-wishlist-btn="ff-101" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/70 flex items-center justify-center text-xs hover:bg-black transition">🤍</button>
+            </div>
+            <div>
+              <span class="text-[9px] text-stone-400 font-cinzel uppercase block">Living Room Masterpiece</span>
+              <h3 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Imperial Royal Sofa</h3>
+              <p class="text-[11px] text-stone-400 font-sans mt-0.5">Solid Nilambur Teak • Royal Velvet</p>
+            </div>
+            <div class="p-2.5 bg-antiqueGold/10 rounded-xl border border-antiqueGold/30 text-[10px] text-champagne font-sans">
+              💡 Recommended because you viewed luxury palace living room furniture.
+            </div>
+          </div>
+          <div class="space-y-2 pt-3 border-t border-white/10">
+            <div class="flex items-baseline justify-between">
+              <span class="font-mono text-base font-bold text-champagne">₹89,999</span>
+              <span class="text-[10px] text-amber-300 font-cinzel">⚡ ₹3,750/mo (0% EMI)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold text-[10px] py-2 rounded-xl">Add to Cart</button>
+              <button data-compare-btn="ff-101" onclick="FF_Compare.toggle('ff-101')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rec Card 2 -->
+        <div class="palace-card p-5 space-y-3 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">🤖 96% AI Match</span>
+              <button onclick="FF_Wishlist.toggle('ff-102')" data-wishlist-btn="ff-102" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/70 flex items-center justify-center text-xs hover:bg-black transition">🤍</button>
+            </div>
+            <div>
+              <span class="text-[9px] text-stone-400 font-cinzel uppercase block">Banquet & Dining</span>
+              <h3 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Sovereign Dining Suite</h3>
+              <p class="text-[11px] text-stone-400 font-sans mt-0.5">Live-Edge Solid Sheesham • Seats 8</p>
+            </div>
+            <div class="p-2.5 bg-antiqueGold/10 rounded-xl border border-antiqueGold/30 text-[10px] text-champagne font-sans">
+              💡 Recommended for your spacious 18x14ft dining room with brass inlays.
+            </div>
+          </div>
+          <div class="space-y-2 pt-3 border-t border-white/10">
+            <div class="flex items-baseline justify-between">
+              <span class="font-mono text-base font-bold text-champagne">₹94,999</span>
+              <span class="text-[10px] text-amber-300 font-cinzel">⚡ ₹3,958/mo (0% EMI)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-102')" class="btn-gold text-[10px] py-2 rounded-xl">Add to Cart</button>
+              <button data-compare-btn="ff-102" onclick="FF_Compare.toggle('ff-102')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rec Card 3 -->
+        <div class="palace-card p-5 space-y-3 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">🤖 95% AI Match</span>
+              <button onclick="FF_Wishlist.toggle('ff-103')" data-wishlist-btn="ff-103" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/70 flex items-center justify-center text-xs hover:bg-black transition">🤍</button>
+            </div>
+            <div>
+              <span class="text-[9px] text-stone-400 font-cinzel uppercase block">Bedroom Sanctuary</span>
+              <h3 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Majesty King Canopy Bed</h3>
+              <p class="text-[11px] text-stone-400 font-sans mt-0.5">Four-Poster Seasoned Teak • 24K Gold Inlays</p>
+            </div>
+            <div class="p-2.5 bg-antiqueGold/10 rounded-xl border border-antiqueGold/30 text-[10px] text-champagne font-sans">
+              💡 Recommended based on your interest in Master Heritage Bedroom suites.
+            </div>
+          </div>
+          <div class="space-y-2 pt-3 border-t border-white/10">
+            <div class="flex items-baseline justify-between">
+              <span class="font-mono text-base font-bold text-champagne">₹1,19,999</span>
+              <span class="text-[10px] text-amber-300 font-cinzel">⚡ ₹4,999/mo (0% EMI)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-103')" class="btn-gold text-[10px] py-2 rounded-xl">Add to Cart</button>
+              <button data-compare-btn="ff-103" onclick="FF_Compare.toggle('ff-103')" class="btn-outline-gold text-[10px] py-2 rounded-lg">⚖️ Compare</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 🛍️ SECTION 2: 8 FURNITURE CATEGORIES SHOWCASE -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">PALACE CURATIONS</span>
+          <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            FURNITURE SUITES & CATEGORIES
+          </h2>
+        </div>
+        <a href="categories.html" class="text-xs text-champagne font-cinzel font-bold hover:underline">
+          View All 8 Categories →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <!-- 1. Living Room -->
+        <a href="living-room.html?cat=living" class="saas-card p-4 text-center space-y-3 group block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="Living Room" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-cinzel font-bold text-xs sm:text-sm text-white group-hover:text-champagne transition">Living Room</h3>
+          <span class="text-[10px] text-stone-400 block font-sans">18 Masterpieces</span>
+        </a>
+
+        <!-- 2. Bedroom -->
+        <a href="living-room.html?cat=bedroom" class="saas-card p-4 text-center space-y-3 group block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80" alt="Bedroom" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-cinzel font-bold text-xs sm:text-sm text-white group-hover:text-champagne transition">Bedroom Sanctuary</h3>
+          <span class="text-[10px] text-stone-400 block font-sans">12 Masterpieces</span>
+        </a>
+
+        <!-- 3. Dining -->
+        <a href="living-room.html?cat=dining" class="saas-card p-4 text-center space-y-3 group block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=400&q=80" alt="Dining Room" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-cinzel font-bold text-xs sm:text-sm text-white group-hover:text-champagne transition">Banquet & Dining</h3>
+          <span class="text-[10px] text-stone-400 block font-sans">14 Masterpieces</span>
+        </a>
+
+        <!-- 4. Office -->
+        <a href="living-room.html?cat=office" class="saas-card p-4 text-center space-y-3 group block">
+          <div class="aspect-square rounded-xl overflow-hidden bg-black mb-2">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80" alt="Office" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <h3 class="font-cinzel font-bold text-xs sm:text-sm text-white group-hover:text-champagne transition">Executive Office</h3>
+          <span class="text-[10px] text-stone-400 block font-sans">9 Masterpieces</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 🏆 SECTION 3: BEST SELLERS & NEW ARRIVALS -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-antiqueGold/30 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">FEATURED HEIRLOOMS</span>
+          <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            BEST SELLERS & NEW ARRIVALS
+          </h2>
+        </div>
+        <div class="flex bg-black/60 p-1 rounded-xl border border-antiqueGold/40 text-xs font-cinzel">
+          <button class="px-3.5 py-1.5 rounded-lg bg-antiqueGold text-black font-black">Best Sellers</button>
+          <a href="living-room.html" class="px-3.5 py-1.5 rounded-lg text-stone-300 hover:text-white">New Arrivals</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Best Seller 1 -->
+        <div class="saas-card p-5 space-y-3 flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black mb-3">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Royal Sofa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">DNA: FF-SF2048</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 text-[8px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">94% Confidence</span>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-stone-400 font-cinzel">Solid Nilambur Teak</span>
+              <h3 class="font-cinzel font-bold text-sm text-white">The Imperial Royal Palace Sofa</h3>
+              <p class="text-[11px] text-stone-400">Hand-carved seasoned teak adorned with 24K gold foil and emerald velvet.</p>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <div class="flex justify-between items-baseline">
+              <span class="text-base font-cinzel font-black text-champagne">₹89,999</span>
+              <button onclick="FF_EMI.openModal(89999, 'The Imperial Royal Palace Sofa')" class="text-[10px] text-emerald-400 font-mono hover:underline">⚡ 0% EMI ₹3,750/mo</button>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black text-center block">
+                Add To Cart
+              </button>
+              <button data-compare-btn="ff-101" onclick="FF_Compare.toggle('ff-101')" class="btn-outline-gold py-2 rounded-xl text-[10px] font-cinzel font-bold text-center block">
+                ⚖️ Compare
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Best Seller 2 -->
+        <div class="saas-card p-5 space-y-3 flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black mb-3">
+              <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" alt="Dining Suite" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">DNA: FF-DN3091</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 text-[8px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">96% Confidence</span>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-stone-400 font-cinzel">Malabar Rosewood</span>
+              <h3 class="font-cinzel font-bold text-sm text-white">The Sovereign 8-Seater Dining Suite</h3>
+              <p class="text-[11px] text-stone-400">Monolithic timber tabletop with brass inlays and 8 ergonomic armchairs.</p>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <div class="flex justify-between items-baseline">
+              <span class="text-base font-cinzel font-black text-champagne">₹94,999</span>
+              <button onclick="FF_EMI.openModal(94999, 'The Sovereign 8-Seater Dining Suite')" class="text-[10px] text-emerald-400 font-mono hover:underline">⚡ 0% EMI ₹3,958/mo</button>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-102')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black text-center block">
+                Add To Cart
+              </button>
+              <button data-compare-btn="ff-102" onclick="FF_Compare.toggle('ff-102')" class="btn-outline-gold py-2 rounded-xl text-[10px] font-cinzel font-bold text-center block">
+                ⚖️ Compare
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Best Seller 3 -->
+        <div class="saas-card p-5 space-y-3 flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black mb-3">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80" alt="Canopy Bed" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px]">DNA: FF-BD4012</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 text-[8px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">99% Confidence</span>
+            </div>
+            <div class="space-y-1">
+              <span class="text-[10px] text-stone-400 font-cinzel">Nilambur Old-Growth Teak</span>
+              <h3 class="font-cinzel font-bold text-sm text-white">The Majesty King Canopy Bed</h3>
+              <p class="text-[11px] text-stone-400">Architectural 4-post canopy bed with micro-climate orthopedic support.</p>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <div class="flex justify-between items-baseline">
+              <span class="text-base font-cinzel font-black text-champagne">₹1,19,999</span>
+              <button onclick="FF_EMI.openModal(119999, 'The Majesty King Canopy Bed')" class="text-[10px] text-emerald-400 font-mono hover:underline">⚡ 0% EMI ₹4,999/mo</button>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('ff-103')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black text-center block">
+                Add To Cart
+              </button>
+              <button data-compare-btn="ff-103" onclick="FF_Compare.toggle('ff-103')" class="btn-outline-gold py-2 rounded-xl text-[10px] font-cinzel font-bold text-center block">
+                ⚖️ Compare
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 🎁 SECTION 4: SPECIAL OFFERS & FINANCING BANNER -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8" id="offers">
+      <div class="saas-card-featured p-8 rounded-3xl border border-antiqueGold/50 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+        <div class="space-y-2">
+          <span class="badge-gold text-[9px] font-cinzel font-bold">💳 ZERO COST FINANCING</span>
+          <h3 class="font-cinzelDecor font-bold text-lg text-white gold-gradient-text">0% EMI UP TO 24 MONTHS</h3>
+          <p class="text-xs text-stone-300">Available across all major banks with instant biometric 1-click approval.</p>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge-gold text-[9px] font-cinzel font-bold">💎 PALACE CASHBACK</span>
+          <h3 class="font-cinzelDecor font-bold text-lg text-champagne">₹15,000 WELCOME VOUCHER</h3>
+          <p class="text-xs text-stone-300">Applied automatically to royal suites exceeding ₹1,00,000 portfolio orders.</p>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge-gold text-[9px] font-cinzel font-bold">🚚 0-DAMAGE LOGISTICS</span>
+          <h3 class="font-cinzelDecor font-bold text-lg text-emerald-400">FREE WHITE-GLOVE DISPATCH</h3>
+          <p class="text-xs text-stone-300">White-glove uncrating, room placement, and 100% packaging recycling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🤖 SECTION 5: SIGNATURE AI DELIVERY INTELLIGENCE TELEMETRY -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="saas-card p-6 sm:p-8 rounded-3xl border border-antiqueGold/40 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-6 space-y-4">
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-3 py-1 rounded-full uppercase">NEURAL SUPPLY CHAIN 2.0</span>
+          <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text">
+            AI DELIVERY INTELLIGENCE SIMULATOR
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-300 font-sans leading-relaxed">
+            Every piece is monitored via IoT shock sensors and real-time highway corridors. 
+            Our neural model predicts exact 15-minute delivery windows with 94%+ confidence.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 block text-[10px]">Predicted Arrival Window:</span>
+              <strong class="text-champagne font-bold font-cinzel">Today, 12:45 PM</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 block text-[10px]">Route Optimization:</span>
+              <strong class="text-emerald-400 font-bold">NH-44 Express Clear</strong>
+            </div>
+          </div>
+
+          <a href="customer-dashboard.html#ordersSec" class="btn-gold px-5 py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-wider inline-flex items-center gap-2">
+            <span>📡</span> LAUNCH LIVE FLEET RADAR
+          </a>
+        </div>
+
+        <div class="lg:col-span-6 bg-black/80 rounded-2xl p-5 border border-antiqueGold/30 space-y-3 font-mono text-xs">
+          <div class="flex justify-between items-center border-b border-white/10 pb-2">
+            <span class="text-champagne font-bold">LIVE TELEMETRY STREAM</span>
+            <span class="text-emerald-400 text-[10px] animate-pulse">● CONNECTED (42ms)</span>
+          </div>
+          <div class="space-y-1.5 text-[11px] text-stone-300">
+            <div class="flex justify-between"><span>Fleet Vehicle:</span><strong class="text-white">Air-Suspension Van #WF-402</strong></div>
+            <div class="flex justify-between"><span>Tri-Axial G-Sensor:</span><strong class="text-emerald-400">0.02G (Vibration-Damped)</strong></div>
+            <div class="flex justify-between"><span>Interior Humidity:</span><strong class="text-champagne">44% RH (Optimal Teak)</strong></div>
+            <div class="flex justify-between"><span>Supplier Trust Score:</span><strong class="text-white">98.2% (Nilambur Teak Guild)</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 🏛️ SECTION 6: 4 PILLARS OF CRAFTSMANSHIP -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="text-center space-y-2">
+        <span class="badge-gold text-[9px] font-cinzel font-bold px-3 py-1 rounded-full uppercase">THE PALACE STANDARD</span>
+        <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text">
+          WHY FRIENDS FURNITURE
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="saas-card p-5 space-y-2 text-center">
+          <span class="text-3xl block">🌳</span>
+          <h3 class="font-cinzel font-bold text-sm text-champagne">100-Year Timber</h3>
+          <p class="text-xs text-stone-400">Naturally seasoned Nilambur teak with zero artificial chemical accelerants.</p>
+        </div>
+
+        <div class="saas-card p-5 space-y-2 text-center">
+          <span class="text-3xl block">🧬</span>
+          <h3 class="font-cinzel font-bold text-sm text-champagne">Digital Twin Passport</h3>
+          <p class="text-xs text-stone-400">Immutable blockchain pedigree tracking origin GPS, artisan seal, and care history.</p>
+        </div>
+
+        <div class="saas-card p-5 space-y-2 text-center">
+          <span class="text-3xl block">🚚</span>
+          <h3 class="font-cinzel font-bold text-sm text-champagne">0-Damage White-Glove</h3>
+          <p class="text-xs text-stone-400">Air-suspension delivery fleet with zero transit vibration guarantees.</p>
+        </div>
+
+        <div class="saas-card p-5 space-y-2 text-center">
+          <span class="text-3xl block">🐝</span>
+          <h3 class="font-cinzel font-bold text-sm text-champagne">Lifetime Care Protocol</h3>
+          <p class="text-xs text-stone-400">Complimentary bi-annual organic beeswax nourishment for all Gold Palace patrons.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 🏛️ 4. STANDARDIZED LUXURY FOOTER -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-12">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] bg-black shrink-0">
+              <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <span class="font-cinzelDecor text-lg font-black gold-gradient-text block">FRIENDS FURNITURE</span>
+              <span class="font-pinyon text-sm text-champagne block -mt-1">Where Luxury Meets Comfort</span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-400 font-sans leading-relaxed max-w-sm">
+            India’s premier luxury furniture e-commerce and smart supply chain platform. 
+            Handcrafted Nilambur teak heirlooms protected by cryptographic digital twins.
+          </p>
+        </div>
+
+        <!-- Directory Links -->
+        <div class="md:col-span-3 space-y-2 font-cinzel">
+          <strong class="text-white text-xs block mb-2">PALACE PORTALS</strong>
+          <ul class="space-y-1.5 text-stone-400 text-xs">
+            <li><a href="customer-dashboard.html" class="hover:text-champagne transition">👑 Palace Dashboard</a></li>
+            <li><a href="smart-studio.html" class="hover:text-champagne transition text-champagne">✨ Smart Studio</a></li>
+            <li><a href="furniture-passport.html?id=FF-2026-00125" class="hover:text-champagne transition">🧬 Digital Life Passport</a></li>
+            <li><a href="categories.html" class="hover:text-champagne transition">🛍️ 8 Furniture Suites</a></li>
+            <li><a href="living-room.html" class="hover:text-champagne transition">🛋️ Products & 0% EMI</a></li>
+            <li><a href="admin-passport.html" class="hover:text-champagne transition">⚙️ Master Guild Console</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter & Warranty -->
+        <div class="md:col-span-4 space-y-3">
+          <strong class="text-white text-xs font-cinzel block">PALACE DISPATCH NEWSLETTER</strong>
+          <p class="text-xs text-stone-400">Receive private auction previews and new Nilambur teak harvest allocations.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Enter royal email address..." class="bg-black/80 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-champagne flex-1" />
+            <button onclick="window.FF_Toast('Subscribed to Palace Gazette!')" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black">
+              JOIN 👑
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10 text-[11px] font-cinzel">
+        <span>© 2026 FRIENDS FURNITURE • All Rights Reserved</span>
+        <span class="text-champagne">256-Bit SSL Smart Supply Chain Encrypted</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Master Shared Interactivity & Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+
+</body>
+</html>

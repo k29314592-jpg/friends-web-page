@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- 24K Luxury Gold Gradient -->
+    <linearGradient id="ffGoldPrime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF0" />
+      <stop offset="25%" stop-color="#F7E2A4" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="75%" stop-color="#AA7C11" />
+      <stop offset="100%" stop-color="#5A3E05" />
+    </linearGradient>
+
+    <!-- Inner Radial Glow -->
+    <radialGradient id="ffRadialGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F1D78B" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#C9A227" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#050505" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Deep Royal Purple Obsidian Shimmer -->
+    <linearGradient id="ffShieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1B0B36" />
+      <stop offset="50%" stop-color="#07142F" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter for Royal Depth -->
+    <filter id="ffGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Aura -->
+  <circle cx="100" cy="100" r="90" fill="url(#ffRadialGlow)" />
+
+  <!-- Outer Filigree Star Ring -->
+  <circle cx="100" cy="100" r="88" stroke="url(#ffGoldPrime)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6" />
+  <circle cx="100" cy="100" r="82" stroke="url(#ffGoldPrime)" stroke-width="2" />
+
+  <!-- 8 Sacred Royal Diamond Points on Outer Ring -->
+  <g fill="url(#ffGoldPrime)">
+    <polygon points="100,12 103,18 100,24 97,18" />
+    <polygon points="100,176 103,182 100,188 97,182" />
+    <polygon points="12,100 18,103 24,100 18,97" />
+    <polygon points="176,100 182,103 188,100 182,97" />
+    <polygon points="38,38 44,40 42,46 36,44" />
+    <polygon points="162,38 164,44 158,46 156,40" />
+    <polygon points="38,162 44,160 46,166 40,168" />
+    <polygon points="162,162 164,156 170,158 168,164" />
+  </g>
+
+  <!-- Heraldic Shield / Diamond Base -->
+  <path d="M100,28 L158,56 L158,124 L100,168 L42,124 L42,56 Z" fill="url(#ffShieldBg)" stroke="url(#ffGoldPrime)" stroke-width="2.5" filter="url(#ffGlowFilter)" />
+  <path d="M100,34 L152,59 L152,120 L100,160 L48,120 L48,59 Z" fill="none" stroke="url(#ffGoldPrime)" stroke-width="1" opacity="0.5" stroke-dasharray="4 2" />
+
+  <!-- Imperial 5-Peak Crown -->
+  <g transform="translate(0, -6)" filter="url(#ffGlowFilter)">
+    <path d="M72,50 L80,34 L100,42 L120,34 L128,50 Z" fill="url(#ffGoldPrime)" />
+    <!-- Crown Spires Pearls -->
+    <circle cx="80" cy="33" r="2.5" fill="#FFFDF0" />
+    <circle cx="100" cy="41" r="3" fill="#FFFDF0" />
+    <circle cx="120" cy="33" r="2.5" fill="#FFFDF0" />
+    <circle cx="72" cy="49" r="2" fill="#FFFDF0" />
+    <circle cx="128" cy="49" r="2" fill="#FFFDF0" />
+    <!-- Jewel Inlays in Crown Base -->
+    <circle cx="90" cy="47" r="1.5" fill="#E11D48" />
+    <circle cx="100" cy="47" r="2" fill="#10B981" />
+    <circle cx="110" cy="47" r="1.5" fill="#E11D48" />
+  </g>
+
+  <!-- Interlocking Double "FF" Royal Monogram -->
+  <!-- Left F -->
+  <path d="M80,68 L104,68 C108,68 110,69 110,72 C110,75 108,76 104,76 L88,76 L88,94 L100,94 C104,94 106,95 106,98 C106,101 104,102 100,102 L88,102 L88,136 C88,140 85,142 82,142 C79,142 76,140 76,136 L76,74 C76,70 78,68 80,68 Z" fill="url(#ffGoldPrime)" />
+
+  <!-- Right Intersecting F (Mirrored Monogram Symmetry) -->
+  <path d="M120,68 L96,68 C92,68 90,69 90,72 C90,75 92,76 96,76 L112,76 L112,94 L100,94 C96,94 94,95 94,98 C94,101 96,102 100,102 L112,102 L112,136 C112,140 115,142 118,142 C121,142 124,140 124,136 L124,74 C124,70 122,68 120,68 Z" fill="url(#ffGoldPrime)" opacity="0.9" />
+
+  <!-- Center Monarch Gemstone Star -->
+  <g transform="translate(100, 98)" fill="#FFFDF0">
+    <polygon points="0,-6 2,-2 6,0 2,2 0,6 -2,2 -6,0 -2,-2" />
+  </g>
+
+  <!-- Bottom Crest Ribbon Inscription Accent -->
+  <path d="M78,148 Q100,154 122,148" stroke="url(#ffGoldPrime)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+  <circle cx="100" cy="151" r="2" fill="url(#ffGoldPrime)" />
+</svg>

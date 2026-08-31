@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furniture Digital Twin & Life Passport | FRIENDS FURNITURE</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- QRCode.js library for live scannable QR generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            emeraldPalace: '#0B3A2C',
+            rubyPalace: '#3A0B18'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.7) 0%, rgba(7, 20, 47, 0.55) 45%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .palace-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.75) 0%, rgba(27, 11, 54, 0.8) 50%, rgba(5, 5, 5, 0.95) 100%);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(201, 162, 39, 0.04);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .palace-card-elevated {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.9) 0%, rgba(27, 11, 54, 0.92) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(35px);
+      border: 1.5px solid rgba(241, 215, 139, 0.5);
+      box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(201, 162, 39, 0.25), inset 0 0 30px rgba(201, 162, 39, 0.08);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <!-- Left: Platform Core Apps & Portals -->
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Main App Direct Links -->
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>👑</span> Palace Dashboard
+        </a>
+        <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪞</span> Furniture Twin
+        </a>
+        <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>✨</span> Smart Studio
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+          <span>🧬</span> Digital Passport
+        </a>
+        <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🛍️</span> Categories
+        </a>
+        <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🛋️</span> Catalog
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+      <!-- Portal Switcher Tabs -->
+      <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+        <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          🏰 Storefront
+        </a>
+        <a href="furniture-twin.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+          🪞 Twin
+        </a>
+        <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          ✨ Studio
+        </a>
+        <a href="customer-dashboard.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          👤 Customer Command
+        </a>
+        <a href="admin-passport.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          👨‍💼 Admin Guild
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Session Status -->
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        👑 VIP Gold (4,250 PTS)
+      </span>
+      <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+        <span>🔔</span> Alerts
+        <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+      </button>
+      <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        🚪 Login
+      </a>
+    </div>
+  </div>
+
+  <!-- 🏛️ MAIN NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Furniture Digital Twin & Life Passport
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Twin Selector Dropdown -->
+      <div class="hidden md:flex items-center gap-3">
+        <label class="text-xs font-cinzel font-bold text-stone-300">Select Digital Twin:</label>
+        <select id="passportSelector" onchange="switchPassport(this.value)" class="bg-black/80 border border-antiqueGold/50 rounded-xl px-3 py-1.5 text-xs text-champagne font-cinzel focus:outline-none focus:border-champagne">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <a href="smart-studio.html" class="btn-outline-gold px-3 py-1.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1">
+          <span>✨</span> Smart Studio
+        </a>
+        <button onclick="openQrModal()" class="btn-outline-gold px-3 py-1.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1">
+          <span>📷</span> QR Tag
+        </button>
+        <a href="admin-passport.html" class="btn-outline-gold px-3 py-1.5 rounded-xl text-xs font-cinzel font-bold hidden sm:flex items-center gap-1">
+          <span>⚙️</span> Guild Registry
+        </a>
+        <a href="customer-dashboard.html" class="btn-gold px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+          <span>👑</span> Dashboard
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🌟 MAIN CONTENT CONTAINER -->
+  <main class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1 w-full">
+
+    <!-- 🏷️ 1. PRODUCT IDENTITY & PHYSICAL-TO-DIGITAL TWIN HERO BANNER -->
+    <section class="palace-card-elevated rounded-3xl p-6 sm:p-10 border border-antiqueGold/50 relative overflow-hidden">
+      <div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-20 pointer-events-none bg-cover bg-center mix-blend-screen hidden lg:block" id="heroBgOverlay"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#07142F] via-[#1B0B36]/90 to-transparent"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Product Showcase with 3D / Live Render -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/80 border-2 border-antiqueGold/40 shadow-2xl group">
+            <img id="mainProductImg" src="" alt="Furniture Digital Twin" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+            <span id="badgeCondition" class="absolute top-3 left-3 bg-black/85 text-emerald-400 text-[10px] font-cinzel font-bold px-3 py-1 rounded-full border border-emerald-500/40 shadow">
+              🟢 94/100 EXCELLENT CONDITION
+            </span>
+            <span id="badgeDna" class="absolute bottom-3 left-3 badge-gold text-[10px] font-mono font-bold px-2.5 py-0.5 rounded shadow">
+              🧬 DNA: FF-SF2048
+            </span>
+            <button onclick="printCertificate()" class="absolute bottom-3 right-3 bg-black/85 hover:bg-antiqueGold hover:text-black text-champagne text-[10px] font-cinzel font-bold px-3 py-1 rounded-xl border border-antiqueGold/40 transition shadow flex items-center gap-1">
+              <span>📄</span> Print Passport
+            </button>
+          </div>
+
+          <!-- Secondary Image Thumbs -->
+          <div class="flex gap-3" id="thumbGallery">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Right Product Twin Meta & Live Cryptographic Stamps -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2 badge-gold text-[10px] font-cinzel font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
+              <span>⚜️</span> IMMUTABLE DIGITAL TWIN IDENTITY <span>⚜️</span>
+            </div>
+            <h1 id="productTitle" class="text-2xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight">
+              THE IMPERIAL ROYAL PALACE SOFA
+            </h1>
+            <p id="productTagline" class="text-sm sm:text-base text-champagne font-pinyon">
+              “Hand-carved Nilambur seasoned teak adorned with 24K gold foil and emerald silk velvet.”
+            </p>
+          </div>
+
+          <!-- Quick Identity Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-sans">
+            <div class="p-3 bg-black/60 rounded-2xl border border-white/10">
+              <span class="text-[10px] text-stone-400 font-cinzel block">FURNITURE ID</span>
+              <strong id="furnitureIdText" class="font-mono text-champagne text-xs block truncate">FF-2026-00125</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-2xl border border-white/10">
+              <span class="text-[10px] text-stone-400 font-cinzel block">MODEL NUMBER</span>
+              <strong id="modelNumberText" class="font-mono text-white text-xs block truncate">IMP-SF-2026-X9</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-2xl border border-white/10">
+              <span class="text-[10px] text-stone-400 font-cinzel block">MANUFACTURING DATE</span>
+              <strong id="mfgDateText" class="text-stone-200 text-xs block">15 June 2026</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-2xl border border-white/10">
+              <span class="text-[10px] text-stone-400 font-cinzel block">REGISTERED OWNER</span>
+              <strong id="ownerText" class="text-champagne font-cinzel font-bold text-xs block truncate">Maharaja Hari 👑</strong>
+            </div>
+          </div>
+
+          <!-- Specifications Chip Matrix -->
+          <div class="p-4 bg-black/50 rounded-2xl border border-antiqueGold/30 space-y-2 text-xs font-sans">
+            <div class="flex justify-between items-center border-b border-white/10 pb-1.5">
+              <span class="font-cinzel font-bold text-champagne">PHYSICAL SPECIFICATIONS</span>
+              <span class="text-stone-400 text-[11px]" id="specsDimensions">88"W × 38"D × 34"H • 78 kg</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-stone-300">
+              <div><strong>Frame:</strong> <span id="specsFrame">Solid Nilambur Teak (FSC Certified)</span></div>
+              <div><strong>Upholstery:</strong> <span id="specsUpholstery">Imperial Emerald Velvet (65k Rubs)</span></div>
+              <div><strong>Timber Lot:</strong> <span id="specsHarvestLot" class="font-mono text-champagne">LOT-TEAK-88-NILAMBUR</span></div>
+              <div><strong>Guild Master:</strong> <span id="specsGuildMaster">Master Carver K. Ramanathan</span></div>
+            </div>
+          </div>
+
+          <!-- Action Hub -->
+          <div class="flex flex-wrap gap-3 pt-1">
+            <button onclick="scrollToSec('journeySec')" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-cinzel font-black uppercase shadow flex items-center gap-1.5">
+              <span>📜</span> View Journey Timeline
+            </button>
+            <button onclick="scrollToSec('accessSec')" class="btn-outline-gold px-4 py-2.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1.5">
+              <span>🚪</span> Will It Enter My House?
+            </button>
+            <button onclick="openServiceModal()" class="btn-outline-gold px-4 py-2.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1.5">
+              <span>🛠️</span> Book Maintenance
+            </button>
+            <button onclick="openQrModal()" class="btn-outline-gold px-4 py-2.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1.5">
+              <span>📱</span> View QR Passport
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 📊 3. CONDITION SCORE & 🧠 4. AI LIFE PREDICTION & ⚡ 5. SMART MAINTENANCE -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Card 1: AI Condition Score (0-100) -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Real-Time Telemetry</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">3. CONDITION SCORE</h3>
+          </div>
+          <span class="text-2xl">🧬</span>
+        </div>
+
+        <div class="flex items-center justify-center py-2">
+          <div class="relative w-32 h-32 flex items-center justify-center rounded-full border-4 border-antiqueGold/30 pulse-glow bg-black/60">
+            <div class="text-center">
+              <span id="conditionScoreBig" class="text-4xl font-cinzelDecor font-black text-champagne block">94</span>
+              <span class="text-[9px] text-stone-400 font-cinzel uppercase block">/ 100 (Optimal)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown Progress Bars -->
+        <div class="space-y-2 text-[11px] font-sans">
+          <div>
+            <div class="flex justify-between text-stone-300"><span>Structural Frame Integrity</span><strong id="scoreFrame" class="text-champagne font-mono">98%</strong></div>
+            <div class="w-full h-1 bg-black rounded-full overflow-hidden mt-1"><div id="barFrame" class="h-full bg-antiqueGold w-[98%]"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-stone-300"><span>Joinery & Hardware Elasticity</span><strong id="scoreJoinery" class="text-champagne font-mono">96%</strong></div>
+            <div class="w-full h-1 bg-black rounded-full overflow-hidden mt-1"><div id="barJoinery" class="h-full bg-antiqueGold w-[96%]"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-stone-300"><span>Surface Beeswax Polish</span><strong id="scorePolish" class="text-champagne font-mono">92%</strong></div>
+            <div class="w-full h-1 bg-black rounded-full overflow-hidden mt-1"><div id="barPolish" class="h-full bg-antiqueGold w-[92%]"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-stone-300"><span>Fabric & Upholstery Nap</span><strong id="scoreFabric" class="text-champagne font-mono">91%</strong></div>
+            <div class="w-full h-1 bg-black rounded-full overflow-hidden mt-1"><div id="barFabric" class="h-full bg-antiqueGold w-[91%]"></div></div>
+          </div>
+        </div>
+
+        <p id="conditionNotesText" class="text-[10px] text-stone-400 italic bg-black/40 p-2.5 rounded-xl border border-white/5">
+          “Frame shows pristine dimensional stability. Fabric velvet nap uniform with zero UV fading.”
+        </p>
+      </div>
+
+      <!-- Card 2: AI Furniture Life Prediction -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Predictive Decay Model</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">4. AI LIFE PREDICTION</h3>
+          </div>
+          <span class="text-2xl">⏳</span>
+        </div>
+
+        <div class="p-4 bg-black/60 rounded-2xl border border-white/10 text-center space-y-1">
+          <span class="text-[10px] text-stone-400 font-cinzel uppercase block">ESTIMATED REMAINING LIFESPAN</span>
+          <div id="lifeRemainingText" class="text-3xl font-cinzelDecor font-black text-champagne">22–26 Years</div>
+          <span class="text-[10px] text-emerald-400 font-bold block">Engineered for 30+ Year Generations</span>
+        </div>
+
+        <div class="space-y-2 text-[11px] text-stone-300 font-sans">
+          <p id="lifeExplanationText">
+            Nilambur teak combined with heavy-gauge mortise-and-tenon joints delivers heirloom longevity exceeding modern commercial standards.
+          </p>
+          <div class="p-2.5 bg-emeraldPalace/40 rounded-xl border border-emerald-500/30 text-emerald-300 text-[10px]">
+            <strong>💡 AI Life Extension Tip:</strong>
+            <span id="lifeTipsText">Bi-annual organic beeswax balm application extends finish luster by an additional 6–8 years.</span>
+          </div>
+        </div>
+
+        <button onclick="simulateExtension()" class="btn-outline-gold w-full py-2.5 rounded-xl font-cinzel font-bold text-[10px] uppercase">
+          SIMULATE +6 YRS LIFE EXTENSION ✨
+        </button>
+      </div>
+
+      <!-- Card 3: Smart Maintenance Prediction -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Automated Telemetry</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">5. SMART MAINTENANCE</h3>
+          </div>
+          <span class="text-2xl">🛠️</span>
+        </div>
+
+        <div class="p-4 bg-black/60 rounded-2xl border border-amber-500/30 space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-[10px] font-cinzel text-champagne font-bold">NEXT RECOMMENDED SERVICE</span>
+            <span id="maintDaysBadge" class="bg-amber-950 text-amber-300 text-[9px] font-mono px-2 py-0.5 rounded border border-amber-500/30">In 46 Days</span>
+          </div>
+          <div id="maintActionText" class="font-cinzel font-bold text-white text-xs">
+            Organic Beeswax Nourishing & Velvet Deep-Nap Steam Condition
+          </div>
+          <p id="maintReasonText" class="text-[10px] text-stone-400">
+            Seasonal dry-weather hydration cycle to protect natural timber grain elasticity.
+          </p>
+        </div>
+
+        <div class="flex justify-between items-center text-stone-300 px-1">
+          <span>Estimated Service Cost:</span>
+          <strong id="maintCostText" class="text-champagne font-cinzel text-sm">₹1,450</strong>
+        </div>
+
+        <button onclick="openServiceModal()" class="btn-gold w-full py-3 rounded-xl font-cinzel font-black text-xs uppercase tracking-wider shadow">
+          BOOK GUILD ARTISAN SERVICE NOW 🔧
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 📜 2. 10-STAGE FURNITURE JOURNEY TIMELINE -->
+    <section class="palace-card-elevated p-6 sm:p-8 rounded-3xl border border-antiqueGold/50 space-y-6" id="journeySec">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-white/10 pb-4">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1">
+            <span>⚜️</span> COMPLETE LIFECYCLE LEDGER
+          </span>
+          <h2 class="text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            2. FURNITURE JOURNEY & PROVENANCE TIMELINE
+          </h2>
+          <p class="font-pinyon text-base text-champagne">
+            “Trace your furniture from ancient Nilambur teak saplings to palace chamber and future circular resale.”
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-emerald-400 font-mono font-bold bg-black/60 px-3 py-1.5 rounded-xl border border-emerald-500/30">
+            100% Cryptographically Verified ✓
+          </span>
+        </div>
+      </div>
+
+      <!-- 10-Stage Horizontal Scrollable / Responsive Stepper Grid -->
+      <div class="relative py-4 overflow-x-auto">
+        <div class="min-w-[900px] space-y-6" id="journeyContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 🛡️ 6. DIGITAL WARRANTY & 📜 7. COMPLETE SERVICE HISTORY -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Warranty Vault Card (5 Cols) -->
+      <div class="lg:col-span-5 palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Decentralized Vault</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">6. DIGITAL WARRANTY</h3>
+          </div>
+          <span id="warrantyStatusBadge" class="bg-emerald-950 text-emerald-400 text-xs font-cinzel font-black px-3 py-1 rounded-full border border-emerald-500/40">
+            ACTIVE (10 YRS) 🟢
+          </span>
+        </div>
+
+        <div class="space-y-2 text-stone-300 font-sans">
+          <div class="p-3 bg-black/60 rounded-xl border border-white/10 space-y-1">
+            <div class="flex justify-between"><span>Certificate ID:</span><strong id="wrtCertId" class="font-mono text-champagne">DOC-WRT-2026-99014</strong></div>
+            <div class="flex justify-between"><span>Coverage Period:</span><strong id="wrtPeriod" class="text-white">120 Months (10 Years)</strong></div>
+            <div class="flex justify-between"><span>Valid Till:</span><strong id="wrtExpiry" class="text-emerald-400 font-mono">28 July 2036</strong></div>
+            <div class="flex justify-between text-[10px] text-stone-400 pt-1"><span>Blockchain Hash:</span><span id="wrtHash" class="font-mono truncate w-36">0x8f2d99c4b71e8a01ff...</span></div>
+          </div>
+
+          <!-- Covered Services Accordion -->
+          <div class="space-y-1.5">
+            <span class="font-cinzel font-bold text-champagne block text-[11px]">COVERED SERVICES:</span>
+            <ul id="wrtCoveredList" class="space-y-1 text-[10px] text-stone-300 list-disc list-inside">
+              <!-- Populated by JS -->
+            </ul>
+          </div>
+        </div>
+
+        <button onclick="openWarrantyClaimModal()" class="btn-gold w-full py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-wider shadow">
+          FILE 1-CLICK WARRANTY CLAIM 📑
+        </button>
+      </div>
+
+      <!-- Service History Card (7 Cols) -->
+      <div class="lg:col-span-7 palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Immutable Craft Ledger</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">7. COMPLETE SERVICE HISTORY</h3>
+          </div>
+          <span class="text-xs text-stone-400 font-mono" id="serviceCountText">2 Records Logged</span>
+        </div>
+
+        <div class="space-y-2.5 max-h-72 overflow-y-auto pr-1" id="serviceHistoryList">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="pt-2 border-t border-white/10 flex justify-between items-center">
+          <span class="text-stone-400 text-[11px]">Logged by certified Friends Furniture master guild.</span>
+          <button onclick="openServiceModal()" class="btn-outline-gold px-4 py-1.5 rounded-xl font-cinzel font-bold text-[10px] uppercase">
+            + LOG ARTISAN EVENT
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 💰 8. AI RESALE VALUE & ♻️ 9. CIRCULAR ECONOMY & 🔄 10. SECOND-LIFE RECOMMENDATION -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- 8. Resale Value -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Asset Valuation Matrix</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">8. AI RESALE VALUE</h3>
+          </div>
+          <span class="text-2xl">💰</span>
+        </div>
+
+        <div class="p-4 bg-black/60 rounded-2xl border border-white/10 space-y-1.5 text-center">
+          <span class="text-[10px] text-stone-400 font-cinzel block uppercase">CURRENT ESTIMATED MARKET VALUE</span>
+          <div id="resaleEstimatedValue" class="text-3xl font-cinzelDecor font-black text-champagne">₹84,500</div>
+          <div class="text-[10px] text-emerald-400 font-mono font-bold" id="resaleRangeText">Estimated Range: ₹82,000 – ₹86,000</div>
+          <div class="text-[10px] text-stone-400">Original Price: <span id="resaleOrigPrice" class="line-through">₹89,999</span> (94% Retention)</div>
+        </div>
+
+        <div class="space-y-1 text-[10px] text-stone-300 font-sans" id="resaleFactorsList">
+          <!-- Populated by JS -->
+        </div>
+
+        <button onclick="alert('Instant Buyback Guarantee: Friends Furniture will purchase this piece back today for ₹76,000 via Instant Bank Transfer.')" class="btn-gold w-full py-2.5 rounded-xl font-cinzel font-black text-xs uppercase shadow">
+          INSTANT BUYBACK ₹76,000 💵
+        </button>
+      </div>
+
+      <!-- 9. Circular Economy Score -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">ESG & Sustainability</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">9. CIRCULAR SCORE</h3>
+          </div>
+          <span class="text-2xl">🌿</span>
+        </div>
+
+        <div class="flex items-center justify-center py-1">
+          <div class="text-center p-4 bg-emeraldPalace/40 rounded-2xl border border-emerald-500/40 w-full">
+            <span id="circularScoreBig" class="text-4xl font-cinzelDecor font-black text-emerald-300 block">92 / 100</span>
+            <span class="text-[10px] text-champagne font-cinzel font-bold block uppercase">Net-Positive Heirloom Design</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-[11px] font-sans">
+          <div class="flex justify-between"><span>Repairability Index:</span><strong class="text-emerald-400 font-mono">96 / 100</strong></div>
+          <div class="flex justify-between"><span>Reusability Index:</span><strong class="text-emerald-400 font-mono">94 / 100</strong></div>
+          <div class="flex justify-between"><span>Recyclability Potential:</span><strong class="text-emerald-400 font-mono">88 / 100</strong></div>
+          <div class="flex justify-between"><span>CO2 Offsets Saved:</span><strong class="text-champagne font-mono">310 kg CO2</strong></div>
+        </div>
+
+        <p class="text-[10px] text-stone-400 italic bg-black/40 p-2.5 rounded-xl border border-white/5">
+          100% Biodegradable hardwood framing and lead-free non-toxic herbal oil varnishes.
+        </p>
+      </div>
+
+      <!-- 10. Second-Life Recommender -->
+      <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs flex flex-col justify-between">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Upcycling Pathways</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">10. SECOND-LIFE AI</h3>
+          </div>
+          <span class="text-2xl">🔄</span>
+        </div>
+
+        <div class="space-y-2.5" id="secondLifeContainer">
+          <!-- Populated by JS -->
+        </div>
+
+        <button onclick="alert('Second-Life Consultation: A guild restorer will evaluate trade-in customization options for your chamber.')" class="btn-outline-gold w-full py-2 rounded-xl font-cinzel font-bold text-[10px] uppercase">
+          EXPLORE UPCYCLING OPTIONS ♻️
+        </button>
+      </div>
+
+    </section>
+
+    <!-- 🚪 11. "WILL IT ENTER MY HOUSE?" SPATIAL ACCESS CHECKER & 📦 12. DELIVERY READINESS -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6" id="accessSec">
+      
+      <!-- Spatial Access Checker (7 Cols) -->
+      <div class="lg:col-span-7 palace-card-elevated p-6 sm:p-8 rounded-3xl border border-antiqueGold/50 space-y-5 text-xs">
+        <div class="border-b border-white/10 pb-3">
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1">
+            <span>⚜️</span> 3D VOLUMETRIC SPATIAL SIMULATION
+          </span>
+          <h2 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+            11. “WILL IT ENTER MY HOUSE?” ACCESS CHECKER
+          </h2>
+          <p class="text-stone-300 font-sans text-[11px]">
+            Input your entryway, lift, and hallway dimensions to verify 100% collision-free white-glove transit before dispatch.
+          </p>
+        </div>
+
+        <!-- Inputs Form -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-sans">
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Door Width (Inches)</label>
+            <input type="number" id="inputDoorW" value="36" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Door Height (Inches)</label>
+            <input type="number" id="inputDoorH" value="82" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Corridor Width (Inches)</label>
+            <input type="number" id="inputCorridorW" value="44" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Staircase Width (Inches)</label>
+            <input type="number" id="inputStairW" value="42" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Lift / Elevator Width</label>
+            <input type="number" id="inputLiftW" value="40" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+          <div>
+            <label class="text-[10px] font-cinzel font-bold text-stone-300 block mb-1">Lift / Elevator Height</label>
+            <input type="number" id="inputLiftH" value="84" oninput="runSpatialCheck()" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white font-mono text-xs focus:ring-1 focus:ring-antiqueGold" />
+          </div>
+        </div>
+
+        <!-- Live Evaluation Result Box -->
+        <div id="spatialResultBox" class="p-4 rounded-2xl border transition-all duration-300 space-y-2">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- 4-Point Clearance Checklist -->
+        <div class="grid grid-cols-2 gap-2 text-[10px] font-sans" id="spatialChecklist">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Smart Delivery Readiness & Supplier Ledger (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- 12. Smart Delivery Readiness -->
+        <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-4 text-xs">
+          <div class="flex justify-between items-center border-b border-white/10 pb-3">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Pre-Dispatch Gate</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-1">12. DELIVERY READINESS</h3>
+            </div>
+            <span class="bg-emerald-950 text-emerald-400 font-mono font-bold text-xs px-2.5 py-1 rounded-full border border-emerald-500/40">
+              READY: 100% 🟢
+            </span>
+          </div>
+
+          <div class="space-y-2 text-[11px] font-sans" id="readinessChecklist">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 13. Supplier Provenance History -->
+        <div class="palace-card p-6 rounded-3xl border border-antiqueGold/35 space-y-3.5 text-xs">
+          <div class="flex justify-between items-center border-b border-white/10 pb-2.5">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded">Master Guild Ledger</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-champagne mt-1">13. SUPPLIER PROVENANCE</h3>
+            </div>
+            <span class="text-xs text-emerald-400 font-bold font-mono">98.4% Score</span>
+          </div>
+
+          <div class="p-3 bg-black/60 rounded-xl border border-white/10 space-y-1 font-sans text-[11px]">
+            <div class="flex justify-between"><span class="text-stone-400">Supplier:</span><strong class="text-white" id="suppName">Nilambur Heritage Guild</strong></div>
+            <div class="flex justify-between"><span class="text-stone-400">On-Time Rate:</span><strong class="text-emerald-400 font-mono" id="suppOnTime">99.1%</strong></div>
+            <div class="flex justify-between"><span class="text-stone-400">Quality Pass Index:</span><strong class="text-emerald-400 font-mono" id="suppQuality">99.8%</strong></div>
+            <div class="flex justify-between"><span class="text-stone-400">Total Heritage Pieces:</span><strong class="text-champagne font-mono" id="suppTotal">3,450 Pieces</strong></div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 📱 14. DYNAMIC QR CODE PRINT & HARDWARE TAG EMBED -->
+    <section class="palace-card p-8 rounded-3xl border-2 border-champagne flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 max-w-xl">
+        <span class="badge-gold text-[10px] font-cinzel font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+          <span>👑</span> PHYSICAL FURNITURE HARDWARE ANCHOR
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text">
+          14. DYNAMIC QR CODE & NFC TAG
+        </h2>
+        <p class="text-xs text-stone-300 font-sans leading-relaxed">
+          Every physical piece of Friends Furniture has this permanent QR Code stamped into its solid teak under-chassis, 
+          tax invoice, and gold warranty certificate. Scan anytime to immediately launch this verified Life Passport.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-2 text-xs font-cinzel">
+          <button onclick="openQrModal()" class="btn-gold px-4 py-2 rounded-xl font-bold uppercase shadow">
+            ENLARGE & DOWNLOAD QR CODE 📷
+          </button>
+          <button onclick="printCertificate()" class="btn-outline-gold px-4 py-2 rounded-xl font-bold uppercase">
+            PRINT PASSPORT CERTIFICATE 📄
+          </button>
+        </div>
+      </div>
+
+      <!-- Generated QR Code Container -->
+      <div class="p-4 bg-white rounded-3xl shadow-2xl border-4 border-antiqueGold flex flex-col items-center justify-center text-black space-y-2 shrink-0">
+        <div id="inlineQrContainer"></div>
+        <span id="inlineQrLabel" class="font-mono text-[10px] font-bold tracking-widest text-black">FF-2026-00125</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 🏛️ PALACE FOOTER -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-10 mt-12">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left font-sans">
+      <div>
+        <span class="font-cinzelDecor text-lg font-black gold-gradient-text block">👑 FRIENDS FURNITURE</span>
+        <p class="font-pinyon text-sm text-champagne mt-0.5">“Furniture That Has a Memory.” • Global Digital Twin Registry</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="customer-dashboard.html" class="text-stone-300 hover:text-champagne font-cinzel">Dashboard</a>
+        <span>•</span>
+        <a href="admin-passport.html" class="text-stone-300 hover:text-champagne font-cinzel">Admin Registry</a>
+        <span>•</span>
+        <a href="categories.html" class="text-stone-300 hover:text-champagne font-cinzel">Categories</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 📷 MODAL: QR CODE ENLARGED & SCANNER -->
+  <div id="qrModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="palace-card-elevated max-w-md w-full p-8 rounded-3xl border border-antiqueGold/60 space-y-5 text-center text-xs animate-modal">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <h3 class="font-cinzelDecor font-bold text-base text-champagne">FURNITURE DIGITAL TWIN QR</h3>
+        <button onclick="closeQrModal()" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+      
+      <p class="text-stone-300 font-sans text-xs">
+        Scan with any mobile camera or scanner to instantly view this furniture piece's live Digital Life Passport.
+      </p>
+
+      <div class="p-6 bg-white rounded-3xl shadow-2xl border-4 border-antiqueGold inline-block my-2">
+        <div id="modalQrContainer" class="flex items-center justify-center"></div>
+        <span id="modalQrIdText" class="font-mono text-xs font-bold tracking-wider text-black block mt-2">FF-2026-00125</span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <button onclick="printCertificate()" class="btn-outline-gold py-2.5 rounded-xl font-cinzel font-bold text-xs uppercase">
+          PRINT TAG 🖨️
+        </button>
+        <button onclick="copyPassportLink()" class="btn-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase shadow">
+          COPY LINK 🔗
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🛠️ MODAL: BOOK GUILD SERVICE -->
+  <div id="serviceModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="palace-card-elevated max-w-lg w-full p-8 rounded-3xl border border-antiqueGold/60 space-y-4 text-xs animate-modal">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded">Master Guild Care</span>
+          <h3 class="font-cinzelDecor font-bold text-lg text-white gold-gradient-text mt-1">BOOK GUILD MAINTENANCE</h3>
+        </div>
+        <button onclick="closeServiceModal()" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleBookService(event)" class="space-y-3 font-sans text-xs">
+        <div>
+          <label class="font-cinzel font-bold text-stone-300 block mb-1">Service Treatment Type</label>
+          <select id="serviceTypeSelect" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white">
+            <option value="Organic Beeswax Nourishing & Velvet Deep-Nap Steam">Organic Beeswax Nourishing & Velvet Deep-Nap Steam (₹1,450)</option>
+            <option value="Acoustic Slat Tension Alignment & Joint Tightening">Acoustic Slat Tension Alignment & Joint Tightening (₹1,100)</option>
+            <option value="Gold Sabot & Brass Trimmings Luster Buffing">Gold Sabot & Brass Trimmings Luster Buffing (₹950)</option>
+            <option value="Full Comprehensive Annual Guild Restoration">Full Comprehensive Annual Guild Restoration (₹2,800)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="font-cinzel font-bold text-stone-300 block mb-1">Preferred Service Date</label>
+          <input type="date" id="serviceDateInput" value="2026-10-15" required class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white" />
+        </div>
+
+        <div>
+          <label class="font-cinzel font-bold text-stone-300 block mb-1">Artisan Notes / Chamber Instructions</label>
+          <textarea id="serviceNotesInput" rows="2" placeholder="e.g. Schedule after 2 PM; villa gate security pre-notified." class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white text-xs"></textarea>
+        </div>
+
+        <button type="submit" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl">
+          CONFIRM GUILD SERVICE DISPATCH →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 📑 MODAL: WARRANTY CLAIM -->
+  <div id="warrantyClaimModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="palace-card-elevated max-w-lg w-full p-8 rounded-3xl border border-antiqueGold/60 space-y-4 text-xs animate-modal">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded">Zero-Deductible Vault</span>
+          <h3 class="font-cinzelDecor font-bold text-lg text-white gold-gradient-text mt-1">FILE WARRANTY CLAIM</h3>
+        </div>
+        <button onclick="closeWarrantyModal()" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleWarrantyClaim(event)" class="space-y-3 font-sans text-xs">
+        <div>
+          <label class="font-cinzel font-bold text-stone-300 block mb-1">Issue Category</label>
+          <select class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white">
+            <option>Timber Joint Tension or Creak</option>
+            <option>Surface Polish Degradation</option>
+            <option>Coil Suspension Adjustment</option>
+            <option>Gold Leaf / Metal Trim Adhesion</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="font-cinzel font-bold text-stone-300 block mb-1">Description of Issue</label>
+          <textarea rows="3" required placeholder="Describe any observation in detail..." class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl p-2.5 text-white text-xs"></textarea>
+        </div>
+
+        <div class="p-3 bg-black/50 rounded-xl border border-dashed border-antiqueGold/50 text-center">
+          <span class="text-2xl block mb-1">📸</span>
+          <span class="text-[11px] text-champagne font-bold block">Attach Inspection Photos (Optional)</span>
+          <span class="text-[10px] text-stone-400">AI Computer Vision will pre-assess damage severity</span>
+        </div>
+
+        <button type="submit" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl">
+          SUBMIT EXPEDITED WARRANTY CLAIM 🛡️
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Load Master Data Engine Script -->
+  <script src="src/data/furniturePassportData.js"></script>
+
+  <!-- Passport Controller Script -->
+  <script>
+    let currentPassport = null;
+
+    function initPassportPage() {
+      // 1. Check URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const reqId = urlParams.get('id') || urlParams.get('dna') || 'FF-2026-00125';
+
+      // 2. Populate Dropdown selector
+      const all = FurniturePassportDB.getAll();
+      const sel = document.getElementById('passportSelector');
+      sel.innerHTML = all.map(p => `<option value="${p.id}" ${p.id === reqId ? 'selected' : ''}>${p.id} — ${p.name.slice(0, 24)}...</option>`).join('');
+
+      // 3. Load active passport
+      currentPassport = FurniturePassportDB.getById(reqId);
+      renderPassport(currentPassport);
+    }
+
+    function switchPassport(id) {
+      window.history.pushState({}, '', `furniture-passport.html?id=${id}`);
+      currentPassport = FurniturePassportDB.getById(id);
+      renderPassport(currentPassport);
+    }
+
+    function renderPassport(p) {
+      if (!p) return;
+
+      // Hero Images
+      document.getElementById('mainProductImg').src = p.imageUrl;
+      document.getElementById('heroBgOverlay').style.backgroundImage = `url('${p.imageUrl}')`;
+      
+      const thumbGallery = document.getElementById('thumbGallery');
+      const allImgs = [p.imageUrl, ...(p.secondaryImages || [])];
+      thumbGallery.innerHTML = allImgs.map(img => `
+        <div onclick="document.getElementById('mainProductImg').src='${img}'" class="w-16 h-12 rounded-xl overflow-hidden bg-black border border-white/20 hover:border-antiqueGold cursor-pointer transition">
+          <img src="${img}" class="w-full h-full object-cover" />
+        </div>
+      `).join('');
+
+      // Badges & Titles
+      document.getElementById('badgeCondition').innerText = `🟢 ${p.conditionScore}/100 ${p.conditionLabel.toUpperCase()}`;
+      document.getElementById('badgeDna').innerText = `🧬 DNA: ${p.legacyDna || p.id}`;
+      document.getElementById('productTitle').innerText = p.name;
+      document.getElementById('productTagline').innerText = `“${p.tagline}”`;
+      document.getElementById('furnitureIdText').innerText = p.id;
+      document.getElementById('modelNumberText').innerText = p.modelNumber;
+      document.getElementById('mfgDateText').innerText = p.manufacturingDate;
+      document.getElementById('ownerText').innerText = `${p.registeredOwner} 👑`;
+
+      // Specs
+      const dim = p.specifications?.dimensions || {};
+      document.getElementById('specsDimensions').innerText = `${dim.widthInches}"W × ${dim.depthInches}"D × ${dim.heightInches}"H • ${dim.weightKg} kg`;
+      document.getElementById('specsFrame').innerText = p.specifications?.materials?.frame || 'Solid Hardwood';
+      document.getElementById('specsUpholstery').innerText = p.specifications?.materials?.upholstery || 'Imperial Fabric';
+      document.getElementById('specsHarvestLot').innerText = p.specifications?.provenance?.timberHarvestLot || 'LOT-HERITAGE-99';
+      document.getElementById('specsGuildMaster').innerText = p.specifications?.provenance?.guildMaster || 'Master Woodsmith';
+
+      // Condition Score (0-100)
+      document.getElementById('conditionScoreBig').innerText = p.conditionScore;
+      const b = p.conditionBreakdown || {};
+      document.getElementById('scoreFrame').innerText = `${b.structuralFrame || 98}%`;
+      document.getElementById('barFrame').style.width = `${b.structuralFrame || 98}%`;
+      document.getElementById('scoreJoinery').innerText = `${b.joineryIntegrity || 96}%`;
+      document.getElementById('barJoinery').style.width = `${b.joineryIntegrity || 96}%`;
+      document.getElementById('scorePolish').innerText = `${b.surfacePolish || 92}%`;
+      document.getElementById('barPolish').style.width = `${b.surfacePolish || 92}%`;
+      document.getElementById('scoreFabric').innerText = `${b.fabricUpholstery || 91}%`;
+      document.getElementById('barFabric').style.width = `${b.fabricUpholstery || 91}%`;
+      document.getElementById('conditionNotesText').innerText = `“${p.conditionNotes}”`;
+
+      // AI Life Prediction
+      document.getElementById('lifeRemainingText').innerText = p.lifePrediction?.estimatedRemainingLifeYears || '20+ Years';
+      document.getElementById('lifeExplanationText').innerText = p.lifePrediction?.explanation || '';
+      document.getElementById('lifeTipsText').innerText = p.lifePrediction?.lifeExtensionTips || '';
+
+      // Smart Maintenance
+      document.getElementById('maintDaysBadge').innerText = `In ${p.smartMaintenance?.daysRemaining || 45} Days`;
+      document.getElementById('maintActionText').innerText = p.smartMaintenance?.recommendedAction || 'Routine Polish Check';
+      document.getElementById('maintReasonText').innerText = p.smartMaintenance?.reason || '';
+      document.getElementById('maintCostText').innerText = `₹${(p.smartMaintenance?.estimatedCost || 1200).toLocaleString()}`;
+
+      // Warranty
+      document.getElementById('wrtCertId').innerText = p.warranty?.warrantyCertificateId || 'DOC-WRT-2026';
+      document.getElementById('wrtPeriod').innerText = `${p.warranty?.periodMonths || 120} Months (${(p.warranty?.periodMonths || 120)/12} Years)`;
+      document.getElementById('wrtExpiry').innerText = p.warranty?.expiryDate || '2036-07-28';
+      document.getElementById('wrtHash').innerText = p.warranty?.blockchainHash || '0x7c91e4b...';
+      document.getElementById('wrtCoveredList').innerHTML = (p.warranty?.covered || []).map(item => `<li>${item}</li>`).join('');
+
+      // Service History
+      renderServiceHistory(p.serviceHistory || []);
+
+      // Resale Prediction
+      document.getElementById('resaleEstimatedValue').innerText = `₹${(p.resalePrediction?.currentEstimatedValue || p.price).toLocaleString()}`;
+      document.getElementById('resaleRangeText').innerText = `Estimated Range: ${p.resalePrediction?.estimatedResaleRange || ''}`;
+      document.getElementById('resaleOrigPrice').innerText = `₹${(p.resalePrediction?.originalPurchasePrice || p.price).toLocaleString()}`;
+      document.getElementById('resaleFactorsList').innerHTML = (p.resalePrediction?.factors || []).map(f => `
+        <div class="flex justify-between bg-black/40 p-1.5 rounded-lg"><span>${f.name}</span><strong class="text-champagne font-mono">${f.impact}</strong></div>
+      `).join('');
+
+      // Circular Economy & Second Life
+      document.getElementById('circularScoreBig').innerText = `${p.circularEconomy?.circularScore || 92} / 100`;
+      document.getElementById('secondLifeContainer').innerHTML = (p.secondLifePathways || []).map(sl => `
+        <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 space-y-0.5">
+          <div class="flex justify-between font-bold text-champagne text-[11px]">
+            <span>Phase ${sl.step}: ${sl.title}</span>
+            <span class="text-stone-400 font-mono">${sl.timeframe}</span>
+          </div>
+          <p class="text-[10px] text-stone-300">${sl.description}</p>
+        </div>
+      `).join('');
+
+      // Journey Timeline (10 Stages)
+      renderJourney(p.journey || []);
+
+      // Readiness Checklist
+      document.getElementById('readinessChecklist').innerHTML = (p.deliveryReadiness?.checklist || []).map(c => `
+        <div class="flex items-center gap-2 p-2 rounded-xl bg-black/60 border border-emerald-500/20">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span class="text-stone-300">${c.item}</span>
+        </div>
+      `).join('');
+
+      // Supplier Info
+      document.getElementById('suppName').innerText = p.supplier?.name || 'Nilambur Teak Guild';
+      document.getElementById('suppOnTime').innerText = p.supplier?.onTimeDeliveryRate || '99%';
+      document.getElementById('suppQuality').innerText = p.supplier?.qualityPassRate || '99.8%';
+      document.getElementById('suppTotal').innerText = `${p.supplier?.totalSuppliedPieces || 3000} Pieces`;
+
+      // QR Code Generation
+      generateQRCodes(p.id);
+
+      // Run Spatial Access Calculation
+      runSpatialCheck();
+    }
+
+    function renderJourney(stages) {
+      const container = document.getElementById('journeyContainer');
+      container.innerHTML = stages.map((st, idx) => `
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-black/60 border border-antiqueGold/30 hover:border-champagne transition relative">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-cinzel font-black shrink-0 ${st.status === 'Completed' ? 'bg-antiqueGold text-black' : 'bg-emerald-950 text-emerald-400 border border-emerald-500/40'}">
+            ${idx + 1}
+          </div>
+          <div class="flex-1 space-y-1">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center">
+              <strong class="font-cinzelDecor text-sm text-white gold-gradient-text">${st.stage.toUpperCase()}: ${st.title}</strong>
+              <span class="text-[10px] text-champagne font-mono font-bold">${st.date}</span>
+            </div>
+            <div class="text-[11px] text-stone-400 font-sans">
+              <span>📍 ${st.location}</span> • <span>👤 ${st.entity}</span>
+            </div>
+            <p class="text-[11px] text-stone-300 pt-0.5">${st.notes}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderServiceHistory(records) {
+      const container = document.getElementById('serviceHistoryList');
+      document.getElementById('serviceCountText').innerText = `${records.length} Records Logged`;
+      
+      container.innerHTML = records.map(r => `
+        <div class="p-3 bg-black/60 rounded-2xl border border-white/10 space-y-1 font-sans">
+          <div class="flex justify-between items-center">
+            <strong class="font-cinzel text-white text-[11px]">${r.type}</strong>
+            <span class="text-emerald-400 font-mono text-[10px] font-bold">${r.status}</span>
+          </div>
+          <div class="flex justify-between text-[10px] text-stone-400">
+            <span>📅 ${r.date}</span>
+            <span>👤 ${r.technician}</span>
+            <span class="text-champagne font-mono font-bold">${r.cost === 0 ? 'FREE (Warranty)' : '₹' + r.cost}</span>
+          </div>
+          <p class="text-[10px] text-stone-300">${r.notes}</p>
+        </div>
+      `).join('');
+    }
+
+    function generateQRCodes(id) {
+      const url = `${window.location.origin}/furniture-passport.html?id=${id}`;
+      
+      // Inline QR
+      const inlineEl = document.getElementById('inlineQrContainer');
+      inlineEl.innerHTML = '';
+      new QRCode(inlineEl, {
+        text: url,
+        width: 140,
+        height: 140,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      document.getElementById('inlineQrLabel').innerText = id;
+
+      // Modal QR
+      const modalEl = document.getElementById('modalQrContainer');
+      modalEl.innerHTML = '';
+      new QRCode(modalEl, {
+        text: url,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      document.getElementById('modalQrIdText').innerText = id;
+    }
+
+    function runSpatialCheck() {
+      if (!currentPassport) return;
+      const dim = currentPassport.specifications?.dimensions || { widthInches: 88, depthInches: 38, heightInches: 34 };
+
+      const homeAccess = {
+        doorWidth: document.getElementById('inputDoorW').value,
+        doorHeight: document.getElementById('inputDoorH').value,
+        corridorWidth: document.getElementById('inputCorridorW').value,
+        staircaseWidth: document.getElementById('inputStairW').value,
+        liftWidth: document.getElementById('inputLiftW').value,
+        liftHeight: document.getElementById('inputLiftH').value
+      };
+
+      const result = FurniturePassportDB.calculateSpatialAccess(dim, homeAccess);
+
+      const resBox = document.getElementById('spatialResultBox');
+      if (result.safe) {
+        resBox.className = "p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 space-y-1.5";
+        resBox.innerHTML = `
+          <div class="flex items-center gap-2 font-cinzel font-bold text-sm">
+            <span>✓</span> CLEARANCE VERIFIED: FURNITURE CAN ENTER SAFELY
+          </div>
+          <p class="text-[11px] text-stone-200">${result.recommendation}</p>
+        `;
+      } else {
+        resBox.className = "p-4 rounded-2xl bg-rose-950/60 border border-rose-500/50 text-rose-300 space-y-1.5";
+        resBox.innerHTML = `
+          <div class="flex items-center gap-2 font-cinzel font-bold text-sm">
+            <span>⚠</span> DELIVERY ACCESS WARNING DETECTED
+          </div>
+          <p class="text-[11px] text-stone-200">${result.recommendation}</p>
+        `;
+      }
+
+      document.getElementById('spatialChecklist').innerHTML = result.checks.map(c => `
+        <div class="p-2 bg-black/60 rounded-xl border ${c.passed ? 'border-emerald-500/40 text-emerald-300' : 'border-rose-500/40 text-rose-300'} flex items-center justify-between">
+          <span>${c.name}</span>
+          <strong class="font-mono">${c.availableInches}" / ${c.requiredMinInches}" ${c.passed ? '✓' : '✕'}</strong>
+        </div>
+      `).join('');
+    }
+
+    function simulateExtension() {
+      alert("✨ AI Simulation Applied!\n\nTreatment: Bi-Annual Organic Beeswax Hydration & Precision Joinery Balancing\n\nResult:\n• Remaining Lifespan: Extended from 22 Yrs -> 28 Yrs (+6 Years)\n• Condition Score Bonus: +4 Pts\n• Resale Value Premium: +₹4,500\n\nPrescription saved to your digital twin care calendar.");
+    }
+
+    function openQrModal() { document.getElementById('qrModal').classList.remove('hidden'); }
+    function closeQrModal() { document.getElementById('qrModal').classList.add('hidden'); }
+    function openServiceModal() { document.getElementById('serviceModal').classList.remove('hidden'); }
+    function closeServiceModal() { document.getElementById('serviceModal').classList.add('hidden'); }
+    function openWarrantyClaimModal() { document.getElementById('warrantyClaimModal').classList.remove('hidden'); }
+    function closeWarrantyModal() { document.getElementById('warrantyClaimModal').classList.add('hidden'); }
+
+    function handleBookService(e) {
+      e.preventDefault();
+      const type = document.getElementById('serviceTypeSelect').value;
+      const date = document.getElementById('serviceDateInput').value;
+      const notes = document.getElementById('serviceNotesInput').value;
+
+      const record = FurniturePassportDB.addServiceRecord(currentPassport.id, {
+        type: type,
+        date: date,
+        cost: 1450,
+        notes: notes || "Customer-scheduled guild maintenance."
+      });
+
+      closeServiceModal();
+      alert(`🔧 Guild Care Dispatched!\n\nService Ticket: ${record.id}\nTreatment: ${type}\nDate: ${date}\n\nMaster Artisan assigned with 100% genuine Nilambur beeswax seal.`);
+      renderPassport(FurniturePassportDB.getById(currentPassport.id));
+    }
+
+    function handleWarrantyClaim(e) {
+      e.preventDefault();
+      closeWarrantyModal();
+      alert(`🛡️ Warranty Claim Initiated (#CLM-${Math.floor(10000+Math.random()*90000)})\n\nZero-deductible priority dispatch allocated. A certified Friends Furniture guild master will inspect your piece within 48 hours.`);
+    }
+
+    function copyPassportLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert("🔗 Digital Twin Passport URL copied to clipboard!");
+    }
+
+    function printCertificate() {
+      window.print();
+    }
+
+    function scrollToSec(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', initPassportPage);
+  </script>
+  <!-- Master Shared Interactivity & Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+</body>
+</html>

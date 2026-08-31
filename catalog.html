@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Furniture Catalog | FRIENDS FURNITURE — Comfort For Life</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .product-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.85) 0%, rgba(27, 11, 54, 0.88) 50%, rgba(5, 5, 5, 0.96) 100%);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 1.25rem;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .product-card:hover {
+      border-color: #F1D78B;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.95), 0 0 25px rgba(201, 162, 39, 0.3);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ 1. TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 border-b border-antiqueGold/30 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Platform Core Apps & Portals -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+          <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>👑</span> Palace Dashboard
+          </a>
+          <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🪞</span> Furniture Twin
+          </a>
+          <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>✨</span> Smart Studio
+          </a>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🧬</span> Digital Passport
+          </a>
+          <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛍️</span> Categories
+          </a>
+          <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+            <span>🛋️</span> Products Catalog
+          </a>
+        </div>
+
+        <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+        <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🏰 Home
+          </a>
+          <a href="furniture-twin.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🪞 Furniture Twin
+          </a>
+          <a href="categories.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛍️ Categories
+          </a>
+          <a href="living-room.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛋️ Products
+          </a>
+          <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            ✨ Smart Studio
+          </a>
+          <a href="customer-dashboard.html#ordersSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🚚 Track Order
+          </a>
+          <a href="customer-dashboard.html#memberSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            💎 Rewards
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Session Status -->
+      <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+        <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+          👑 VIP Gold (4,250 PTS)
+        </span>
+        <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+          <span>🔔</span> Notifications
+          <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+        </button>
+        <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+          🚪 Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 2. MAIN STICKY NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl sticky top-9 z-40">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Where Luxury Meets Comfort • Products Catalog
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Nav Search Bar -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-4 relative cursor-pointer ff-search-trigger">
+        <span class="absolute left-3.5 text-stone-400 text-sm">🔍</span>
+        <input 
+          type="text" 
+          readonly
+          placeholder="Search by title, wood, fabric or DNA (e.g. Teak, Sofa, Bed)..." 
+          class="w-full bg-black/70 border border-antiqueGold/40 rounded-2xl py-2 pl-10 pr-4 text-xs text-white placeholder-stone-500 cursor-pointer focus:outline-none font-sans"
+        />
+        <span class="absolute right-3 text-[10px] text-stone-400 font-mono bg-white/10 px-1.5 py-0.5 rounded">Ctrl+K</span>
+      </div>
+
+      <!-- Action Utilities (Wishlist, Cart, Dashboard) -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Wishlist -->
+        <button onclick="FF_Wishlist.toggle('ff-101')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-stone-200 relative transition" title="Royal Wishlist">
+          <span class="text-base">❤️</span>
+          <span class="ff-wishlist-badge absolute top-1 right-1 w-4 h-4 bg-antiqueGold text-black text-[9px] font-black rounded-full flex items-center justify-center">2</span>
+        </button>
+
+        <!-- Cart Drawer Button -->
+        <button class="ff-cart-trigger btn-gold px-3.5 py-2 rounded-xl text-xs font-cinzel font-black shadow-xl flex items-center gap-1.5">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Palace Cart</span>
+          <span class="ff-cart-badge bg-black text-antiqueGold text-[10px] font-black px-1.5 py-0.2 rounded-full">1</span>
+        </button>
+
+        <!-- Profile / Dashboard Link -->
+        <a href="customer-dashboard.html" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-champagne transition hidden sm:flex items-center gap-1.5 text-xs font-cinzel font-bold">
+          <span>👑</span> Hari
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🌟 3. MAIN CATALOG CONTAINER -->
+  <main class="max-w-[1400px] mx-auto w-full flex-1 px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    
+    <!-- 🧭 BREADCRUMB -->
+    <nav class="flex items-center gap-2 text-xs font-cinzel text-stone-400">
+      <a href="index.html" class="hover:text-champagne transition">Home</a>
+      <span>›</span>
+      <a href="categories.html" class="hover:text-champagne transition">Categories</a>
+      <span>›</span>
+      <span id="breadcrumbCategory" class="text-champagne font-bold">Living Room Heirlooms</span>
+    </nav>
+
+    <!-- 🏷️ CATEGORY HERO BANNER -->
+    <div class="saas-card-featured p-6 sm:p-8 rounded-3xl border border-antiqueGold/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
+      <div class="space-y-1.5 relative z-10">
+        <span class="badge-gold text-[10px] font-cinzel font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-flex items-center gap-1.5" id="bannerBadge">
+          <span>⚜️</span> CURATED FOR LOTUS PALACE RESIDENCE
+        </span>
+        <h1 class="text-2xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text" id="categoryMainHeading">
+          LIVING ROOM MASTERPIECES
+        </h1>
+        <p class="text-xs sm:text-sm text-champagne font-pinyon" id="categoryMainSubheading">
+          “Hand-carved Nilambur seasoned teak adorned with 24K gold foil and emerald silk velvet.”
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 relative z-10">
+        <a href="smart-studio.html" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black shadow-xl">
+          <span>✨</span> Smart Studio Atelier
+        </a>
+        <a href="categories.html" class="btn-outline-gold px-4 py-2 rounded-xl text-xs font-cinzel font-bold">
+          All 8 Suites
+        </a>
+      </div>
+    </div>
+
+    <!-- 🏷️ QUICK CATEGORY FILTER PILLS -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-cinzel">
+      <button onclick="setCategory('all')" id="catPillAll" class="cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap">All Collections</button>
+      <button onclick="setCategory('living')" id="catPillLiving" class="cat-pill active px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-antiqueGold to-champagne text-black font-black whitespace-nowrap">Living Room</button>
+      <button onclick="setCategory('bedroom')" id="catPillBedroom" class="cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap">Bedroom Sanctuary</button>
+      <button onclick="setCategory('dining')" id="catPillDining" class="cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap">Banquet & Dining</button>
+      <button onclick="setCategory('office')" id="catPillOffice" class="cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap">Executive Office</button>
+      <button onclick="setCategory('outdoor')" id="catPillOutdoor" class="cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap">Outdoor Gazebo</button>
+    </div>
+
+    <!-- 🛍️ MAIN CATALOG LAYOUT: SIDEBAR FILTERS + PRODUCTS GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- 🎛️ LEFT FILTER SIDEBAR (3 COLS) -->
+      <aside class="lg:col-span-3 space-y-5">
+        <div class="saas-card space-y-4 text-xs font-sans">
+          
+          <div class="flex justify-between items-center border-b border-white/10 pb-2.5">
+            <span class="font-cinzel font-bold text-sm text-champagne">FILTERS & SPECIFICATIONS</span>
+            <button onclick="resetFilters()" class="text-[10px] text-stone-400 hover:text-white underline">Reset</button>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="space-y-2">
+            <label class="font-cinzel font-bold text-stone-300 block">PRICE RANGE (₹)</label>
+            <input type="range" id="priceRange" min="20000" max="250000" step="5000" value="250000" oninput="applyFilters()" class="w-full accent-antiqueGold cursor-pointer" />
+            <div class="flex justify-between font-mono text-[11px] text-champagne">
+              <span>₹20,000</span>
+              <span id="priceRangeVal">₹2,50,000</span>
+            </div>
+          </div>
+
+          <!-- Solid Wood Frame Filter -->
+          <div class="space-y-1.5 pt-3 border-t border-white/10">
+            <label class="font-cinzel font-bold text-stone-300 block">TIMBER & FRAME</label>
+            <div class="space-y-1 text-stone-400">
+              <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="checkbox" checked onchange="applyFilters()" value="Teak" class="wood-filter accent-antiqueGold" /> Nilambur Old-Growth Teak</label>
+              <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="checkbox" checked onchange="applyFilters()" value="Sheesham" class="wood-filter accent-antiqueGold" /> Royal Sheesham</label>
+              <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="checkbox" checked onchange="applyFilters()" value="Oak" class="wood-filter accent-antiqueGold" /> Smoked Oak & Marble</label>
+            </div>
+          </div>
+
+          <!-- Room Match % -->
+          <div class="space-y-1.5 pt-3 border-t border-white/10">
+            <label class="font-cinzel font-bold text-stone-300 block">ROOM GENOME HARMONY</label>
+            <div class="space-y-1 text-stone-400">
+              <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="matchFilter" checked onchange="applyFilters()" value="0" class="accent-antiqueGold" /> All Curations</label>
+              <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="matchFilter" onchange="applyFilters()" value="95" class="accent-antiqueGold" /> 95%+ Harmony Match 🟢</label>
+            </div>
+          </div>
+
+          <!-- AI Delivery Filter -->
+          <div class="p-3 bg-black/60 rounded-xl border border-emerald-500/30 text-[11px] space-y-1">
+            <span class="text-emerald-400 font-bold font-cinzel block">🤖 Neural Dispatch Active</span>
+            <p class="text-stone-400 text-[10px]">All pieces qualify for White-Glove 0-Damage delivery within 48 hours.</p>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- 🛋️ PRODUCTS GRID (9 COLS) -->
+      <section class="lg:col-span-9 space-y-6">
+        
+        <!-- Results Counter & Sort Bar -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 saas-card py-3 px-5 text-xs font-sans">
+          <div class="text-stone-300">
+            Showing <strong class="text-champagne font-mono" id="resultsCount">6</strong> Masterpieces Curated for You
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="font-cinzel text-stone-400">Sort by:</label>
+            <select id="sortSelector" onchange="applyFilters()" class="bg-black border border-antiqueGold/40 rounded-xl px-3 py-1.5 text-xs text-champagne font-cinzel focus:outline-none">
+              <option value="featured">Featured Curations</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="match">Room Harmony Match</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Product Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="productsGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- 🏛️ 4. STANDARDIZED FOOTER -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-8 mt-12">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left font-sans">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl overflow-hidden border border-antiqueGold/50 bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Logo" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor text-sm font-black gold-gradient-text block">FRIENDS FURNITURE</span>
+          <p class="text-[10px] text-champagne font-sans">Where Luxury Meets Comfort • Furniture For Friends. Comfort For Life.</p>
+        </div>
+      </div>
+      <div class="text-[11px] text-stone-400 font-cinzel">
+        © 2026 Friends Furniture Inc. • 256-Bit SSL Smart Supply Chain Protection
+      </div>
+    </div>
+  </footer>
+
+  <!-- Master Shared Interactivity Scripts -->
+  <script src="assets/app-shared.js"></script>
+
+  <!-- Catalog Engine JavaScript -->
+  <script>
+    const catalogProducts = [
+      {
+        id: "ff-101",
+        dna: "DNA: FF-SF2048",
+        title: "The Imperial Royal Palace Sofa",
+        category: "living",
+        price: 89999,
+        oldPrice: 114999,
+        wood: "Teak",
+        fabric: "Emerald Silk Velvet",
+        match: 98,
+        stock: 3,
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+        tagline: "Hand-carved Nilambur seasoned teak adorned with 24K gold foil and emerald silk velvet."
+      },
+      {
+        id: "ff-102",
+        dna: "DNA: FF-DN3091",
+        title: "The Sovereign 8-Seater Dining Suite",
+        category: "dining",
+        price: 94999,
+        oldPrice: 125000,
+        wood: "Sheesham",
+        fabric: "Italian Leather",
+        match: 96,
+        stock: 6,
+        image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80",
+        tagline: "Solid Malabar rosewood monolithic tabletop with brass inlays and 8 ergonomic armchairs."
+      },
+      {
+        id: "ff-103",
+        dna: "DNA: FF-BD4012",
+        title: "The Majesty King Canopy Bed",
+        category: "bedroom",
+        price: 119999,
+        oldPrice: 159999,
+        wood: "Teak",
+        fabric: "Belgian Linen",
+        match: 99,
+        stock: 2,
+        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+        tagline: "Architectural 4-post canopy bed with micro-climate orthopedic support mattress."
+      },
+      {
+        id: "ff-104",
+        dna: "DNA: FF-OF5023",
+        title: "The Chancellor Executive Desk",
+        category: "office",
+        price: 64999,
+        oldPrice: 82999,
+        wood: "Teak",
+        fabric: "Saddle Leather Top",
+        match: 94,
+        stock: 4,
+        image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80",
+        tagline: "Solid teak executive desk with integrated wireless inductive charging and brass pulls."
+      },
+      {
+        id: "ff-105",
+        dna: "DNA: FF-AR6033",
+        title: "The Empress Bouclé Armchair",
+        category: "living",
+        price: 34999,
+        oldPrice: 45000,
+        wood: "Teak",
+        fabric: "Sculptural Bouclé",
+        match: 94,
+        stock: 7,
+        image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+        tagline: "Ivory sculptural bouclé lounge chair with brushed brass swivel base."
+      },
+      {
+        id: "ff-106",
+        dna: "DNA: FF-CT7044",
+        title: "The Versailles Marble Coffee Table",
+        category: "living",
+        price: 42999,
+        oldPrice: 56000,
+        wood: "Oak",
+        fabric: "Italian Calacatta Marble",
+        match: 92,
+        stock: 5,
+        image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80",
+        tagline: "Italian Calacatta gold marble top resting on a hand-welded 24K gold geometric frame."
+      }
+    ];
+
+    let currentCategory = "living";
+
+    function renderProducts(items) {
+      const grid = document.getElementById('productsGrid');
+      const countLabel = document.getElementById('resultsCount');
+      if (!grid) return;
+
+      countLabel.innerText = items.length;
+      grid.innerHTML = "";
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full saas-card p-12 text-center space-y-3">
+            <span class="text-4xl block">🔍</span>
+            <h3 class="font-cinzelDecor font-bold text-lg text-champagne">No Masterpieces Found</h3>
+            <p class="text-xs text-stone-400">Try adjusting your filters or search keywords.</p>
+            <button onclick="resetFilters()" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-bold">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      items.forEach(p => {
+        const card = document.createElement('div');
+        card.className = "product-card p-4 flex flex-col justify-between space-y-3 group";
+        card.innerHTML = `
+          <div>
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black/80 mb-3">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[8px] px-2 py-0.5 rounded-full font-mono">${p.dna}</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 text-[8px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">94% Confidence</span>
+              <button onclick="FF_Wishlist.toggle('${p.id}')" data-wishlist-btn="${p.id}" class="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-black/80 flex items-center justify-center text-xs hover:bg-black transition">🤍</button>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-[10px] text-stone-400 font-cinzel">
+                <span>Solid ${p.wood}</span>
+                <span class="text-emerald-400 font-bold">Match: ${p.match}% 🟢</span>
+              </div>
+              <h3 class="font-cinzel font-bold text-sm text-white line-clamp-1 group-hover:text-champagne transition">${p.title}</h3>
+              <p class="text-[11px] text-stone-400 line-clamp-2">${p.tagline}</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <div class="flex justify-between items-baseline">
+              <div>
+                <span class="text-base font-cinzel font-black text-champagne">${window.formatINR(p.price)}</span>
+                <span class="text-[10px] text-stone-500 line-through ml-1">${window.formatINR(p.oldPrice)}</span>
+              </div>
+              <button onclick="FF_EMI.openModal(${p.price}, '${p.title}')" class="text-[10px] text-emerald-400 font-mono hover:underline">⚡ 0% EMI: ${window.formatINR(Math.round(p.price/24))}/mo</button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="FF_Cart.addItem('${p.id}')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black text-center block">
+                🛒 Add Cart
+              </button>
+              <button data-compare-btn="${p.id}" onclick="FF_Compare.toggle('${p.id}')" class="btn-outline-gold py-2 rounded-xl text-[10px] font-cinzel font-bold text-center block">
+                ⚖️ Compare
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      FF_Compare.updateButtons();
+      FF_Wishlist.updateCardButtons();
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      ['all', 'living', 'bedroom', 'dining', 'office', 'outdoor'].forEach(c => {
+        const pill = document.getElementById(`catPill${c.charAt(0).toUpperCase() + c.slice(1)}`);
+        if (pill) {
+          if (c === cat) pill.className = "cat-pill active px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-antiqueGold to-champagne text-black font-black whitespace-nowrap";
+          else pill.className = "cat-pill px-3.5 py-1.5 rounded-xl border border-antiqueGold/40 bg-black/60 text-stone-300 hover:text-white whitespace-nowrap";
+        }
+      });
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const maxPrice = parseInt(document.getElementById('priceRange').value);
+      document.getElementById('priceRangeVal').innerText = window.formatINR(maxPrice);
+
+      const selectedWoods = Array.from(document.querySelectorAll('.wood-filter:checked')).map(cb => cb.value);
+      const minMatch = parseInt(document.querySelector('input[name="matchFilter"]:checked')?.value || 0);
+
+      let filtered = catalogProducts.filter(p => {
+        const matchCat = (currentCategory === 'all' || p.category === currentCategory);
+        const matchPrice = p.price <= maxPrice;
+        const matchWood = selectedWoods.some(w => p.wood.includes(w));
+        const matchHarm = p.match >= minMatch;
+
+        return matchCat && matchPrice && matchWood && matchHarm;
+      });
+
+      renderProducts(filtered);
+    }
+
+    function resetFilters() {
+      document.getElementById('priceRange').value = 250000;
+      document.querySelectorAll('.wood-filter').forEach(cb => cb.checked = true);
+      currentCategory = "all";
+      applyFilters();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const initialCat = params.get('cat') || 'living';
+      setCategory(initialCat);
+    });
+  </script>
+
+  <!-- Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+
+</body>
+</html>
+

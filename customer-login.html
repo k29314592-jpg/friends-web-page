@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Palace Sign In | FRIENDS FURNITURE — Comfort For Life</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.8) 0%, rgba(7, 20, 47, 0.6) 50%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .palace-box {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.9) 0%, rgba(27, 11, 54, 0.92) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid rgba(241, 215, 139, 0.45);
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.95), 0 0 45px rgba(201, 162, 39, 0.25), inset 0 0 30px rgba(201, 162, 39, 0.08);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.25));
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 25%, #C9A227 70%, #8A6510 100%);
+      color: #050505;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 248, 231, 0.4);
+      box-shadow: 0 4px 25px rgba(201, 162, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 0 35px rgba(241, 215, 139, 0.75), 0 6px 25px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline-gold {
+      border: 1px solid rgba(201, 162, 39, 0.6);
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(27, 11, 54, 0.3) 100%);
+      color: #F1D78B;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(241, 215, 139, 0.12));
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      color: #F1D78B;
+      text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #C9A227, #F1D78B);
+      color: #050505;
+      font-weight: 800;
+    }
+
+    .toast-msg {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between items-center antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ TOP GLOBAL PROCLAMATION BAR -->
+  <div class="w-full bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>👑</span> Palace Dashboard
+        </a>
+        <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪞</span> Furniture Twin
+        </a>
+        <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>✨</span> Smart Studio
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🧬</span> Digital Passport
+        </a>
+      </div>
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+      <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15">
+        <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white whitespace-nowrap">
+          🏰 Storefront
+        </a>
+        <a href="admin-login.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-amber-400 hover:text-white whitespace-nowrap">
+          ⚙️ Guild & Admin Login →
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-champagne font-bold badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        👑 Customer Portal
+      </span>
+      <button onclick="enterAsGuest()" class="text-antiqueGold hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        Enter as Guest →
+      </button>
+    </div>
+  </div>
+
+  <!-- Header Brand Strip -->
+  <header class="w-full max-w-5xl flex items-center justify-between py-6 px-4">
+    <a href="index.html" class="flex items-center gap-3.5 group">
+      <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+        <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+          FRIENDS FURNITURE
+        </span>
+        <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+          Customer & VIP Palace Sign In
+        </span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <a href="admin-login.html" class="btn-outline-gold px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-bold hidden sm:flex items-center gap-1">
+        <span>👨‍💼</span> Admin Portal
+      </a>
+      <a href="customer-dashboard.html" class="btn-gold px-4 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+        <span>🏠</span> Palace Dashboard
+      </a>
+    </div>
+  </header>
+
+  <!-- Central Customer Authentication Box -->
+  <main class="w-full max-w-5xl palace-box rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl my-auto mx-4">
+    
+    <!-- Left Hero -->
+    <div class="lg:col-span-5 relative p-8 sm:p-12 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-royalNavy via-royalPurple to-black border-b lg:border-b-0 lg:border-r border-antiqueGold/30">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-30 mix-blend-screen pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-[#07142F]/90 to-transparent"></div>
+
+      <div class="relative z-10 space-y-4">
+        <span class="badge-gold text-[10px] font-cinzel font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+          <span>👑</span> VIP CUSTOMER SANCTUARY
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight">
+          Welcome Home
+        </h1>
+        <p class="font-pinyon text-xl text-champagne">
+          “Where Your Furniture Remembers You.”
+        </p>
+        <p class="text-xs text-stone-300 font-sans leading-relaxed pt-2">
+          Access your living <strong class="text-champagne">Furniture Twins</strong>, live room configurations, 
+          white-glove butler tracking, and 10-Year Royal Warranty certificates.
+        </p>
+      </div>
+
+      <div class="relative z-10 pt-8 space-y-3">
+        <div class="p-3.5 bg-black/60 rounded-2xl border border-antiqueGold/30 text-xs font-sans space-y-1">
+          <strong class="text-champagne font-cinzel text-[11px] block">👑 VIP Gold Tier Benefits Active</strong>
+          <p class="text-[10px] text-stone-400">
+            Complimentary annual beeswax nourishment, 0-effort hydraulic maintenance, and private butler consultations.
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-stone-400 font-cinzel">
+          <span>🔒 256-Bit SSL Encrypted</span>
+          <span class="text-emerald-400 font-bold">● Biometric Vault Ready</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Form -->
+    <div class="lg:col-span-7 p-8 sm:p-12 space-y-6">
+      
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+        <div>
+          <h2 class="text-2xl font-cinzelDecor font-bold text-white gold-gradient-text">
+            Customer Sign In
+          </h2>
+          <p class="text-xs text-stone-400 font-sans mt-0.5">
+            Authenticate to manage your Furniture Twins and residence orders.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-antiqueGold/30">
+          <button onclick="switchAuthTab('password')" id="tabPassword" class="tab-btn active px-3 py-1.5 rounded-lg text-xs font-cinzel transition">
+            Password
+          </button>
+          <button onclick="switchAuthTab('otp')" id="tabOtp" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-cinzel text-stone-300 hover:text-white transition">
+            Phone / OTP
+          </button>
+        </div>
+      </div>
+
+      <!-- Password Login Form -->
+      <form id="customerPasswordForm" onsubmit="handleCustomerLogin(event)" class="space-y-4 font-sans text-xs">
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Customer Email / Palace ID</label>
+          <input 
+            type="text" 
+            id="custEmail" 
+            value="hari.maharaja@friendsfurniture.com" 
+            required 
+            placeholder="e.g. yourname@palace.com"
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-sans"
+          />
+        </div>
+
+        <div class="space-y-1.5">
+          <div class="flex justify-between items-center">
+            <label class="font-cinzel font-bold text-stone-300 block">Security Password</label>
+            <button type="button" onclick="showToast('Password reset instructions dispatched to your registered email.')" class="text-[10px] text-champagne hover:underline font-cinzel bg-transparent border-0 cursor-pointer">
+              Forgot Password?
+            </button>
+          </div>
+          <input 
+            type="password" 
+            id="custPassword" 
+            value="royalpassword123" 
+            required 
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+          />
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center gap-2 cursor-pointer text-stone-300">
+            <input type="checkbox" checked class="accent-antiqueGold rounded" />
+            <span>Remember this device for 30 days</span>
+          </label>
+          <span class="text-[10px] text-emerald-400 font-mono">Session: VIP Gold 👑</span>
+        </div>
+
+        <button type="submit" id="custLoginBtn" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl flex items-center justify-center gap-2 cursor-pointer">
+          <span>👑</span> ENTER PALACE COMMAND CENTER →
+        </button>
+      </form>
+
+      <!-- Phone / OTP Login Form (Hidden by default) -->
+      <form id="customerOtpForm" onsubmit="handleOtpLogin(event)" class="space-y-4 font-sans text-xs hidden">
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Registered Mobile Number</label>
+          <div class="flex gap-2">
+            <span class="p-3 bg-black/80 border border-antiqueGold/40 rounded-xl text-champagne font-mono font-bold">+91</span>
+            <input 
+              type="tel" 
+              id="custPhone" 
+              value="98765 43210" 
+              required 
+              placeholder="10-digit mobile number"
+              class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Enter 6-Digit Palace OTP</label>
+          <input 
+            type="text" 
+            id="custOtp" 
+            value="884219" 
+            maxlength="6" 
+            placeholder="6-digit verification code"
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono tracking-widest text-center text-sm"
+          />
+        </div>
+
+        <button type="submit" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl flex items-center justify-center gap-2 cursor-pointer">
+          <span>📲</span> VERIFY OTP & ENTER →
+        </button>
+      </form>
+
+      <!-- 1-Click Fast Customer Demo & Instant Switcher -->
+      <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <button type="button" onclick="quickCustomerDemo()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-antiqueGold/15 hover:bg-antiqueGold/30 text-champagne border border-antiqueGold/40 text-xs font-cinzel font-bold transition flex items-center justify-center gap-2">
+          <span>👑</span> 1-Click Demo: Maharaja Hari
+        </button>
+
+        <a href="admin-login.html" class="text-xs text-stone-400 hover:text-champagne font-cinzel flex items-center gap-1 transition">
+          <span>⚙️</span> Go to Admin & Guild Portal →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="w-full text-center py-6 text-xs text-stone-400 font-sans space-y-1">
+    <p class="font-cinzel tracking-wider text-champagne text-[11px]">
+      FRIENDS FURNITURE • ROYAL CUSTOMER PALACE PORTAL
+    </p>
+    <p class="text-[10px] text-stone-500">
+      256-Bit Cryptographic Vault & Digital Life Twin Network. All Rights Reserved.
+    </p>
+  </footer>
+
+  <!-- Toast Message -->
+  <div id="toast" class="toast-msg fixed bottom-6 bg-black/95 text-champagne border-2 border-antiqueGold px-6 py-3 rounded-2xl shadow-2xl z-50 text-xs font-cinzel font-bold flex items-center gap-2.5 pointer-events-none">
+    <span>⚜️</span> <span id="toastText">Authenticating...</span>
+  </div>
+
+  <!-- Core Free-Tier Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/analytics.js"></script>
+
+  <script>
+    function switchAuthTab(mode) {
+      const passTab = document.getElementById('tabPassword');
+      const otpTab = document.getElementById('tabOtp');
+      const passForm = document.getElementById('customerPasswordForm');
+      const otpForm = document.getElementById('customerOtpForm');
+
+      if (mode === 'password') {
+        passTab.className = "tab-btn active px-3 py-1.5 rounded-lg text-xs font-cinzel transition";
+        otpTab.className = "tab-btn px-3 py-1.5 rounded-lg text-xs font-cinzel text-stone-300 hover:text-white transition";
+        passForm.classList.remove('hidden');
+        otpForm.classList.add('hidden');
+      } else {
+        otpTab.className = "tab-btn active px-3 py-1.5 rounded-lg text-xs font-cinzel transition";
+        passTab.className = "tab-btn px-3 py-1.5 rounded-lg text-xs font-cinzel text-stone-300 hover:text-white transition";
+        otpForm.classList.remove('hidden');
+        passForm.classList.add('hidden');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
+      if (!toast || !toastText) return;
+      toastText.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function enterAsGuest() {
+      FF_Auth.demoLoginAs('customer');
+      showToast("Entering Palace as Guest Client...");
+      setTimeout(() => {
+        window.location.href = "customer-dashboard.html";
+      }, 500);
+    }
+
+    function quickCustomerDemo() {
+      const res = FF_Auth.demoLoginAs('customer');
+      showToast("Welcome, Maharaja Hari! Opening Palace Dashboard...");
+      setTimeout(() => {
+        window.location.href = res.redirectUrl || "customer-dashboard.html";
+      }, 600);
+    }
+
+    async function handleCustomerLogin(e) {
+      if (e) e.preventDefault();
+      const email = document.getElementById('custEmail').value.trim();
+      const pass = document.getElementById('custPass') ? document.getElementById('custPass').value : "demo123";
+      
+      const btn = document.getElementById('custLoginBtn');
+      if (btn) {
+        btn.innerHTML = `<span>⏳</span> Authenticating with Vault...`;
+        btn.disabled = true;
+      }
+
+      showToast(`Verifying credentials for ${email}...`);
+
+      const res = await FF_Auth.signIn(email, pass, 'customer');
+      if (res.success) {
+        showToast(`Welcome, ${res.user.name}! Opening command portal...`);
+        setTimeout(() => {
+          window.location.href = res.redirectUrl || "customer-dashboard.html";
+        }, 500);
+      } else {
+        showToast(res.error || "Authentication failed.");
+        if (btn) {
+          btn.innerHTML = `<span>👑</span> ENTER PALACE COMMAND CENTER →`;
+          btn.disabled = false;
+        }
+      }
+      return false;
+    }
+
+    function handleOtpLogin(e) {
+      if (e) e.preventDefault();
+      const phone = document.getElementById('custPhone').value;
+      const res = FF_Auth.demoLoginAs('customer');
+      showToast("OTP Verified! Opening Palace Command Center...");
+      setTimeout(() => {
+        window.location.href = "customer-dashboard.html";
+      }, 600);
+      return false;
+    }
+  </script>
+</body>
+</html>

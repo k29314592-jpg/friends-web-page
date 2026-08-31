@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furniture Twin | Living Digital Representation — Friends Furniture</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C',
+            warmWood: '#4A2E1B'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.8) 0%, rgba(7, 20, 47, 0.6) 45%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .twin-glass-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.85) 0%, rgba(27, 11, 54, 0.88) 50%, rgba(5, 5, 5, 0.96) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(201, 162, 39, 0.15);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .twin-glass-card:hover {
+      border-color: #F1D78B;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(201, 162, 39, 0.25);
+    }
+
+    .twin-aura-glow {
+      box-shadow: 0 0 35px rgba(201, 162, 39, 0.4), inset 0 0 20px rgba(241, 215, 139, 0.2);
+    }
+
+    @keyframes twinPulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 12px #C9A227); }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    .twin-pulse {
+      animation: twinPulse 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ 1. TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 border-b border-antiqueGold/30 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Core Ecosystem Portals -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+          <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>👑</span> Palace Dashboard
+          </a>
+          <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+            <span>🪞</span> Furniture Twin
+          </a>
+          <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>✨</span> Smart Studio
+          </a>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🧬</span> Digital Passport
+          </a>
+          <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛍️</span> Categories
+          </a>
+          <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛋️</span> Products
+          </a>
+        </div>
+
+        <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+        <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🏰 Home
+          </a>
+          <a href="customer-dashboard.html#twinsSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🪞 My Twins
+          </a>
+          <a href="customer-dashboard.html#ordersSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🚚 Track Orders
+          </a>
+          <a href="customer-dashboard.html#memberSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            💎 VIP Rewards
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Ownership Metrics & Session -->
+      <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+        <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+          👑 Active: <strong id="twinTotalCount" class="font-mono">6</strong> Twins
+        </span>
+        <span class="text-emerald-400 font-bold hidden lg:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+          🌱 Health: <strong id="twinAvgScore" class="font-mono">95%</strong>
+        </span>
+        <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+          🚪 Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 2. MAIN STICKY NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl sticky top-9 z-40">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-cinzel text-[10px] text-champagne/90 tracking-[0.25em] uppercase font-bold block">
+            Furniture Twin™ — Living Digital Identity
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Action / Status Summary -->
+      <div class="flex items-center gap-3 font-sans">
+        <div class="hidden sm:flex flex-col text-right">
+          <span class="text-[10px] text-stone-400 font-cinzel">Total Digital Twin Valuation</span>
+          <span class="font-cinzel font-black text-champagne text-sm sm:text-base" id="twinTotalValue">₹4,72,995</span>
+        </div>
+
+        <a href="smart-studio.html" class="btn-outline-gold px-3.5 py-2 rounded-xl text-xs font-cinzel font-bold hidden md:flex items-center gap-1.5">
+          <span>✨</span> Smart Studio 3D
+        </a>
+
+        <a href="customer-dashboard.html" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1.5">
+          <span>👑</span> Command Center
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🏛️ 3. MAIN APPLICATION CONTAINER -->
+  <main class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1">
+    
+    <!-- HEADER HERO BANNER -->
+    <section class="bg-gradient-to-r from-royalNavy via-royalPurple to-obsidian p-6 sm:p-8 rounded-3xl border border-antiqueGold/40 shadow-2xl relative overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-antiqueGold/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-80 h-80 rounded-full bg-emeraldPalace/20 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="flex items-center gap-2">
+            <span class="badge-gold text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-cinzel font-bold">
+              Signature AI Ecosystem Feature
+            </span>
+            <span class="text-xs font-mono text-emerald-400 font-bold flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Ownership Memory Active
+            </span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text tracking-wide leading-tight">
+            YOUR FURNITURE TWIN
+          </h1>
+          <p class="text-xs sm:text-sm text-stone-300 font-sans leading-relaxed">
+            Friends Furniture remembers your furniture throughout its entire ownership journey. Every purchased masterpiece lives here as an intelligent digital replica with room placement memory, change simulations, continuous health telemetry, and service history.
+          </p>
+        </div>
+
+        <!-- Quick Summary Mini-Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-sans shrink-0">
+          <div class="p-3.5 bg-black/60 backdrop-blur-md rounded-2xl border border-antiqueGold/30 text-center">
+            <span class="text-[10px] text-stone-400 uppercase font-cinzel block">Ownership Status</span>
+            <strong class="text-emerald-400 font-cinzel text-sm sm:text-base font-black">100% Protected</strong>
+          </div>
+          <div class="p-3.5 bg-black/60 backdrop-blur-md rounded-2xl border border-antiqueGold/30 text-center">
+            <span class="text-[10px] text-stone-400 uppercase font-cinzel block">Configuration</span>
+            <strong class="text-champagne font-cinzel text-sm sm:text-base font-black">Permanent Lock</strong>
+          </div>
+          <div class="p-3.5 bg-black/60 backdrop-blur-md rounded-2xl border border-antiqueGold/30 text-center col-span-2 sm:col-span-1">
+            <span class="text-[10px] text-stone-400 uppercase font-cinzel block">Service Butler</span>
+            <strong class="text-white font-cinzel text-sm sm:text-base font-black">White Glove</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🏛️ 4. DIGITAL TWIN SELECTOR CAROUSEL STRIP -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <h2 class="font-cinzel font-bold text-sm sm:text-base text-champagne flex items-center gap-2">
+          <span>🪞</span> SELECT DIGITAL FURNITURE TWIN TO INSPECT
+        </h2>
+        <span class="text-xs text-stone-400 font-sans hidden sm:inline">Scroll horizontally to switch purchased items</span>
+      </div>
+
+      <!-- Horizontal Scrollable Track -->
+      <div id="twinCarouselTrack" class="flex items-center gap-4 overflow-x-auto pb-3 pt-1 scrollbar-thin">
+        <!-- Rendered dynamically by assets/furniture-twin.js -->
+      </div>
+    </section>
+
+    <!-- 🏛️ 5. HERO LIVING DIGITAL REPRESENTATION CANVAS & HUD -->
+    <section class="twin-glass-card p-6 sm:p-8 space-y-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Visual Twin Canvas (7 Cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <div class="relative h-[320px] sm:h-[400px] rounded-2xl overflow-hidden bg-black/90 border-2 border-antiqueGold/50 shadow-2xl flex items-center justify-center group">
+            
+            <!-- Hero Image with subtle breathing pulse -->
+            <img id="heroTwinImage" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Furniture Twin Living Model" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" />
+
+            <!-- Active Living Aura Glow -->
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-black/30"></div>
+
+            <!-- Top Left Twin ID & Room Badge -->
+            <div class="absolute top-4 left-4 flex flex-wrap items-center gap-2">
+              <span id="heroTwinId" class="badge-gold text-[10px] font-mono font-black px-3 py-1 rounded-xl shadow-lg">
+                TWIN-SF2048-HYD
+              </span>
+              <span id="heroTwinRoomBadge" class="bg-black/85 backdrop-blur-md text-champagne border border-antiqueGold/40 text-[10px] font-cinzel font-bold px-3 py-1 rounded-xl shadow">
+                📍 Room: Living Room (Grand Salon)
+              </span>
+            </div>
+
+            <!-- Top Right Condition Telemetry -->
+            <div class="absolute top-4 right-4">
+              <span id="heroTwinHealth" class="bg-black/90 backdrop-blur-md text-white border border-emerald-500/50 text-[10px] font-sans px-3 py-1 rounded-xl shadow flex items-center gap-1.5">
+                Condition: <strong class="text-emerald-400">94% (Pristine Palace)</strong>
+              </span>
+            </div>
+
+            <!-- Bottom Floating Configuration Spec Strip -->
+            <div class="absolute bottom-4 left-4 right-4 p-3.5 bg-black/85 backdrop-blur-xl rounded-xl border border-antiqueGold/40 flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
+              <div class="flex items-center gap-2.5">
+                <span id="heroTwinColorSwatch" class="w-4 h-4 rounded-full border border-white shrink-0 shadow" style="background-color: #0B3A2C;"></span>
+                <span id="heroTwinConfigBadge" class="font-mono text-champagne font-bold truncate max-w-[280px] sm:max-w-md">
+                  Sofa → Emerald Palace Velvet → Nilambur Teak Finish → 3-Seater Grand
+                </span>
+              </div>
+
+              <div class="flex items-center gap-2 ml-auto">
+                <button onclick="window.FurnitureTwinApp.switchTab('simulation')" class="btn-gold text-[10px] font-cinzel font-black px-3 py-1 rounded-lg shadow">
+                  Simulate Changes 🎨
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Real-time Telemetry & Ownership Intelligence (5 Cols) -->
+        <div class="lg:col-span-5 space-y-5 font-sans">
+          
+          <div>
+            <span class="badge-gold text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-cinzel font-bold">
+              Living Digital Representation
+            </span>
+            <h2 id="heroTwinTitle" class="text-2xl sm:text-3xl font-cinzelDecor font-bold text-white gold-gradient-text mt-1">
+              THE IMPERIAL ROYAL SOFA
+            </h2>
+            <p class="text-xs text-stone-300 mt-1 leading-relaxed">
+              Living digital replica continuously recording structural stability, timber humidity, fabric nap friction, room history, and white-glove butler services.
+            </p>
+          </div>
+
+          <!-- Real-Time Telemetry Gauges Grid -->
+          <div id="heroTelemetryGrid" class="grid grid-cols-2 gap-3">
+            <!-- Rendered dynamically by assets/furniture-twin.js -->
+          </div>
+
+          <!-- Quick Command Strip -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-white/10">
+            <button onclick="window.FurnitureTwinApp.switchTab('rooms')" class="p-2.5 bg-black/60 hover:bg-black/90 rounded-xl border border-antiqueGold/30 text-center transition">
+              <span class="text-sm block">🛋️</span>
+              <span class="text-[10px] font-cinzel font-bold text-champagne">Room Placement</span>
+            </button>
+
+            <button onclick="window.FurnitureTwinApp.switchTab('memory')" class="p-2.5 bg-black/60 hover:bg-black/90 rounded-xl border border-antiqueGold/30 text-center transition">
+              <span class="text-sm block">🧬</span>
+              <span class="text-[10px] font-cinzel font-bold text-champagne">Memory Vault</span>
+            </button>
+
+            <button onclick="window.FurnitureTwinApp.switchTab('service')" class="p-2.5 bg-black/60 hover:bg-black/90 rounded-xl border border-antiqueGold/30 text-center transition col-span-2 sm:col-span-1">
+              <span class="text-sm block">🛠️</span>
+              <span class="text-[10px] font-cinzel font-bold text-champagne">Service Mode</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 🏛️ 6. DEEP-DIVE TABBED HUB -->
+    <section class="space-y-6">
+      
+      <!-- Tab Navigation Buttons -->
+      <div id="twinTabsContainer" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+        <!-- Rendered dynamically by assets/furniture-twin.js -->
+      </div>
+
+      <!-- Tab Active Content Viewport -->
+      <div id="twinActiveTabContent" class="transition-all duration-300">
+        <!-- Rendered dynamically by assets/furniture-twin.js -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 🏛️ 7. GLOBAL LUXURY FOOTER -->
+  <footer class="bg-[#020202] border-t border-antiqueGold/30 py-10 mt-16 text-stone-400 text-xs font-sans">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10 pb-8 text-center md:text-left">
+        <div class="flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl overflow-hidden border border-antiqueGold/60 bg-black shrink-0">
+            <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <span class="font-cinzelDecor font-bold text-base text-white gold-gradient-text block">
+              FRIENDS FURNITURE
+            </span>
+            <span class="font-cinzel text-[9px] text-champagne tracking-widest uppercase">
+              Furniture For Friends • Comfort For Life
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-4 font-cinzel font-bold text-[11px] text-stone-300">
+          <a href="customer-dashboard.html" class="hover:text-champagne transition">Palace Dashboard</a>
+          <span>•</span>
+          <a href="furniture-twin.html" class="text-champagne hover:text-white transition">Furniture Twin™</a>
+          <span>•</span>
+          <a href="smart-studio.html" class="hover:text-champagne transition">Smart Studio</a>
+          <span>•</span>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="hover:text-champagne transition">Digital Passport</a>
+          <span>•</span>
+          <a href="categories.html" class="hover:text-champagne transition">Categories</a>
+          <span>•</span>
+          <a href="living-room.html" class="hover:text-champagne transition">Products</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-stone-500 font-mono text-center sm:text-left">
+        <p>© 2026 Friends Furniture Royal Atelier. All Rights Reserved. Permanent Digital Twin Identity Architecture.</p>
+        <p>Cryptographic Twin Protocol V1.0 • 10-Year Royal Structural Guarantee</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="src/data/furnitureTwinData.js"></script>
+  <script src="assets/furniture-twin.js"></script>
+  <script src="assets/app-shared.js"></script>
+</body>
+</html>

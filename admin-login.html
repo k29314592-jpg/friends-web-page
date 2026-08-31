@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisan Guild & Admin Console Login | FRIENDS FURNITURE</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.9) 0%, rgba(7, 20, 47, 0.7) 50%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .admin-box {
+      background: linear-gradient(135deg, rgba(11, 31, 77, 0.92) 0%, rgba(36, 16, 79, 0.95) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid rgba(241, 215, 139, 0.55);
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.98), 0 0 50px rgba(201, 162, 39, 0.3), inset 0 0 30px rgba(201, 162, 39, 0.1);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.25));
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 25%, #C9A227 70%, #8A6510 100%);
+      color: #050505;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 248, 231, 0.4);
+      box-shadow: 0 4px 25px rgba(201, 162, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 0 35px rgba(241, 215, 139, 0.75), 0 6px 25px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline-gold {
+      border: 1px solid rgba(201, 162, 39, 0.6);
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(27, 11, 54, 0.3) 100%);
+      color: #F1D78B;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(241, 215, 139, 0.12));
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      color: #F1D78B;
+      text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+
+    .role-btn.active {
+      border-color: #F1D78B;
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.35) 0%, rgba(27, 11, 54, 0.8) 100%);
+      box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+    }
+
+    .toast-msg {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between items-center antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ TOP GLOBAL PROCLAMATION BAR -->
+  <div class="w-full bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="admin-passport.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+          <span>👨‍💼</span> Guild Console
+        </a>
+        <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>👑</span> Palace Dashboard
+        </a>
+        <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪞</span> Furniture Twin
+        </a>
+        <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>✨</span> Smart Studio
+        </a>
+      </div>
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+      <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15">
+        <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white whitespace-nowrap">
+          🏰 Storefront
+        </a>
+        <a href="customer-login.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white whitespace-nowrap">
+          👑 Customer Sign In →
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-emerald-400 font-bold badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        ⚙️ Guild Security Terminal
+      </span>
+      <a href="customer-login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        Switch to Customer Portal
+      </a>
+    </div>
+  </div>
+
+  <!-- Header Brand Strip -->
+  <header class="w-full max-w-5xl flex items-center justify-between py-6 px-4">
+    <a href="index.html" class="flex items-center gap-3.5 group">
+      <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+        <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+          FRIENDS FURNITURE
+        </span>
+        <span class="font-mono text-[10px] sm:text-xs tracking-widest text-champagne block uppercase">
+          Artisan Guild & Admin Security Terminal
+        </span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <a href="customer-login.html" class="btn-outline-gold px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-bold hidden sm:flex items-center gap-1">
+        <span>👑</span> Customer Login
+      </a>
+      <a href="admin-passport.html" class="btn-gold px-4 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+        <span>⚙️</span> Guild Console
+      </a>
+    </div>
+  </header>
+
+  <!-- Central Admin Authentication Box -->
+  <main class="w-full max-w-5xl admin-box rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl my-auto mx-4">
+    
+    <!-- Left Hero -->
+    <div class="lg:col-span-5 relative p-8 sm:p-12 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-royalNavy via-black to-royalPurple border-b lg:border-b-0 lg:border-r border-antiqueGold/30">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581404476143-fb31d742929f?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-25 mix-blend-screen pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+
+      <div class="relative z-10 space-y-4">
+        <span class="badge-gold text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+          <span>⚙️</span> GUILD PROTOCOL NODE
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight">
+          Artisan Guild Terminal
+        </h1>
+        <p class="font-mono text-xs text-champagne">
+          “Immutable Timber Provenance & Minting Console.”
+        </p>
+        <p class="text-xs text-stone-300 font-sans leading-relaxed pt-2">
+          Authenticate with your cryptographic master credentials to access timber lot registration, QR minting, quarry certificates, and artisan trust scoring.
+        </p>
+      </div>
+
+      <div class="relative z-10 pt-8 space-y-3 font-sans text-xs">
+        <div class="p-3 bg-black/70 rounded-2xl border border-antiqueGold/30 space-y-1">
+          <div class="flex justify-between text-champagne font-mono text-[10px]">
+            <span>Active Guild Nodes:</span>
+            <strong class="text-emerald-400">4 Connected 🟢</strong>
+          </div>
+          <p class="text-[10px] text-stone-400">
+            Nilambur Atelier • Carrara Quarry • Bavaria Oak Co. • Flagship Showroom
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-stone-400 font-mono">
+          <span>256-Bit Cryptographic SSL</span>
+          <span class="text-champagne font-bold">2FA Required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Form -->
+    <div class="lg:col-span-7 p-8 sm:p-12 space-y-6">
+      
+      <div class="space-y-1 border-b border-white/10 pb-4">
+        <h2 class="text-2xl font-cinzelDecor font-bold text-white gold-gradient-text">
+          Administrator Authentication
+        </h2>
+        <p class="text-xs text-stone-400 font-sans">
+          Select administrative authority and enter master security key.
+        </p>
+      </div>
+
+      <!-- Admin Role Switcher Buttons -->
+      <div class="space-y-2 font-sans text-xs">
+        <label class="text-[10px] font-cinzel font-bold text-stone-300 uppercase tracking-wider block">
+          Select Authority Role:
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+          <button type="button" onclick="selectAdminRole('Admin')" id="admRole-Admin" class="role-btn active p-3 rounded-xl border border-antiqueGold/40 bg-black/60 transition">
+            <span class="text-lg block">👑</span>
+            <strong class="text-white text-xs block font-cinzel">Master Admin</strong>
+            <span class="text-[9px] text-champagne block">Palace Registry</span>
+          </button>
+          <button type="button" onclick="selectAdminRole('Supplier')" id="admRole-Supplier" class="role-btn p-3 rounded-xl border border-antiqueGold/40 bg-black/60 transition">
+            <span class="text-lg block">🏭</span>
+            <strong class="text-white text-xs block font-cinzel">Artisan Guild</strong>
+            <span class="text-[9px] text-stone-400 block">Nilambur Teak</span>
+          </button>
+          <button type="button" onclick="selectAdminRole('Showroom')" id="admRole-Showroom" class="role-btn p-3 rounded-xl border border-antiqueGold/40 bg-black/60 transition">
+            <span class="text-lg block">🏬</span>
+            <strong class="text-white text-xs block font-cinzel">Showroom Director</strong>
+            <span class="text-[9px] text-stone-400 block">Flagship Desk</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Form -->
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-4 font-sans text-xs">
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Guild Master ID / Email</label>
+          <input 
+            type="text" 
+            id="adminEmail" 
+            value="master.admin@friendsfurniture.com" 
+            required 
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="space-y-1.5">
+            <label class="font-cinzel font-bold text-stone-300 block">Security Passcode</label>
+            <input 
+              type="password" 
+              id="adminPassword" 
+              value="masterkey2026" 
+              required 
+              class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="font-cinzel font-bold text-stone-300 block">2FA Authenticator Token</label>
+            <input 
+              type="text" 
+              id="adminToken" 
+              value="940128" 
+              maxlength="6"
+              required 
+              class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-emerald-400 text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono tracking-widest text-center"
+            />
+          </div>
+        </div>
+
+        <button type="submit" id="adminLoginBtn" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl flex items-center justify-center gap-2 cursor-pointer">
+          <span>⚙️</span> ACCESS GUILD ADMIN CONSOLE →
+        </button>
+      </form>
+
+      <!-- Quick 1-Click Fast Admin Demos -->
+      <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex gap-2">
+          <button type="button" onclick="quickAdminDemo('Admin')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-antiqueGold/20 border border-white/10 text-stone-300 hover:text-champagne font-mono transition">
+            👑 Quick Admin
+          </button>
+          <button type="button" onclick="quickAdminDemo('Supplier')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-antiqueGold/20 border border-white/10 text-stone-300 hover:text-champagne font-mono transition">
+            🏭 Quick Guild
+          </button>
+        </div>
+
+        <a href="customer-login.html" class="text-xs text-stone-400 hover:text-champagne font-cinzel transition">
+          👑 Enter Customer Portal →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="w-full text-center py-6 text-xs text-stone-400 font-sans space-y-1">
+    <p class="font-cinzel tracking-wider text-champagne text-[11px]">
+      FRIENDS FURNITURE • GUILD REGISTRY & PROTOCOL ADMIN
+    </p>
+    <p class="text-[10px] text-stone-500">
+      Restricted Guild Personnel Only. Cryptographic Audit Active.
+          <span>⚜️</span> <span id="toastText">Authenticating...</span>
+  </div>
+
+  <!-- Core Free-Tier Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/analytics.js"></script>
+
+  <script>
+    const adminRoles = {
+      Admin: {
+        email: "master.artisan@friendsfurniture.com",
+        name: "Palace Registry Admin",
+        role: "admin",
+        redirect: "admin-passport.html"
+      },
+      Supplier: {
+        email: "nilambur.teakguild@friendsfurniture.com",
+        name: "Master Guild Artisan K. Ramanathan",
+        role: "supplier",
+        redirect: "admin-passport.html"
+      },
+      Showroom: {
+        email: "hyderabad.showroom@friendsfurniture.com",
+        name: "Hyderabad Flagship Showroom",
+        role: "showroom_owner",
+        redirect: "admin-passport.html"
+      }
+    };
+
+    let activeAdminRole = "Admin";
+
+    function selectAdminRole(role) {
+      activeAdminRole = role;
+      document.querySelectorAll('.role-btn').forEach(el => el.classList.remove('active'));
+      const activeEl = document.getElementById(`admRole-${role}`);
+      if (activeEl) activeEl.classList.add('active');
+
+      const profile = adminRoles[role];
+      if (profile) {
+        document.getElementById('adminEmail').value = profile.email;
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
+      if (!toast || !toastText) return;
+      toastText.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function quickAdminDemo(role) {
+      selectAdminRole(role);
+      const roleKey = role === 'Showroom' ? 'showroom_owner' : role.toLowerCase();
+      const res = FF_Auth.demoLoginAs(roleKey);
+      showToast(`Signed in as ${res.user.name}! Opening Guild Console...`);
+      setTimeout(() => {
+        window.location.href = "admin-passport.html";
+      }, 600);
+    }
+
+    async function handleAdminLogin(e) {
+      if (e) e.preventDefault();
+      const email = document.getElementById('adminEmail').value.trim();
+      const pass = document.getElementById('adminPassword') ? document.getElementById('adminPassword').value : "guildMaster2026";
+      const roleKey = activeAdminRole === 'Showroom' ? 'showroom_owner' : activeAdminRole.toLowerCase();
+
+      const btn = document.getElementById('adminLoginBtn');
+      if (btn) {
+        btn.innerHTML = `<span>⏳</span> Authenticating Guild Key...`;
+        btn.disabled = true;
+      }
+
+      showToast(`Authenticating Master Guild Console...`);
+
+      const res = await FF_Auth.signIn(email, pass, roleKey);
+      if (res.success) {
+        showToast(`Master Key Verified for ${res.user.name}! Opening Console...`);
+        setTimeout(() => {
+          window.location.href = "admin-passport.html";
+        }, 500);
+      } else {
+        showToast(res.error || "Guild authentication failed.");
+        if (btn) {
+          btn.innerHTML = `<span>⚙️</span> ACCESS GUILD ADMIN CONSOLE →`;
+          btn.disabled = false;
+        }
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

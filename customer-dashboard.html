@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palace Command Center | FRIENDS FURNITURE — Comfort For Life</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS for OpenStreetMap (100% Free) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Lucide Icons (Free & Open Source) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Command Center Specific Styling */
+    .saas-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.85) 0%, rgba(27, 11, 54, 0.88) 50%, rgba(5, 5, 5, 0.96) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.75), 0 0 20px rgba(201, 162, 39, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .saas-card:hover {
+      border-color: #F1D78B;
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.9), 0 0 25px rgba(201, 162, 39, 0.25);
+    }
+
+    .saas-card-featured {
+      background: linear-gradient(135deg, rgba(11, 31, 77, 0.92) 0%, rgba(36, 16, 79, 0.95) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid rgba(241, 215, 139, 0.6);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px rgba(201, 162, 39, 0.25);
+    }
+
+    .audio-bar { animation: audioPulse 1.4s ease-in-out infinite alternate; }
+    @keyframes audioPulse {
+      0% { height: 4px; }
+      100% { height: 24px; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ 1. TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 border-b border-antiqueGold/30 sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Platform Core Apps & Portals -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+          <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+            <span>👑</span> Palace Dashboard
+          </a>
+          <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🪞</span> Furniture Twin
+          </a>
+          <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>✨</span> Smart Studio
+          </a>
+          <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🧬</span> Digital Passport
+          </a>
+          <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛍️</span> Categories
+          </a>
+          <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+            <span>🛋️</span> Products
+          </a>
+        </div>
+
+        <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+        <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+          <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🏰 Home
+          </a>
+          <a href="#twinsSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🪞 My Twins
+          </a>
+          <a href="categories.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛍️ Categories
+          </a>
+          <a href="living-room.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🛋️ Products
+          </a>
+          <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            ✨ Smart Studio
+          </a>
+          <a href="#ordersSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            🚚 Track Order
+          </a>
+          <a href="#memberSec" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+            💎 Rewards
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Session Status -->
+      <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+        <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]" id="userPointsDisplay">
+          👑 VIP Gold (4,250 PTS)
+        </span>
+        <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+          <span>🔔</span> Notifications
+          <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+        </button>
+        <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+          🚪 Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 2. MAIN STICKY NAVBAR -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl sticky top-9 z-40">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group shrink-0">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Furniture Command Center
+          </span>
+        </div>
+      </a>
+
+      <!-- Search Trigger -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-4 relative cursor-pointer ff-search-trigger">
+        <span class="absolute left-3.5 text-stone-400 text-sm">🔍</span>
+        <input 
+          type="text" 
+          readonly
+          placeholder="Search registered furniture, telemetry, warranty..." 
+          class="w-full bg-black/70 border border-antiqueGold/40 rounded-2xl py-2 pl-10 pr-4 text-xs text-white placeholder-stone-500 cursor-pointer focus:outline-none font-sans"
+        />
+        <span class="absolute right-3 text-[10px] text-stone-400 font-mono bg-white/10 px-1.5 py-0.5 rounded">Ctrl+K</span>
+      </div>
+
+      <!-- Quick Action Utilities -->
+      <div class="flex items-center gap-3">
+        <!-- Wishlist -->
+        <button onclick="FF_Wishlist.toggle('ff-101')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-antiqueGold/30 text-stone-200 relative transition" title="Royal Wishlist">
+          <span class="text-base">❤️</span>
+          <span class="ff-wishlist-badge absolute top-1 right-1 w-4 h-4 bg-antiqueGold text-black text-[9px] font-black rounded-full flex items-center justify-center">2</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="ff-cart-trigger btn-gold px-3.5 py-2 rounded-xl text-xs font-cinzel font-black flex items-center gap-1.5 shadow-xl">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Palace Cart</span>
+          <span class="ff-cart-badge bg-black text-antiqueGold text-[10px] font-black px-1.5 py-0.2 rounded-full">1</span>
+        </button>
+
+        <!-- User Profile Avatar -->
+        <div class="flex items-center gap-2.5 pl-2 border-l border-white/15">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-champagne to-antiqueGold text-black font-cinzel font-black text-sm flex items-center justify-center shadow-lg border border-white/40">
+            H
+          </div>
+          <div class="hidden lg:block text-left">
+            <span class="text-xs font-cinzelDecor font-bold text-white block">Maharaja Hari 👑</span>
+            <span class="text-[9px] text-champagne font-cinzel font-bold tracking-widest block uppercase">Gold Palace Tier</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 🌟 3. MAIN DASHBOARD CONTAINER (FULL-WIDTH ASYMMETRIC GRID) -->
+  <div class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-1 flex flex-col xl:flex-row gap-8">
+
+    <!-- 🧭 FIXED LEFT SIDEBAR NAVIGATION (ROYAL PALACE EDITION) -->
+    <aside class="w-full xl:w-72 shrink-0 space-y-6 hidden xl:block">
+      <div class="saas-card p-6 space-y-5 text-xs border-2 border-antiqueGold/50 bg-[#07142F]/95 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.95)] rounded-3xl sticky top-28">
+        
+        <!-- Brand Emblem Card -->
+        <div class="flex items-center gap-3 pb-3 border-b border-antiqueGold/30">
+          <div class="w-11 h-11 rounded-xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_12px_rgba(201,162,39,0.6)] bg-black shrink-0">
+            <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Logo" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <span class="font-cinzelDecor font-black text-xs gold-gradient-text block leading-tight">FRIENDS FURNITURE</span>
+            <span class="text-[9px] text-champagne font-sans block">Comfort for Life</span>
+          </div>
+        </div>
+
+        <!-- SECTION 1: PALACE RESIDENCE -->
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 px-3 pb-1 border-b border-antiqueGold/30">
+            <span class="text-xs">⚜️</span>
+            <span class="font-cinzelDecor text-[11px] font-black tracking-[0.2em] gold-gradient-text">
+              PALACE RESIDENCE
+            </span>
+          </div>
+          
+          <a href="#overviewSec" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#050505] bg-gradient-to-r from-[#FFF8E7] via-[#F1D78B] to-[#C9A227] font-cinzel font-black text-xs tracking-wider shadow-[0_0_20px_rgba(201,162,39,0.5)] border border-white/60 transition transform hover:scale-[1.02]">
+            <span class="text-lg">📊</span>
+            <span>Executive Overview</span>
+          </a>
+
+          <a href="#twinsSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-champagne hover:text-white hover:bg-antiqueGold/20 border border-antiqueGold/40 font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">🪞</span>
+            <span>My Furniture Twins</span>
+          </a>
+          
+          <a href="smart-studio.html" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">✨</span>
+            <span>Smart Studio Atelier</span>
+          </a>
+
+          <a href="#chamberSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">🏛️</span>
+            <span>3D Chamber Map</span>
+          </a>
+          
+          <a href="furniture-passport.html?id=FF-2026-00125" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">🧬</span>
+            <span>Digital Life Passport</span>
+          </a>
+          
+          <a href="#ordersSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">🚚</span>
+            <span>6-Stage Live Tracking</span>
+          </a>
+
+          <a href="#vaultManagerSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">💳</span>
+            <span>Addresses & Payment Vault</span>
+          </a>
+        </div>
+
+        <!-- SECTION 2: CONCIERGE & CARE -->
+        <div class="space-y-2 pt-4 border-t border-antiqueGold/30">
+          <div class="flex items-center gap-2 px-3 pb-1 border-b border-antiqueGold/30">
+            <span class="text-xs">⚜️</span>
+            <span class="font-cinzelDecor text-[11px] font-black tracking-[0.2em] gold-gradient-text">
+              CONCIERGE & CARE
+            </span>
+          </div>
+          
+          <a href="#aiConciergeSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">👑</span>
+            <span>Maharani AI Butler</span>
+          </a>
+          
+          <a href="#memberSec" class="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-stone-300 hover:text-champagne hover:bg-white/5 hover:border-antiqueGold/40 border border-transparent font-cinzel font-bold text-xs tracking-wider transition group">
+            <span class="text-lg group-hover:scale-110 transition duration-300">💎</span>
+            <span>Royal Circle Rewards</span>
+          </a>
+        </div>
+
+        <!-- SECTION 3: SESSION CONTROLS -->
+        <div class="pt-4 border-t border-antiqueGold/30">
+          <a href="login.html" class="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl text-rose-300 hover:text-white bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/40 hover:border-rose-400 shadow transition font-cinzel font-black text-xs uppercase tracking-widest">
+            <span class="text-base">🚪</span>
+            <span>Switch Role / Exit</span>
+          </a>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- 👑 MAIN CONTENT DASHBOARD GRID -->
+    <main class="flex-1 space-y-8 overflow-hidden">
+      
+      <!-- 👑 ROW 1: WELCOME OVERVIEW (50%) + SALES SUMMARY (25%) + QUICK ACTION PANEL (25%) -->
+      <section class="grid grid-cols-12 gap-6" id="overviewSec">
+        
+        <!-- Large Welcome & Business Overview (6 Cols) -->
+        <div class="col-span-12 lg:col-span-6 saas-card-featured relative overflow-hidden flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 badge-gold text-[9px] font-cinzel font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              <span>⚜️</span> LOTUS PALACE VILLA • 3,450 SQ.FT • INTELLIGENCE 2.0
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight">
+              PALACE COMMAND CENTER
+            </h1>
+            <p class="text-sm text-champagne font-pinyon">
+              “Welcome back, Maharaja Hari. All 8 registered masterpieces operating at 94.2% optimal condition.”
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 pt-2 text-center text-xs">
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 block text-[10px]">Registered Twins</span>
+              <strong class="text-champagne font-cinzel font-black text-lg">8 Items</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 block text-[10px]">Active Chambers</span>
+              <strong class="text-white font-cinzel font-black text-lg">3 Rooms</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 block text-[10px]">Health Index</span>
+              <strong class="text-emerald-400 font-cinzel font-black text-lg">94.2 🟢</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Portfolio & Revenue Summary (3 Cols) -->
+        <div class="col-span-12 sm:col-span-6 lg:col-span-3 saas-card flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] text-stone-400 font-cinzel uppercase block">PORTFOLIO VALUATION</span>
+              <h3 class="text-2xl font-cinzel font-black text-champagne mt-0.5">₹4,85,000</h3>
+            </div>
+            <span class="text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-md">
+              +14.2% YoY
+            </span>
+          </div>
+
+          <div class="space-y-1.5 text-xs text-stone-300 font-sans">
+            <div class="flex justify-between"><span>Old-Growth Teak Delta:</span><strong class="text-emerald-400">+₹42,000</strong></div>
+            <div class="flex justify-between"><span>Royal Circle Rewards:</span><strong class="text-champagne font-mono" id="rewardsDisplayVal">4,250 PTS</strong></div>
+            <div class="flex justify-between"><span>Warranty Vault:</span><strong class="text-white">6 Active</strong></div>
+          </div>
+
+          <a href="furniture-passport.html?id=FF-2026-00125#valuationSec" class="btn-outline-gold w-full py-2 rounded-xl text-[10px] font-cinzel font-bold text-center block">
+            VIEW VALUATION AUDIT →
+          </a>
+        </div>
+
+        <!-- Quick Actions Panel with Smart Studio (3 Cols) -->
+        <div class="col-span-12 sm:col-span-6 lg:col-span-3 saas-card flex flex-col justify-between space-y-2.5">
+          <div class="flex justify-between items-center border-b border-white/10 pb-2">
+            <span class="font-cinzel font-bold text-xs text-champagne">QUICK ACTIONS</span>
+            <span class="text-stone-400 text-xs">⚡ Actions</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <a href="smart-studio.html" class="p-2 bg-black/60 hover:bg-antiqueGold/20 border border-antiqueGold/30 rounded-xl text-center transition block">
+              <span class="text-sm block mb-0.5">✨</span>
+              <span class="text-[9px] font-cinzel font-bold text-white block">Smart Studio</span>
+            </a>
+            <a href="categories.html" class="p-2 bg-black/60 hover:bg-antiqueGold/20 border border-antiqueGold/30 rounded-xl text-center transition block">
+              <span class="text-sm block mb-0.5">🛍️</span>
+              <span class="text-[9px] font-cinzel font-bold text-white block">Create Order</span>
+            </a>
+            <a href="#ordersSec" class="p-2 bg-black/60 hover:bg-antiqueGold/20 border border-antiqueGold/30 rounded-xl text-center transition block">
+              <span class="text-sm block mb-0.5">🚚</span>
+              <span class="text-[9px] font-cinzel font-bold text-white block">Track Delivery</span>
+            </a>
+            <a href="admin-passport.html" class="p-2 bg-black/60 hover:bg-antiqueGold/20 border border-antiqueGold/30 rounded-xl text-center transition block">
+              <span class="text-sm block mb-0.5">🛡️</span>
+              <span class="text-[9px] font-cinzel font-bold text-white block">Guild Console</span>
+            </a>
+          </div>
+
+          <button onclick="window.FF_Toast('Palace Executive Report generated: 8 Registered Heirlooms, ₹4,85,000 Portfolio, 98.2% Supplier Reliability.');" class="btn-gold w-full py-2 rounded-xl text-[10px] font-cinzel font-black text-center block shadow">
+            📄 VIEW REPORTS
+          </button>
+        </div>
+
+      </section>
+
+      <!-- 🪞 ROW 2: MY FURNITURE TWINS (SIGNATURE LIVING DIGITAL REPRESENTATION ENGINE) -->
+      <section class="saas-card-featured space-y-6" id="twinsSec">
+        
+        <!-- Header Strip -->
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-antiqueGold/30 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded uppercase">Signature Feature</span>
+              <span class="bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 6 Active Twins
+              </span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+              MY FURNITURE TWINS
+            </h2>
+            <p class="text-xs text-stone-300 font-sans">
+              Living digital representations of your purchased furniture throughout their ownership journey.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <a href="furniture-twin.html" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1.5">
+              <span>🪞</span> Open Full Twin Studio →
+            </a>
+          </div>
+        </div>
+
+        <!-- Room Filter Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 bg-black/60 p-3 rounded-2xl border border-white/10 font-sans text-xs">
+          <div class="flex flex-wrap items-center gap-2" id="dashboardTwinRoomFilter">
+            <button onclick="filterDashboardTwins('All', this)" class="px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-antiqueGold text-black font-black shadow transition">
+              All Rooms (6)
+            </button>
+            <button onclick="filterDashboardTwins('Living Room', this)" class="px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 transition">
+              Living Room (3)
+            </button>
+            <button onclick="filterDashboardTwins('Bedroom', this)" class="px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 transition">
+              Bedroom (1)
+            </button>
+            <button onclick="filterDashboardTwins('Dining Room', this)" class="px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 transition">
+              Dining Room (1)
+            </button>
+            <button onclick="filterDashboardTwins('Office', this)" class="px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 transition">
+              Office (1)
+            </button>
+          </div>
+
+          <span class="text-[11px] text-stone-400 font-cinzel hidden md:inline">
+            ✨ Permanent Memory & Real-Time Telemetry
+          </span>
+        </div>
+
+        <!-- Digital Twin Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="dashboardTwinsContainer">
+          
+          <!-- Twin Card 1: Imperial Sofa -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="The Imperial Royal Sofa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-SF2048-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Living Room (Grand Salon)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 94%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Imperial Royal Sofa</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Sofa → Emerald Palace Velvet → Nilambur Teak → 3-Seater
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">28 Jul 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">10-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-SF2048-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-SF2048-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-SF2048-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+          <!-- Twin Card 2: Sovereign Dining -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80" alt="The Sovereign Dining Suite" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-SD3091-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Dining Room (Banquet Hall)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 96%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Sovereign Dining Suite</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Dining Suite → Amber Sheesham → Brass Sled → 8-Seater
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">20 Jun 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">10-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-SD3091-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-SD3091-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-SD3091-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+          <!-- Twin Card 3: Majesty King Bed -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="The Majesty King Canopy Bed" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-MB4012-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Bedroom (Master Suite)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 92%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Majesty King Canopy Bed</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Bed → Ivory Velvet → White Oak Finish → King Grand
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">02 Jul 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">15-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-MB4012-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-MB4012-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-MB4012-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+          <!-- Twin Card 4: Chancellor Desk -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80" alt="The Chancellor Executive Desk" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-ED5021-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Office (Private Study)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 95%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Chancellor Executive Desk</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Desk → Obsidian Leather Pad → Teak → 72" Grand
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">10 Aug 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">10-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-ED5021-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-ED5021-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-ED5021-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+          <!-- Twin Card 5: Empress Armchair -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="The Empress Bouclé Armchair" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-AC6019-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Living Room (Reading Nook)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 98%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Empress Bouclé Armchair</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Armchair → Ivory Bouclé → Brass Swivel Base
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">05 Aug 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">5-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-AC6019-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-AC6019-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-AC6019-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+          <!-- Twin Card 6: Versailles Marble Table -->
+          <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+            <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+              <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80" alt="The Versailles Marble Coffee Table" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">TWIN-CT7034-HYD</span>
+              <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-champagne font-cinzel font-bold">📍 Living Room (Grand Salon)</span>
+                <span class="text-[10px] text-emerald-400 font-bold">Health: 97%</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-base text-white mt-0.5">The Versailles Marble Coffee Table</h4>
+              <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+                Coffee Table → Calacatta Marble → Teak Base
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+              <div>Purchased: <strong class="text-white">28 Jul 2026</strong></div>
+              <div class="text-right">Warranty: <strong class="text-emerald-400">10-Yr Active</strong></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-1">
+              <a href="furniture-twin.html?id=TWIN-CT7034-HYD&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Simulate 🎨
+              </a>
+              <a href="furniture-twin.html?id=TWIN-CT7034-HYD&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+                Memory 🧬
+              </a>
+              <a href="furniture-twin.html?id=TWIN-CT7034-HYD" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+                Deep Dive 🪞
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- 🚚 ROW 3: ADVANCED 6-STAGE LIVE ORDER TRACKING & RECENT ORDERS TABLE -->
+      <section class="space-y-6" id="ordersSec">
+        
+        <!-- Live 6-Stage Tracking Timeline Showcase Card -->
+        <div class="saas-card-featured space-y-6">
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-antiqueGold/30 pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="badge-gold text-[9px] font-mono font-bold px-2 py-0.5 rounded">ORDER #FF2048</span>
+                <span class="bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Out for Delivery 🟢</span>
+              </div>
+              <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+                6-STAGE LIVE ORDER TRACKING
+              </h2>
+              <p class="text-xs text-stone-300 font-sans">The Imperial Royal Palace Sofa • Nilambur Teak Guild</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="window.FF_Tracking.openModal('FF2048')" class="btn-gold px-4 py-2 rounded-xl text-xs font-cinzel font-black shadow-lg">
+                📡 Open Real-Time Radar
+              </button>
+            </div>
+          </div>
+
+          <!-- 6-Stage Visual Interactive Timeline Track -->
+          <div class="py-2">
+            <div class="grid grid-cols-6 gap-2 text-center text-xs font-cinzel">
+              
+              <!-- Stage 1 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-black font-black flex items-center justify-center text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                  ✓
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-white block">Confirmed</span>
+                  <span class="text-[8px] text-stone-400 font-mono block">28 Aug, 10:30 AM</span>
+                </div>
+              </div>
+
+              <!-- Stage 2 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-black font-black flex items-center justify-center text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                  ✓
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-white block">Processing</span>
+                  <span class="text-[8px] text-stone-400 font-mono block">29 Aug, 02:15 PM</span>
+                </div>
+              </div>
+
+              <!-- Stage 3 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-black font-black flex items-center justify-center text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                  ✓
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-white block">Packed</span>
+                  <span class="text-[8px] text-stone-400 font-mono block">30 Aug, 11:00 AM</span>
+                </div>
+              </div>
+
+              <!-- Stage 4 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-500 text-black font-black flex items-center justify-center text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)]">
+                  ✓
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-white block">Shipped</span>
+                  <span class="text-[8px] text-stone-400 font-mono block">31 Aug, 08:30 AM</span>
+                </div>
+              </div>
+
+              <!-- Stage 5 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-antiqueGold text-black font-black flex items-center justify-center text-xs shadow-[0_0_15px_rgba(201,162,39,0.8)] animate-pulse">
+                  5
+                </div>
+                <div>
+                  <span class="text-[10px] font-black text-champagne block">Out For Delivery</span>
+                  <span class="text-[8px] text-emerald-400 font-mono font-bold block">Today, ETA 12m</span>
+                </div>
+              </div>
+
+              <!-- Stage 6 -->
+              <div class="space-y-2">
+                <div class="w-8 h-8 mx-auto rounded-full bg-black/80 border border-white/20 text-stone-500 font-bold flex items-center justify-center text-xs">
+                  6
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold text-stone-500 block">Delivered</span>
+                  <span class="text-[8px] text-stone-600 font-mono block">Pending Arrival</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-1.5 bg-black/80 rounded-full mt-4 overflow-hidden border border-white/10">
+              <div class="h-full bg-gradient-to-r from-emerald-500 via-antiqueGold to-champagne w-[83%] animate-pulse"></div>
+            </div>
+          </div>
+
+          <!-- Driver & Van Telemetry Mini-Strip -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs pt-3 border-t border-white/10 font-sans">
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 text-[10px] block">Fleet Van:</span>
+              <strong class="text-white font-mono">Air-Suspension Van #WF-402</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 text-[10px] block">White-Glove Butler:</span>
+              <strong class="text-champagne">Vikram Sharma (99.4% On-Time)</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 text-[10px] block">Vibration / G-Sensor:</span>
+              <strong class="text-emerald-400 font-mono">0.02G (Safe Air Ride)</strong>
+            </div>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/10">
+              <span class="text-stone-400 text-[10px] block">Destination:</span>
+              <strong class="text-stone-200">Lotus Palace Villa, Jubilee Hills</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <div class="saas-card space-y-4">
+          <div class="flex justify-between items-center border-b border-white/10 pb-3">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded uppercase">Supply Chain Ledger</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-0.5">ALL PALACE ORDERS</h3>
+            </div>
+            <a href="living-room.html" class="text-xs text-champagne font-cinzel font-bold hover:underline">
+              Place New Order →
+            </a>
+          </div>
+
+          <!-- Aligned Table Container -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead>
+                <tr class="text-stone-400 uppercase">
+                  <th class="pb-3 px-2">Order ID</th>
+                  <th class="pb-3 px-2">Masterpiece</th>
+                  <th class="pb-3 px-2">Chamber</th>
+                  <th class="pb-3 px-2 text-right">Amount</th>
+                  <th class="pb-3 px-2">Status</th>
+                  <th class="pb-3 px-2">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5">
+                <tr>
+                  <td class="font-mono text-champagne font-bold py-3 px-2">#FF2048</td>
+                  <td class="font-bold text-white py-3 px-2">The Imperial Royal Sofa</td>
+                  <td class="text-stone-400 py-3 px-2">Grand Salon</td>
+                  <td class="text-right font-bold text-champagne py-3 px-2">₹89,999</td>
+                  <td class="py-3 px-2"><span class="badge-gold text-[8px] bg-emerald-950 text-emerald-400 border-emerald-500/40">Out for Delivery 🟢</span></td>
+                  <td class="py-3 px-2">
+                    <button onclick="window.FF_Tracking.openModal('FF2048')" class="text-xs text-champagne font-cinzel font-bold underline mr-2">Track 📡</button>
+                    <a href="furniture-passport.html?id=FF-2026-00125" class="text-xs text-stone-400 font-cinzel hover:underline">Passport 🧬</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-champagne font-bold py-3 px-2">#FF3091</td>
+                  <td class="font-bold text-white py-3 px-2">The Sovereign Dining Suite</td>
+                  <td class="text-stone-400 py-3 px-2">Banquet Hall</td>
+                  <td class="text-right font-bold text-champagne py-3 px-2">₹1,45,000</td>
+                  <td class="py-3 px-2"><span class="badge-gold text-[8px] bg-blue-950 text-blue-300 border-blue-500/40">Delivered ✓</span></td>
+                  <td class="py-3 px-2">
+                    <button onclick="window.FF_Tracking.openModal('FF3091')" class="text-xs text-champagne font-cinzel font-bold underline mr-2">History 📡</button>
+                    <a href="furniture-passport.html?id=FF-2026-00126" class="text-xs text-stone-400 font-cinzel hover:underline">Passport 🧬</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-mono text-champagne font-bold py-3 px-2">#FF4012</td>
+                  <td class="font-bold text-white py-3 px-2">The Majesty King Canopy Bed</td>
+                  <td class="text-stone-400 py-3 px-2">Master Suite</td>
+                  <td class="text-right font-bold text-champagne py-3 px-2">₹1,19,999</td>
+                  <td class="py-3 px-2"><span class="badge-gold text-[8px] bg-blue-950 text-blue-300 border-blue-500/40">Delivered ✓</span></td>
+                  <td class="py-3 px-2">
+                    <button onclick="window.FF_Tracking.openModal('FF4012')" class="text-xs text-champagne font-cinzel font-bold underline mr-2">History 📡</button>
+                    <a href="furniture-passport.html?id=FF-2026-00127" class="text-xs text-stone-400 font-cinzel hover:underline">Passport 🧬</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 💳 ROW 3: SAVED ADDRESSES & PAYMENT / EMI VAULT MANAGER -->
+      <section class="grid grid-cols-12 gap-6" id="vaultManagerSec">
+        
+        <!-- Saved Addresses (6 Cols) -->
+        <div class="col-span-12 lg:col-span-6 saas-card space-y-4">
+          <div class="flex justify-between items-center border-b border-white/10 pb-3">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded uppercase">Palace Logistics</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-0.5">SAVED ADDRESSES</h3>
+            </div>
+            <button onclick="window.FF_Toast('Address added to Palace Directory.')" class="btn-outline-gold text-[10px] px-3 py-1.5 rounded-lg">
+              + Add Address
+            </button>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Address 1 -->
+            <div class="p-4 bg-black/60 rounded-2xl border border-antiqueGold/50 space-y-2 relative">
+              <div class="flex justify-between items-center">
+                <span class="badge-gold text-[8px]">DEFAULT RESIDENCE</span>
+                <span class="text-stone-400 text-xs">Pincode: <strong>500033</strong></span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white">Lotus Palace Villa (Primary Showroom)</h4>
+              <p class="text-xs text-stone-300 font-sans leading-relaxed">
+                Plot 48, Road No. 36, Jubilee Hills, Hyderabad, Telangana, 500033
+              </p>
+              <div class="flex justify-between items-center pt-2 border-t border-white/10 text-[10px] text-stone-400">
+                <span>Contact: Maharaja Hari (+91 98765 43210)</span>
+                <span class="text-emerald-400 font-bold">✓ White-Glove Staged</span>
+              </div>
+            </div>
+
+            <!-- Address 2 -->
+            <div class="p-4 bg-black/40 rounded-2xl border border-white/10 space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-stone-400 text-[10px] font-cinzel">SUMMER RETREAT</span>
+                <span class="text-stone-400 text-xs">Pincode: <strong>679329</strong></span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white">Nilambur Forest Villa</h4>
+              <p class="text-xs text-stone-300 font-sans leading-relaxed">
+                Teak Valley Estate, Nilambur, Malappuram, Kerala, 679329
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved Payment & EMI Vault (6 Cols) -->
+        <div class="col-span-12 lg:col-span-6 saas-card space-y-4">
+          <div class="flex justify-between items-center border-b border-white/10 pb-3">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded uppercase">Biometric Security</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-0.5">SAVED PAYMENT & EMI VAULT</h3>
+            </div>
+            <button onclick="window.FF_Toast('New payment card tokenized with 256-Bit SSL.')" class="btn-outline-gold text-[10px] px-3 py-1.5 rounded-lg">
+              + Add Card
+            </button>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Card 1 -->
+            <div class="p-4 bg-gradient-to-r from-royalNavy via-royalPurple to-black rounded-2xl border border-antiqueGold/50 space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="font-cinzel font-bold text-xs text-champagne">HDFC INFINIA METAL</span>
+                <span class="badge-gold text-[8px]">0% NO-COST EMI ENABLED</span>
+              </div>
+              <div class="font-mono text-base tracking-widest text-white">
+                •••• •••• •••• 8842
+              </div>
+              <div class="flex justify-between items-center text-[10px] text-stone-300 font-mono">
+                <span>EXP: 09/29</span>
+                <span>CARDHOLDER: MAHARAJA HARI</span>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="p-4 bg-black/60 rounded-2xl border border-white/10 space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="font-cinzel font-bold text-xs text-stone-300">ICICI EMERALDE PRIVATE</span>
+                <span class="text-[10px] text-emerald-400 font-mono">₹5,00,000 Instant Limit</span>
+              </div>
+              <div class="font-mono text-sm tracking-widest text-stone-400">
+                •••• •••• •••• 1093
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 💎 ROW 4: VIP GOLD REWARDS & POINTS REDEMPTION SIMULATOR -->
+      <section class="saas-card-featured space-y-6" id="memberSec">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-antiqueGold/30 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">PALACE LOYALTY PROTOCOL</span>
+              <span class="text-champagne text-xs font-mono font-bold" id="currentPointsBalance">4,250 AVAILABLE PTS</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-cinzelDecor font-black text-white gold-gradient-text mt-1">
+              VIP GOLD MEMBERSHIP & REWARDS REDEMPTION
+            </h2>
+            <p class="text-xs text-stone-300 font-sans">Accumulate points on every handcrafted heirloom purchase & care booking.</p>
+          </div>
+
+          <div class="text-right">
+            <span class="text-xs text-stone-400 block font-cinzel">Tier Status</span>
+            <span class="font-cinzelDecor font-bold text-base text-champagne">GOLD PALACE RESIDENCE</span>
+          </div>
+        </div>
+
+        <!-- 3 Redemption Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans">
+          
+          <!-- Redeem 1 -->
+          <div class="p-4 bg-black/60 rounded-2xl border border-antiqueGold/40 space-y-3 flex flex-col justify-between">
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center">
+                <span class="text-xl">💳</span>
+                <span class="badge-gold text-[8px]">1,000 PTS</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white">₹1,500 Palace Checkout Credit</h4>
+              <p class="text-stone-400 text-[11px]">Instant ₹1,500 deduction applied to your cart portfolio checkout.</p>
+            </div>
+            <button onclick="redeemPoints(1000, '₹1,500 Palace Checkout Credit')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black">
+              Redeem 1,000 PTS
+            </button>
+          </div>
+
+          <!-- Redeem 2 -->
+          <div class="p-4 bg-black/60 rounded-2xl border border-antiqueGold/40 space-y-3 flex flex-col justify-between">
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center">
+                <span class="text-xl">🐝</span>
+                <span class="badge-gold text-[8px]">2,000 PTS</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white">Organic Teak Beeswax Polish Kit</h4>
+              <p class="text-stone-400 text-[11px]">Complimentary artisan organic beeswax jar with Egyptian cotton buffing mitt.</p>
+            </div>
+            <button onclick="redeemPoints(2000, 'Organic Teak Beeswax Polish Kit')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black">
+              Redeem 2,000 PTS
+            </button>
+          </div>
+
+          <!-- Redeem 3 -->
+          <div class="p-4 bg-black/60 rounded-2xl border border-antiqueGold/40 space-y-3 flex flex-col justify-between">
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center">
+                <span class="text-xl">🚚</span>
+                <span class="badge-gold text-[8px]">3,500 PTS</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white">Priority White-Glove Relocation</h4>
+              <p class="text-stone-400 text-[11px]">Complimentary intra-city palace furniture uninstallation & reinstallation.</p>
+            </div>
+            <button onclick="redeemPoints(3500, 'Priority White-Glove Relocation Pass')" class="btn-gold py-2 rounded-xl text-[10px] font-cinzel font-black">
+              Redeem 3,500 PTS
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 🤖 ROW 5: PERSONALIZED AI RECOMMENDATIONS SHELF -->
+      <section class="space-y-4">
+        <div class="flex justify-between items-center border-b border-antiqueGold/30 pb-3">
+          <div>
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded uppercase">Neural Genome Match</span>
+            <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-0.5">RECOMMENDED COMPANIONS FOR LOTUS PALACE</h3>
+          </div>
+          <a href="smart-studio.html#recommendationsSec" class="text-xs text-champagne font-cinzel font-bold hover:underline">
+            Open Recommendation Studio →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <!-- Rec 1 -->
+          <div class="palace-card p-4 space-y-3 flex flex-col justify-between group">
+            <div class="space-y-2">
+              <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <span class="absolute top-2 left-2 badge-gold text-[8px]">94% AI Match</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Empress Bouclé Armchair</h4>
+              <p class="text-[10px] text-stone-400 font-sans">Ivory Bouclé • Brushed Brass Swivel</p>
+              <div class="p-2 bg-antiqueGold/10 rounded-lg text-[9px] text-champagne">
+                💡 Perfect companion piece for your Grand Salon Imperial Sofa.
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t border-white/10">
+              <div class="flex justify-between items-baseline">
+                <span class="font-mono text-sm font-bold text-champagne">₹34,999</span>
+                <span class="text-[10px] text-emerald-400 font-mono">EMI ₹1,458/mo</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="FF_Cart.addItem('ff-105')" class="btn-gold text-[10px] py-1.5 rounded-lg">Add Cart</button>
+                <button data-compare-btn="ff-105" onclick="FF_Compare.toggle('ff-105')" class="btn-outline-gold text-[10px] py-1.5 rounded-lg">⚖️ Compare</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rec 2 -->
+          <div class="palace-card p-4 space-y-3 flex flex-col justify-between group">
+            <div class="space-y-2">
+              <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <span class="absolute top-2 left-2 badge-gold text-[8px]">92% AI Match</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Versailles Marble Coffee Table</h4>
+              <p class="text-[10px] text-stone-400 font-sans">Calacatta Gold • 24K Gold Frame</p>
+              <div class="p-2 bg-antiqueGold/10 rounded-lg text-[9px] text-champagne">
+                💡 18" height perfectly aligned with sofa seating tier.
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t border-white/10">
+              <div class="flex justify-between items-baseline">
+                <span class="font-mono text-sm font-bold text-champagne">₹42,999</span>
+                <span class="text-[10px] text-emerald-400 font-mono">EMI ₹1,791/mo</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="FF_Cart.addItem('ff-106')" class="btn-gold text-[10px] py-1.5 rounded-lg">Add Cart</button>
+                <button data-compare-btn="ff-106" onclick="FF_Compare.toggle('ff-106')" class="btn-outline-gold text-[10px] py-1.5 rounded-lg">⚖️ Compare</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rec 3 -->
+          <div class="palace-card p-4 space-y-3 flex flex-col justify-between group">
+            <div class="space-y-2">
+              <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <span class="absolute top-2 left-2 badge-gold text-[8px]">91% AI Match</span>
+              </div>
+              <h4 class="font-cinzel font-bold text-sm text-white group-hover:text-champagne transition">The Chancellor Executive Desk</h4>
+              <p class="text-[10px] text-stone-400 font-sans">Solid Teak • Italian Leather Blotter</p>
+              <div class="p-2 bg-antiqueGold/10 rounded-lg text-[9px] text-champagne">
+                💡 Seasoned teak matching your master suite canopy bed.
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t border-white/10">
+              <div class="flex justify-between items-baseline">
+                <span class="font-mono text-sm font-bold text-champagne">₹64,999</span>
+                <span class="text-[10px] text-emerald-400 font-mono">EMI ₹2,708/mo</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="FF_Cart.addItem('ff-104')" class="btn-gold text-[10px] py-1.5 rounded-lg">Add Cart</button>
+                <button data-compare-btn="ff-104" onclick="FF_Compare.toggle('ff-104')" class="btn-outline-gold text-[10px] py-1.5 rounded-lg">⚖️ Compare</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 🏛️ ROW 6: 3D CHAMBER VISUALIZER & MAHARANI AI BUTLER -->
+      <section class="grid grid-cols-12 gap-6" id="chamberSec">
+        
+        <!-- 3D Chamber Floorplan Visualizer (7 Cols) -->
+        <div class="col-span-12 lg:col-span-7 saas-card space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-white/10 pb-3">
+            <div>
+              <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.2 rounded uppercase">Spatial Digital Twin</span>
+              <h3 class="font-cinzelDecor font-bold text-base text-white gold-gradient-text mt-0.5">3D PALACE CHAMBER VISUALIZER</h3>
+            </div>
+            
+            <div class="flex bg-black/60 p-1 rounded-xl border border-antiqueGold/40 text-[10px] font-cinzel">
+              <button onclick="switchChamber('salon')" id="tabChamberSalon" class="px-2.5 py-1 rounded-lg bg-antiqueGold text-black font-black">Chamber 1</button>
+              <button onclick="switchChamber('banquet')" id="tabChamberBanquet" class="px-2.5 py-1 rounded-lg text-stone-300 hover:text-white">Chamber 2</button>
+              <button onclick="switchChamber('master')" id="tabChamberMaster" class="px-2.5 py-1 rounded-lg text-stone-300 hover:text-white">Chamber 3</button>
+            </div>
+          </div>
+
+          <div class="p-4 bg-black/70 rounded-2xl border border-white/10 space-y-3">
+            <div class="flex justify-between items-center text-xs font-mono">
+              <span class="text-champagne font-bold" id="chamberTitleTag">CHAMBER 1: GRAND ROYAL SALON (22ft × 18ft)</span>
+              <span class="text-emerald-400 font-bold">98% Harmony 🟢</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 text-center text-xs">
+              <div class="p-3 bg-[#07142F] rounded-xl border border-antiqueGold/40">
+                <span class="text-2xl block mb-1">🛋️</span>
+                <strong class="text-white block text-[11px]" id="chamberMainItemName">Imperial Royal Sofa</strong>
+                <span class="text-emerald-400 font-mono text-[10px] block">Health: 94/100</span>
+                <a href="furniture-passport.html?id=FF-2026-00125" class="mt-1 text-[9px] font-bold text-champagne underline block font-cinzel">Passport 🧬</a>
+              </div>
+              <div class="p-3 bg-black/60 rounded-xl border border-white/5">
+                <span class="text-2xl block mb-1">☕</span>
+                <strong class="text-stone-300 block text-[11px]">Versailles Table</strong>
+                <span class="text-champagne font-mono text-[10px] block">Health: 97/100</span>
+                <span class="text-[9px] text-stone-400 font-cinzel block mt-1">Centerpiece</span>
+              </div>
+              <div class="p-3 bg-emeraldPalace/40 rounded-xl border border-dashed border-emerald-500/40">
+                <span class="text-2xl block mb-1">🪑</span>
+                <strong class="text-emerald-300 block text-[11px]">Bouclé Chair</strong>
+                <span class="text-stone-300 text-[10px] block">Curated Match</span>
+                <a href="living-room.html" class="mt-1 text-[9px] font-bold text-emerald-400 underline block font-cinzel">View Piece</a>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center text-[10px] font-mono text-stone-400 pt-2 border-t border-white/5">
+              <span>Walking Clearance: 4.5 ft</span>
+              <span class="text-champagne font-bold">Micro-Climate: 23.5°C • 42% RH • 8.2% Timber Moisture</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maharani AI Voice & Butler Concierge (5 Cols) -->
+        <div class="col-span-12 lg:col-span-5 saas-card flex flex-col justify-between space-y-3" id="aiConciergeSec">
+          <div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-2.5">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-champagne to-antiqueGold text-black font-black flex items-center justify-center text-sm shadow">
+                  👑
+                </div>
+                <h3 class="font-cinzelDecor font-bold text-sm text-champagne">MAHARANI AI BUTLER</h3>
+              </div>
+              
+              <div class="flex items-center gap-1 bg-black/60 px-3 py-1 rounded-xl border border-antiqueGold/40">
+                <div class="w-1 bg-champagne rounded-full audio-bar" style="animation-delay: 0.1s; height: 12px;"></div>
+                <div class="w-1 bg-antiqueGold rounded-full audio-bar" style="animation-delay: 0.3s; height: 18px;"></div>
+                <div class="w-1 bg-champagne rounded-full audio-bar" style="animation-delay: 0.2s; height: 10px;"></div>
+              </div>
+            </div>
+
+            <p class="text-stone-200 font-serif italic text-xs leading-relaxed mt-3" id="conciergeSpeechText">
+              “Greetings, Maharaja Hari. Chamber 1 humidity is resting at 42% equilibrium. The White-Glove delivery team for your Imperial Sofa is 12 minutes away.”
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-[10px] font-cinzel font-bold">
+            <button onclick="askConcierge('fengshui')" class="btn-outline-gold py-1.5 rounded-lg text-center">
+              ✨ Audit Feng Shui
+            </button>
+            <button onclick="askConcierge('teak')" class="btn-outline-gold py-1.5 rounded-lg text-center">
+              📈 10-Yr Teak ROI
+            </button>
+            <button onclick="askConcierge('beeswax')" class="btn-outline-gold py-1.5 rounded-lg text-center">
+              🐝 Schedule Wax
+            </button>
+            <button onclick="askConcierge('clearance')" class="btn-outline-gold py-1.5 rounded-lg text-center">
+              🚪 Entry Clearance
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- 🏛️ 4. STANDARDIZED PALACE FOOTER -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-8 mt-12">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left font-sans">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl overflow-hidden border border-antiqueGold/50 bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Logo" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor text-sm font-black gold-gradient-text block">FRIENDS FURNITURE</span>
+          <p class="text-[10px] text-champagne font-sans">Where Luxury Meets Comfort • Furniture For Friends. Comfort For Life.</p>
+        </div>
+      </div>
+      <div class="text-xs text-champagne font-cinzel font-semibold flex items-center gap-2 badge-gold px-4 py-1.5 rounded-full">
+        <span>👑</span> Active Palace Session: Maharaja Hari (Lotus Palace Villa)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Master Shared Interactivity Scripts -->
+  <script src="src/data/furnitureTwinData.js"></script>
+  <script src="assets/app-shared.js"></script>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // Dashboard Furniture Twin Filter
+    function filterDashboardTwins(roomName, btn) {
+      if (!window.FurnitureTwinDB) return;
+      const twins = window.FurnitureTwinDB.getTwinsByRoom(roomName);
+      const container = document.getElementById("dashboardTwinsContainer");
+      if (!container) return;
+
+      // Update button active styles
+      const filterGroup = document.getElementById("dashboardTwinRoomFilter");
+      if (filterGroup && btn) {
+        const buttons = filterGroup.querySelectorAll("button");
+        buttons.forEach(b => {
+          b.className = "px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 transition";
+        });
+        btn.className = "px-3 py-1.5 rounded-xl font-cinzel font-bold text-xs bg-antiqueGold text-black font-black shadow transition";
+      }
+
+      container.innerHTML = twins.map(t => `
+        <div class="bg-black/75 rounded-2xl border border-antiqueGold/35 p-4.5 space-y-4 hover:border-champagne transition shadow-xl font-sans relative group">
+          <div class="relative h-44 rounded-xl overflow-hidden bg-black border border-white/10">
+            <img src="${t.image}" alt="${t.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <span class="absolute top-2 left-2 badge-gold text-[9px] font-mono">${t.id}</span>
+            <span class="absolute top-2 right-2 bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded-full">Active & Living 🟢</span>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] text-champagne font-cinzel font-bold">📍 ${t.currentRoom} (${t.customRoomTag || 'Chamber'})</span>
+              <span class="text-[10px] text-emerald-400 font-bold">Health: ${t.healthScore}%</span>
+            </div>
+            <h4 class="font-cinzel font-bold text-base text-white mt-0.5">${t.name}</h4>
+            <p class="text-[11px] text-stone-300 font-mono mt-1 bg-black/60 px-2 py-1 rounded border border-white/10 truncate">
+              ${t.activeConfiguration.summaryText}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-[10px] border-t border-white/10 pt-2 text-stone-400 font-mono">
+            <div>Purchased: <strong class="text-white">${t.purchaseDate}</strong></div>
+            <div class="text-right">Warranty: <strong class="text-emerald-400">${t.warranty.status}</strong></div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 pt-1">
+            <a href="furniture-twin.html?id=${t.id}&tab=simulation" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+              Simulate 🎨
+            </a>
+            <a href="furniture-twin.html?id=${t.id}&tab=memory" class="py-1.5 px-2 bg-white/5 hover:bg-white/15 text-stone-200 text-[10px] font-cinzel font-bold rounded-lg border border-white/10 text-center transition">
+              Memory 🧬
+            </a>
+            <a href="furniture-twin.html?id=${t.id}" class="py-1.5 px-2 btn-gold text-black text-[10px] font-cinzel font-black rounded-lg text-center shadow">
+              Deep Dive 🪞
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    let userPoints = 4250;
+
+    function redeemPoints(pts, title) {
+      if (userPoints < pts) {
+        window.FF_Toast('Insufficient points balance.');
+        return;
+      }
+      userPoints -= pts;
+      document.getElementById('currentPointsBalance').innerText = `${userPoints.toLocaleString('en-IN')} AVAILABLE PTS`;
+      document.getElementById('rewardsDisplayVal').innerText = `${userPoints.toLocaleString('en-IN')} PTS`;
+      document.getElementById('userPointsDisplay').innerText = `👑 VIP Gold (${userPoints.toLocaleString('en-IN')} PTS)`;
+      window.FF_Toast(`🎉 Redeemed ${pts} PTS for "${title}"!`);
+    }
+
+    const chamberData = {
+      salon: {
+        title: "CHAMBER 1: GRAND ROYAL SALON (22ft × 18ft)",
+        mainItem: "Imperial Royal Sofa"
+      },
+      banquet: {
+        title: "CHAMBER 2: IMPERIAL BANQUET HALL (28ft × 16ft)",
+        mainItem: "Sovereign Dining Suite"
+      },
+      master: {
+        title: "CHAMBER 3: MASTER HERITAGE SUITE (24ft × 20ft)",
+        mainItem: "Majesty King Canopy Bed"
+      }
+    };
+
+    function switchChamber(key) {
+      const d = chamberData[key] || chamberData.salon;
+      document.getElementById('chamberTitleTag').innerText = d.title;
+      document.getElementById('chamberMainItemName').innerText = d.mainItem;
+
+      ['salon', 'banquet', 'master'].forEach(k => {
+        const tab = document.getElementById(`tabChamber${k.charAt(0).toUpperCase() + k.slice(1)}`);
+        if (k === key) {
+          tab.className = "px-2.5 py-1 rounded-lg bg-antiqueGold text-black font-black";
+        } else {
+          tab.className = "px-2.5 py-1 rounded-lg text-stone-300 hover:text-white";
+        }
+      });
+    }
+
+    function askConcierge(type) {
+      const speech = document.getElementById('conciergeSpeechText');
+      if (type === 'fengshui') {
+        speech.innerText = "✨ Feng Shui Audit Complete: The Grand Salon orientation allows natural sunrise illumination across the Nilambur teak grain with 98% positive spatial chi and 4.5ft walking clearance.";
+      } else if (type === 'teak') {
+        speech.innerText = "📈 Teak Valuation Simulation: Prime seasoned Nilambur teak is projected to appreciate by +14.5% over the next 10 years, yielding an estimated market value of ₹1,03,000.";
+      } else if (type === 'beeswax') {
+        speech.innerText = "🐝 Organic Beeswax Protocol Initiated: Bi-annual nourishing cycle pre-booked for 15 October 2026 under your Gold Palace membership with zero deductible charge.";
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const user = window.FF_Auth ? window.FF_Auth.getCurrentUser() : null;
+        if (user) {
+          const nameEls = document.querySelectorAll('#dashboardWelcomeName');
+          nameEls.forEach(el => el.innerText = user.name || "Maharaja Hari");
+          if (user.points) {
+            userPoints = user.points;
+            document.getElementById('currentPointsBalance').innerText = `${userPoints.toLocaleString('en-IN')} AVAILABLE PTS`;
+            document.getElementById('rewardsDisplayVal').innerText = `${userPoints.toLocaleString('en-IN')} PTS`;
+            document.getElementById('userPointsDisplay').innerText = `👑 ${user.membership || 'VIP Gold'} (${userPoints.toLocaleString('en-IN')} PTS)`;
+          }
+        }
+      } catch(e) {}
+    });
+  </script>
+
+  <!-- Master Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+
+</body>
+</html>

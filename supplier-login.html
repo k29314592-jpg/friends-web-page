@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisan Guild & Supplier Login | FRIENDS FURNITURE — Provenance</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.9) 0%, rgba(7, 20, 47, 0.7) 50%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .supplier-box {
+      background: linear-gradient(135deg, rgba(30, 15, 10, 0.92) 0%, rgba(10, 20, 35, 0.95) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid rgba(201, 162, 39, 0.5);
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.98), 0 0 45px rgba(201, 162, 39, 0.25);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.25));
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 25%, #C9A227 70%, #8A6510 100%);
+      color: #050505;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 248, 231, 0.4);
+      box-shadow: 0 4px 25px rgba(201, 162, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 0 35px rgba(241, 215, 139, 0.75), 0 6px 25px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(241, 215, 139, 0.12));
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      color: #F1D78B;
+      text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+
+    .toast-msg {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between items-center antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- Top Global Bar -->
+  <div class="w-full bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="admin-passport.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪵</span> Timber & Quarry Ledger
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🧬</span> DNA Passport
+        </a>
+      </div>
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+      <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white bg-black/50 border border-white/10">
+        🏰 Storefront
+      </a>
+    </div>
+
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-amber-400 font-bold badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        🏭 Artisan Guild Portal
+      </span>
+      <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        All Portals
+      </a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl flex items-center justify-between py-6 px-4">
+    <a href="index.html" class="flex items-center gap-3.5 group">
+      <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+        <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+          FRIENDS FURNITURE
+        </span>
+        <span class="font-mono text-[10px] sm:text-xs tracking-widest text-champagne block uppercase">
+          Artisan Guild & Certified Supplier Terminal
+        </span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <a href="admin-passport.html" class="btn-gold px-4 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+        <span>🪵</span> Guild Ledger
+      </a>
+    </div>
+  </header>
+
+  <!-- Central Supplier Box -->
+  <main class="w-full max-w-5xl supplier-box rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl my-auto mx-4">
+    
+    <!-- Left Hero -->
+    <div class="lg:col-span-5 relative p-8 sm:p-12 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#2D1B12] via-black to-royalNavy border-b lg:border-b-0 lg:border-r border-antiqueGold/30">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-30 mix-blend-screen pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+
+      <div class="relative z-10 space-y-4">
+        <span class="badge-gold text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+          <span>🏭</span> CERTIFIED TIMBER & STONE GUILD
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text leading-tight">
+          Artisan Provenance
+        </h1>
+        <p class="font-mono text-xs text-champagne">
+          “Nilambur Teak, Carrara Marble & Joinery Logs.”
+        </p>
+        <p class="text-xs text-stone-300 font-sans leading-relaxed pt-2">
+          Authenticate to log kiln-dried moisture telemetry, register sustainably harvested teak lots, and certify royal structural integrity.
+        </p>
+      </div>
+
+      <div class="relative z-10 pt-8 space-y-3 font-sans text-xs">
+        <div class="p-3 bg-black/70 rounded-2xl border border-antiqueGold/30 space-y-1">
+          <div class="flex justify-between text-champagne font-mono text-[10px]">
+            <span>Active Provenance Batch:</span>
+            <strong class="text-emerald-400">LOT-TEAK-88-NILAMBUR</strong>
+          </div>
+          <p class="text-[10px] text-stone-400">
+            Nilambur Reserve, Kerala • Seasoned 35-Year Plantation Teak.
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-stone-400 font-mono">
+          <span>Guild Trust Rating: 98/100</span>
+          <span class="text-emerald-400 font-bold">FSC Certified 🌿</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Form -->
+    <div class="lg:col-span-7 p-8 sm:p-12 space-y-6">
+      
+      <div class="space-y-1 border-b border-white/10 pb-4">
+        <h2 class="text-2xl font-cinzelDecor font-bold text-white gold-gradient-text">
+          Supplier & Artisan Authentication
+        </h2>
+        <p class="text-xs text-stone-400 font-sans">
+          Select your master guild atelier and enter your provenance security token.
+        </p>
+      </div>
+
+      <form id="supplierLoginForm" onsubmit="handleSupplierLogin(event)" class="space-y-4 font-sans text-xs">
+        
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Master Guild / Sourcing Atelier</label>
+          <select id="supplierGuild" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs focus:outline-none focus:border-antiqueGold font-sans">
+            <option value="Nilambur Palace Teak Guild (Kerala)">Nilambur Palace Teak Guild (Kerala)</option>
+            <option value="Carrara Calacatta Marble Quarry (Tuscany, Italy)">Carrara Calacatta Marble Quarry (Tuscany, Italy)</option>
+            <option value="Deccan Brass & Joinery Atelier (Hyderabad)">Deccan Brass & Joinery Atelier (Hyderabad)</option>
+            <option value="Bavarian Forest Oak Mills (Munich, Germany)">Bavarian Forest Oak Mills (Munich, Germany)</option>
+          </select>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Artisan Master ID / Email</label>
+          <input 
+            type="email" 
+            id="supplierEmail" 
+            value="nilambur.teakguild@friendsfurniture.com" 
+            required 
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+          />
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-cinzel font-bold text-stone-300 block">Guild Security Token</label>
+          <input 
+            type="password" 
+            id="supplierPassword" 
+            value="teakguildsecret2026" 
+            required 
+            class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl py-3 px-4 text-white text-xs placeholder-stone-500 focus:outline-none focus:border-antiqueGold font-mono"
+          />
+        </div>
+
+        <button type="submit" id="supplierLoginBtn" class="w-full btn-gold py-3.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest shadow-2xl flex items-center justify-center gap-2 cursor-pointer">
+          <span>🪵</span> OPEN TIMBER SUPPLY LEDGER →
+        </button>
+
+      </form>
+
+      <!-- 1-Click Demo -->
+      <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <button type="button" onclick="quickSupplierDemo()" class="px-4 py-2 rounded-xl bg-antiqueGold/15 hover:bg-antiqueGold/30 text-champagne border border-antiqueGold/40 text-xs font-cinzel font-bold transition flex items-center gap-2">
+          <span>🪵</span> 1-Click Demo: Nilambur Teak Guild
+        </button>
+
+        <a href="customer-login.html" class="text-xs text-stone-400 hover:text-champagne font-cinzel transition">
+          👑 Customer Sign In →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="w-full text-center py-6 text-xs text-stone-400 font-sans space-y-1">
+    <p class="font-cinzel tracking-wider text-champagne text-[11px]">
+      FRIENDS FURNITURE • SUPPLY CHAIN SUSTAINABILITY PROTOCOL
+    </p>
+    <p class="text-[10px] text-stone-500">
+      FSC 100% Certified Timber Ledger & Cryptographic Provenance Network.
+    </p>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast-msg fixed bottom-6 bg-black/95 text-champagne border-2 border-antiqueGold px-6 py-3 rounded-2xl shadow-2xl z-50 text-xs font-cinzel font-bold flex items-center gap-2.5 pointer-events-none">
+    <span>⚜️</span> <span id="toastText">Authenticating...</span>
+  </div>
+
+  <!-- Core Free-Tier Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/analytics.js"></script>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
+      if (!toast || !toastText) return;
+      toastText.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function quickSupplierDemo() {
+      const res = FF_Auth.demoLoginAs('supplier');
+      showToast("Welcome, Master Artisan! Opening Timber Ledger...");
+      setTimeout(() => {
+        window.location.href = "admin-passport.html";
+      }, 600);
+    }
+
+    async function handleSupplierLogin(e) {
+      if (e) e.preventDefault();
+      const email = document.getElementById('supplierEmail').value.trim();
+      const guild = document.getElementById('supplierGuild') ? document.getElementById('supplierGuild').value : "Nilambur Guild";
+      const pass = document.getElementById('supplierPassword') ? document.getElementById('supplierPassword').value : "guildSecret123";
+
+      const btn = document.getElementById('supplierLoginBtn');
+      if (btn) {
+        btn.innerHTML = `<span>⏳</span> Authenticating Guild Token...`;
+        btn.disabled = true;
+      }
+
+      showToast(`Verifying Guild Authentication for ${email}...`);
+
+      const res = await FF_Auth.signIn(email, pass, 'supplier');
+      if (res.success) {
+        showToast(`Signed into ${guild}! Opening Ledger...`);
+        setTimeout(() => {
+          window.location.href = "admin-passport.html";
+        }, 500);
+      } else {
+        showToast(res.error || "Supplier authentication failed.");
+        if (btn) {
+          btn.innerHTML = `<span>🛡️</span> AUTHENTICATE ATELIER ACCESS →`;
+          btn.disabled = false;
+        }
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

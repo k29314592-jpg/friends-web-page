@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palace Authentication Directory | FRIENDS FURNITURE — Comfort For Life</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18',
+            emeraldPalace: '#0B3A2C'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.85) 0%, rgba(7, 20, 47, 0.6) 50%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .portal-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.85) 0%, rgba(27, 11, 54, 0.9) 50%, rgba(5, 5, 5, 0.98) 100%);
+      backdrop-filter: blur(30px);
+      border: 1.5px solid rgba(241, 215, 139, 0.35);
+      box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(201, 162, 39, 0.15);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portal-card:hover {
+      transform: translateY(-6px);
+      border-color: #F1D78B;
+      box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.98), 0 0 45px rgba(201, 162, 39, 0.4);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.25));
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 25%, #C9A227 70%, #8A6510 100%);
+      color: #050505;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 248, 231, 0.4);
+      box-shadow: 0 4px 25px rgba(201, 162, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 0 35px rgba(241, 215, 139, 0.75), 0 6px 25px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+      border: 1px solid rgba(201, 162, 39, 0.6);
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(27, 11, 54, 0.3) 100%);
+      color: #F1D78B;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-outline-gold:hover {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.3) 0%, rgba(241, 215, 139, 0.2) 100%);
+      border-color: #F1D78B;
+      color: #FFF8E7;
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(241, 215, 139, 0.12));
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      color: #F1D78B;
+      text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between items-center antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ TOP GLOBAL PROCLAMATION BAR -->
+  <div class="w-full bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <div class="flex flex-wrap items-center gap-2">
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>👑</span> Palace Dashboard
+        </a>
+        <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪞</span> Furniture Twin
+        </a>
+        <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>✨</span> Smart Studio
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🧬</span> Digital Passport
+        </a>
+      </div>
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+      <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white bg-black/50 border border-white/10">
+        🏰 Storefront
+      </a>
+    </div>
+
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-champagne font-bold badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        👑 5 Dedicated Portals
+      </span>
+      <a href="customer-dashboard.html" class="text-antiqueGold hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        Enter as Guest →
+      </a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-6xl flex items-center justify-between py-6 px-4">
+    <a href="index.html" class="flex items-center gap-3.5 group">
+      <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+        <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+          FRIENDS FURNITURE
+        </span>
+        <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+          Separate Palace Authentication Portals
+        </span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <a href="customer-login.html" class="btn-gold px-4 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+        <span>👑</span> Customer Login
+      </a>
+    </div>
+  </header>
+
+  <!-- Central Directory Container -->
+  <main class="w-full max-w-6xl space-y-8 my-auto px-4 py-6">
+    
+    <div class="text-center space-y-2 max-w-3xl mx-auto">
+      <span class="badge-gold text-[10px] font-cinzel font-bold px-3.5 py-1 rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+        <span>⚜️</span> DEDICATED SEPARATE LOGIN HUBS
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-cinzelDecor font-black text-white gold-gradient-text">
+        Choose Your Specialized Login Portal
+      </h1>
+      <p class="text-xs sm:text-sm text-champagne font-sans">
+        Every role on Friends Furniture has its own standalone login page with specialized authentication tools.
+      </p>
+    </div>
+
+    <!-- 5 Distinct Separate Portals Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- 👑 1. CUSTOMER LOGIN -->
+      <div class="portal-card rounded-3xl p-6 flex flex-col justify-between space-y-5 relative overflow-hidden group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-gold text-[9px] font-cinzel font-bold px-2 py-0.5 rounded-full">
+              👑 CLIENT ACCESS
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono">OTP & Password</span>
+          </div>
+
+          <h3 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text">
+            Customer & VIP Login
+          </h3>
+
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            For palace residents to manage living <strong class="text-champagne">Furniture Twins</strong>, chamber arrangements, warranty logs, and loyalty rewards.
+          </p>
+
+          <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 text-[10px] text-stone-400 font-sans">
+            Includes Mobile OTP sign-in, Maharaja Hari demo, and live order tracking.
+          </div>
+        </div>
+
+        <a href="customer-login.html" class="w-full btn-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest text-center block shadow">
+          👑 Open Customer Login →
+        </a>
+      </div>
+
+      <!-- ⚙️ 2. ADMIN LOGIN -->
+      <div class="portal-card rounded-3xl p-6 flex flex-col justify-between space-y-5 relative overflow-hidden group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-gold text-[9px] font-mono font-bold px-2 py-0.5 rounded-full text-amber-300">
+              ⚙️ PALACE REGISTRY
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono">2FA Token</span>
+          </div>
+
+          <h3 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text">
+            Master Admin Login
+          </h3>
+
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            For system administrators to manage <strong class="text-champagne">DNA passport minting</strong>, cryptographic hashes, and platform analytics.
+          </p>
+
+          <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 text-[10px] text-stone-400 font-sans">
+            Includes QR minting studio, guild ledger, and master system permissions.
+          </div>
+        </div>
+
+        <a href="admin-login.html" class="w-full btn-outline-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest text-center block shadow hover:bg-antiqueGold hover:text-black transition">
+          ⚙️ Open Admin Login →
+        </a>
+      </div>
+
+      <!-- 🏬 3. SHOWROOM LOGIN -->
+      <div class="portal-card rounded-3xl p-6 flex flex-col justify-between space-y-5 relative overflow-hidden group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-gold text-[9px] font-mono font-bold px-2 py-0.5 rounded-full text-cyan-300">
+              🏬 SALES DESK
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono">Branch Auth</span>
+          </div>
+
+          <h3 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text">
+            Showroom Director Login
+          </h3>
+
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            For flagship showroom directors to conduct 3D <strong class="text-champagne">Smart Studio</strong> design sessions and log in-store VIP purchases.
+          </p>
+
+          <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 text-[10px] text-stone-400 font-sans">
+            Includes Jubilee Hills, Indiranagar, Colaba & Mehrauli branch selectors.
+          </div>
+        </div>
+
+        <a href="showroom-login.html" class="w-full btn-outline-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest text-center block shadow hover:bg-antiqueGold hover:text-black transition">
+          🏬 Open Showroom Login →
+        </a>
+      </div>
+
+      <!-- 🪵 4. SUPPLIER & TIMBER GUILD LOGIN -->
+      <div class="portal-card rounded-3xl p-6 flex flex-col justify-between space-y-5 relative overflow-hidden group">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-gold text-[9px] font-mono font-bold px-2 py-0.5 rounded-full text-yellow-400">
+              🪵 ARTISAN GUILD
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono">Lot Token</span>
+          </div>
+
+          <h3 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text">
+            Artisan & Supplier Login
+          </h3>
+
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            For Nilambur teak cutters, Carrara marble quarries, and joinery masters to log <strong class="text-champagne">timber provenance batches</strong> and kiln telemetry.
+          </p>
+
+          <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 text-[10px] text-stone-400 font-sans">
+            Includes FSC certificate verification and artisan moisture tracking logs.
+          </div>
+        </div>
+
+        <a href="supplier-login.html" class="w-full btn-outline-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest text-center block shadow hover:bg-antiqueGold hover:text-black transition">
+          🪵 Open Supplier Login →
+        </a>
+      </div>
+
+      <!-- 🚚 5. WHITE-GLOVE BUTLER & DISPATCH LOGIN -->
+      <div class="portal-card rounded-3xl p-6 flex flex-col justify-between space-y-5 relative overflow-hidden group md:col-span-2 lg:col-span-2">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="badge-gold text-[9px] font-mono font-bold px-2 py-0.5 rounded-full text-emerald-400">
+              🚚 AIR-SUSPENSION DISPATCH
+            </span>
+            <span class="text-[10px] text-emerald-400 font-mono">GPS & Sensor Telemetry</span>
+          </div>
+
+          <h3 class="text-xl font-cinzelDecor font-black text-white gold-gradient-text">
+            White-Glove Butler & Dispatch Login
+          </h3>
+
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            For air-suspension delivery van captains and master installation butlers to transmit <strong class="text-champagne">live G-force vibration reports</strong> and palace room installation sign-offs.
+          </p>
+
+          <div class="p-2.5 bg-black/60 rounded-xl border border-white/10 text-[10px] text-stone-400 font-sans">
+            Includes Fleet Van #09, Fleet Van #04, and live palace white-glove route tracking.
+          </div>
+        </div>
+
+        <a href="butler-login.html" class="w-full btn-outline-gold py-2.5 rounded-xl font-cinzel font-black text-xs uppercase tracking-widest text-center block shadow hover:bg-antiqueGold hover:text-black transition">
+          🚚 Open Butler & Dispatch Login →
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="w-full text-center py-6 text-xs text-stone-400 font-sans space-y-1">
+    <p class="font-cinzel tracking-wider text-champagne text-[11px]">
+      FRIENDS FURNITURE • 5 INDEPENDENT DEDICATED LOGIN PORTALS
+    </p>
+    <p class="text-[10px] text-stone-500">
+      Immutable 256-Bit SSL Encryption • Cryptographic Role Protection.
+    </p>
+  </footer>
+
+  <!-- Core Free-Tier Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+
+</body>
+</html>

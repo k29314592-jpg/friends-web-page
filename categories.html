@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furniture Categories | FRIENDS FURNITURE — Where Luxury Meets Comfort</title>
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,600;1,700&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royalNavy: '#07142F',
+            royalPurple: '#1B0B36',
+            obsidian: '#050505',
+            antiqueGold: '#C9A227',
+            champagne: '#F1D78B',
+            ivory: '#FFF8E7',
+            burgundy: '#3A0B18'
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            pinyon: ['"Pinyon Script"', 'cursive'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ultra-Opulent Royal Palace Aesthetics */
+    body {
+      background-color: #050505;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(27, 11, 54, 0.6) 0%, rgba(7, 20, 47, 0.45) 50%, #050505 100%),
+        radial-gradient(rgba(201, 162, 39, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
+      color: #FFF8E7;
+    }
+
+    .palace-card {
+      background: linear-gradient(135deg, rgba(7, 20, 47, 0.75) 0%, rgba(27, 11, 54, 0.85) 50%, rgba(5, 5, 5, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(201, 162, 39, 0.4);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px rgba(201, 162, 39, 0.12), inset 0 0 20px rgba(201, 162, 39, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .palace-card::before {
+      content: '⚜️';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 12px;
+      opacity: 0.35;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .palace-card:hover {
+      transform: translateY(-8px);
+      border-color: #F1D78B;
+      box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.98), 0 0 35px rgba(201, 162, 39, 0.4), inset 0 0 25px rgba(241, 215, 139, 0.15);
+    }
+
+    .palace-card:hover::before {
+      opacity: 0.9;
+      transform: scale(1.2);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.25));
+    }
+
+    .gold-shimmer {
+      background: linear-gradient(90deg, #C9A227 0%, #FFF8E7 50%, #C9A227 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 25%, #C9A227 70%, #8A6510 100%);
+      color: #050505;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 248, 231, 0.4);
+      box-shadow: 0 4px 20px rgba(201, 162, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 0 30px rgba(241, 215, 139, 0.75), 0 6px 25px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline-gold {
+      border: 1px solid rgba(201, 162, 39, 0.7);
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(27, 11, 54, 0.3) 100%);
+      color: #F1D78B;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-outline-gold:hover {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.3) 0%, rgba(241, 215, 139, 0.2) 100%);
+      border-color: #F1D78B;
+      color: #FFF8E7;
+      box-shadow: 0 0 25px rgba(201, 162, 39, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(241, 215, 139, 0.12));
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      color: #F1D78B;
+      text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+
+    .royal-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 1.5rem auto;
+      max-width: 600px;
+    }
+
+    .royal-divider::before,
+    .royal-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.6), transparent);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-antiqueGold selection:text-black">
+
+  <!-- 🏛️ TOP GLOBAL PROCLAMATION & ECOSYSTEM BAR -->
+  <div class="bg-[#050505]/95 backdrop-blur-xl text-xs py-2 px-4 sm:px-8 border-b border-antiqueGold/30 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+    <!-- Left: Platform Core Apps & Portals -->
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Main App Direct Links -->
+      <div class="flex items-center gap-1 bg-black/70 p-1 rounded-xl border border-antiqueGold/50 shadow-md">
+        <a href="customer-dashboard.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>👑</span> Palace Dashboard
+        </a>
+        <a href="furniture-twin.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🪞</span> Furniture Twin
+        </a>
+        <a href="smart-studio.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>✨</span> Smart Studio
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-antiqueGold/20 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🧬</span> Digital Passport
+        </a>
+        <a href="categories.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-[#050505] bg-gradient-to-r from-antiqueGold to-champagne shadow font-black flex items-center gap-1 whitespace-nowrap">
+          <span>🛍️</span> Categories
+        </a>
+        <a href="living-room.html" class="px-2.5 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/10 transition flex items-center gap-1 whitespace-nowrap">
+          <span>🛋️</span> Catalog
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="h-4 w-px bg-antiqueGold/40 mx-1 hidden lg:block"></div>
+
+      <!-- Portal Switcher Tabs -->
+      <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/15 overflow-x-auto">
+        <a href="index.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          🏰 Storefront
+        </a>
+        <a href="furniture-twin.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-champagne hover:text-white hover:bg-white/5 whitespace-nowrap">
+          🪞 Twin
+        </a>
+        <a href="smart-studio.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          ✨ Studio
+        </a>
+        <a href="customer-dashboard.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          👤 Customer Command
+        </a>
+        <a href="admin-passport.html" class="px-2 py-1 rounded-lg text-[10px] font-cinzel font-bold text-stone-300 hover:text-white hover:bg-white/5 whitespace-nowrap">
+          👨‍💼 Admin Guild
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Session Status -->
+    <div class="flex items-center gap-3 text-stone-300 text-[11px] font-cinzel ml-auto">
+      <span class="text-champagne font-bold hidden md:inline badge-gold px-2.5 py-0.5 rounded-full text-[10px]">
+        👑 VIP Gold (4,250 PTS)
+      </span>
+      <button class="ff-notif-trigger text-antiqueGold hover:text-white font-bold text-[10px] flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-lg border border-antiqueGold/30 transition relative">
+        <span>🔔</span> Alerts
+        <span class="ff-notif-badge w-4 h-4 bg-antiqueGold text-black font-black text-[9px] rounded-full flex items-center justify-center">3</span>
+      </button>
+      <a href="login.html" class="text-stone-300 hover:text-white font-bold text-[10px] uppercase border border-white/20 px-2.5 py-1 rounded-lg hover:border-antiqueGold transition">
+        🚪 Login
+      </a>
+    </div>
+  </div>
+
+  <!-- Top Global Header -->
+  <header class="bg-[#050505]/95 backdrop-blur-2xl border-b border-antiqueGold/30 shadow-2xl">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Tagline -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="relative w-12 h-12 rounded-2xl overflow-hidden border-2 border-antiqueGold/60 shadow-[0_0_18px_rgba(201,162,39,0.85)] group-hover:scale-105 transition duration-300 transform bg-black shrink-0">
+          <img src="assets/friends-furniture-logo.jpg" alt="Friends Furniture Royal Emblem" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span class="font-cinzelDecor font-black text-xl sm:text-2xl tracking-wider gold-gradient-text block">
+            FRIENDS FURNITURE
+          </span>
+          <span class="font-pinyon text-sm sm:text-base tracking-widest text-champagne block -mt-1">
+            Where Luxury Meets Comfort
+          </span>
+        </div>
+      </a>
+
+      <!-- Action Utilities -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="smart-studio.html" class="btn-outline-gold px-3 py-1.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1">
+          <span>✨</span> Smart Studio
+        </a>
+        <a href="furniture-passport.html?id=FF-2026-00125" class="btn-outline-gold px-3 py-1.5 rounded-xl text-xs font-cinzel font-bold flex items-center gap-1">
+          <span>🧬</span> Passport
+        </a>
+        <a href="living-room.html" class="btn-gold px-4 py-1.5 rounded-xl text-xs font-cinzel font-black shadow flex items-center gap-1">
+          <span>🛋️</span> Catalog
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-[1360px] mx-auto w-full flex-1 px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- 🧭 18. CATEGORY BREADCRUMB -->
+    <nav class="flex items-center gap-2 text-xs font-cinzel text-stone-400">
+      <a href="customer-dashboard.html" class="hover:text-champagne transition">Home</a>
+      <span>›</span>
+      <span class="text-champagne font-bold">Categories</span>
+    </nav>
+
+    <!-- 🪑 2. CATEGORY PAGE BANNER (ROYAL PALACE EDITION) -->
+    <div class="text-center space-y-3 max-w-4xl mx-auto pt-2">
+      <div class="inline-flex items-center gap-2 badge-gold text-xs font-cinzel font-bold px-4 py-1 rounded-full uppercase tracking-[0.25em] shadow-lg">
+        <span>⚜️</span> PALACE CURATIONS & BESPOKE HEIRLOOMS <span>⚜️</span>
+      </div>
+      <h1 class="text-3xl sm:text-6xl font-cinzelDecor font-black text-white gold-gradient-text tracking-normal drop-shadow-[0_4px_20px_rgba(201,162,39,0.3)]">
+        ROYAL FURNITURE CATEGORIES
+      </h1>
+      <div class="royal-divider">
+        <span class="text-champagne text-lg">⚜️ 👑 ⚜️</span>
+      </div>
+      <p class="text-xl sm:text-2xl text-champagne font-pinyon tracking-wide -mt-2">
+        “Where Timeless Royal Grandeur Meets Modern Comfort.”
+      </p>
+    </div>
+
+    <!-- 🔎 13. CATEGORY LIVE SEARCH BAR -->
+    <div class="max-w-2xl mx-auto space-y-3">
+      <div class="relative">
+        <span class="absolute left-4 top-3.5 text-stone-400 text-base">🔍</span>
+        <input 
+          type="text" 
+          id="categorySearchInput"
+          oninput="handleCategorySearch(this.value)"
+          placeholder="Search categories (e.g. Sofa, Bed, Dining Table, Chair, Wardrobe, TV Unit, Desk)..." 
+          class="w-full bg-black/70 border-2 border-antiqueGold/40 rounded-2xl py-3.5 pl-12 pr-4 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-antiqueGold focus:ring-2 focus:ring-antiqueGold/40 transition font-sans shadow-2xl"
+        />
+      </div>
+
+      <!-- Quick Search Suggestion Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
+        <span class="text-stone-400 font-cinzel text-[11px]">Popular:</span>
+        <button onclick="filterByKeyword('Sofa')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Sofa</button>
+        <button onclick="filterByKeyword('Bed')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Bed</button>
+        <button onclick="filterByKeyword('Dining')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Dining Table</button>
+        <button onclick="filterByKeyword('Chair')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Chair</button>
+        <button onclick="filterByKeyword('Wardrobe')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Wardrobe</button>
+        <button onclick="filterByKeyword('TV Unit')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">TV Unit</button>
+        <button onclick="filterByKeyword('Desk')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-antiqueGold/20 text-stone-300 border border-white/10 hover:border-antiqueGold text-[11px] transition">Desk</button>
+      </div>
+
+      <!-- Palace Category Filter Tabs & Counter -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-cinzel">
+          <button onclick="filterByTab('all')" id="tab-all" class="cat-tab active px-3 py-1.5 rounded-xl bg-antiqueGold text-black font-black transition">
+            ALL SUITES (10)
+          </button>
+          <button onclick="filterByTab('royal')" id="tab-royal" class="cat-tab px-3 py-1.5 rounded-xl bg-white/5 text-stone-300 border border-white/10 hover:border-antiqueGold transition font-bold">
+            👑 ROYAL
+          </button>
+          <button onclick="filterByTab('ai')" id="tab-ai" class="cat-tab px-3 py-1.5 rounded-xl bg-white/5 text-stone-300 border border-white/10 hover:border-antiqueGold transition font-bold">
+            ✨ AI PICKS
+          </button>
+          <button onclick="filterByTab('living')" id="tab-living" class="cat-tab px-3 py-1.5 rounded-xl bg-white/5 text-stone-300 border border-white/10 hover:border-antiqueGold transition font-bold">
+            🛋️ LIVING
+          </button>
+          <button onclick="filterByTab('bedroom')" id="tab-bedroom" class="cat-tab px-3 py-1.5 rounded-xl bg-white/5 text-stone-300 border border-white/10 hover:border-antiqueGold transition font-bold">
+            🛏️ BEDROOM
+          </button>
+          <button onclick="filterByTab('dining')" id="tab-dining" class="cat-tab px-3 py-1.5 rounded-xl bg-white/5 text-stone-300 border border-white/10 hover:border-antiqueGold transition font-bold">
+            🍽️ DINING
+          </button>
+        </div>
+
+        <div class="text-xs font-cinzel text-champagne bg-black/60 px-3 py-1.5 rounded-full border border-antiqueGold/30 whitespace-nowrap">
+          Showing <span id="categoryCount" class="font-bold text-white">10</span> Suites
+        </div>
+      </div>
+    </div>
+
+    <!-- 📱 19. & 🎨 20. 10 LARGE PREMIUM CATEGORY CARDS GRID -->
+    <div id="categoriesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+      
+      <!-- 👑 11. ROYAL COLLECTION (SPECIAL FEATURED CATEGORY) -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden border-2 border-champagne flex flex-col justify-between group shadow-2xl relative" data-cat="royal" data-keywords="royal sofas luxury beds premium dining executive office royal decor exclusive">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Royal Collection" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[10px] font-cinzel font-black px-3 py-1 rounded-full uppercase tracking-wider bg-black/80">
+            👑 EXCLUSIVE HERITAGE
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-cinzel font-black text-xl text-gold-gradient">👑 ROYAL COLLECTION</h3>
+            <span class="text-xs text-champagne font-mono font-bold">18 Masterpieces</span>
+          </div>
+          <p class="text-xs text-stone-300 font-sans">
+            Limited-edition bespoke palace heirlooms crafted with 24K gold foil and Nilambur seasoned teak.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Royal Sofas</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Luxury Beds</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Premium Dining</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Executive Office</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Royal Décor</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=royal" class="btn-gold w-full py-3 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-widest block shadow-lg">
+              EXPLORE ROYAL COLLECTION →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🤖 12. AI RECOMMENDED CATEGORY (AI FOR YOU) -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden border-2 border-antiqueGold flex flex-col justify-between group shadow-2xl relative" data-keywords="ai for you smart recommendations living room bedroom dining sofa accent chair coffee table">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="AI Recommendations" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-[10px] font-cinzel font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            ✨ AUTONOMOUS CURATION
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="font-cinzel font-black text-xl text-white">✨ AI FOR YOU</h3>
+            <span class="text-xs text-emerald-400 font-mono font-bold">96% Home Match</span>
+          </div>
+          <p class="text-xs text-stone-300 font-sans">
+            Curated pieces algorithmically matched to Hari's Home Genome (Lotus Palace Villa, 3,450 sq.ft).
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-emerald-500/30 text-emerald-300 px-2 py-0.5 rounded-md">🛋️ Sofa Match (98%)</span>
+            <span class="bg-black/60 border border-emerald-500/30 text-emerald-300 px-2 py-0.5 rounded-md">🪑 Accent Chair (96%)</span>
+            <span class="bg-black/60 border border-emerald-500/30 text-emerald-300 px-2 py-0.5 rounded-md">☕ Marble Table (94%)</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?filter=ai" class="btn-gold w-full py-3 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-widest block shadow-lg">
+              VIEW AI PICKS →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🛋️ 3. LIVING ROOM -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="living room sofas l-shaped sofas recliners coffee tables tv units side tables accent chairs sofa sets">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/living-room.jpg" alt="Living Room" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 32 Designs
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">🛋️ LIVING ROOM</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Grand palace velvet seating, sculptural accent armchairs, and Carrara marble centerpiece tables.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Sofas</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">L-Shaped Sofas</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Recliners</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Coffee Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">TV Units</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Accent Chairs</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE LIVING ROOM →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🛏️ 4. BEDROOM -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="bedroom beds wardrobes bedside tables dressing tables mattresses bedroom sets chest of drawers">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/bedroom.jpg" alt="Bedroom" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 24 Suites
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">🛏️ BEDROOM</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Imperial upholstered king beds, solid teak wardrobes with biometric vaults, and fluted bedside suites.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Beds</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Wardrobes</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Bedside Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Dressing Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Mattresses</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=bedroom" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE BEDROOM →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🍽️ 5. DINING ROOM -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="dining room dining tables dining chairs dining sets sideboards bar cabinets storage">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/dining-room.jpg" alt="Dining Room" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 19 Sets
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">🍽️ DINING ROOM</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Live-edge Nilambur teak 8-seater dining suites, ergonomic cushioned chairs, and fluted credenzas.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Dining Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Dining Chairs</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Dining Sets</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Sideboards</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Bar Cabinets</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=dining" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE DINING →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💼 6. OFFICE -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="office office tables office chairs executive desks workstations bookshelves filing cabinets">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/office.jpg" alt="Office" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 15 Collections
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">💼 OFFICE & STUDY</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Commanding executive teak desks with wireless charging bays, Italian leather chairs, and library storage.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Executive Desks</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Office Chairs</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Workstations</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Bookshelves</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=office" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE OFFICE →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🧸 7. KIDS -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="kids kids beds study tables study chairs toy storage bookshelves kids furniture sets">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/kids.jpg" alt="Kids Furniture" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 12 Designs
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">🧸 KIDS FURNITURE</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Non-toxic ergonomic study desks, themed bunk suites, and organic timber toy storage units.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Kids Beds</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Study Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Study Chairs</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Toy Storage</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=kids" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE KIDS →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌿 8. OUTDOOR -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="outdoor outdoor chairs garden tables patio sets benches outdoor storage">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/outdoor.jpg" alt="Outdoor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 14 Collections
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">🌿 OUTDOOR & PATIO</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            All-weather treated teak patio suites, luxury poolside loungers, and brass-fitted garden tables.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Patio Sets</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Outdoor Chairs</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Garden Tables</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Benches</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=outdoor" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE OUTDOOR →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📦 9. STORAGE -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="storage wardrobes cabinets bookshelves shoe racks drawers storage units">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/storage.jpg" alt="Storage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 20 Solutions
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">📦 STORAGE SYSTEMS</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Customizable sliding wardrobes, modular glass display cabinets, and fluted shoe vaults.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Wardrobes</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Cabinets</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Bookshelves</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Shoe Racks</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=storage" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE STORAGE →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✨ 10. HOME DECOR -->
+      <div class="category-card palace-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-keywords="home decor lamps mirrors rugs wall decor cushions vases decorative accessories">
+        <div class="relative aspect-[16/10] overflow-hidden bg-black/60">
+          <img src="assets/categories/decor.jpg" alt="Home Decor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+          <span class="absolute top-3 left-3 badge-gold text-[9px] font-cinzel font-bold px-2.5 py-0.5 rounded-full uppercase">
+            👑 45 Accents
+          </span>
+        </div>
+
+        <div class="p-6 space-y-3">
+          <h3 class="font-cinzelDecor font-black text-lg text-white gold-gradient-text">✨ HOME DÉCOR & ACCENTS</h3>
+          <p class="text-xs text-stone-300 font-sans">
+            Hand-tufted silk rugs, 24K gold framed mirrors, crystal chandeliers, and artisanal porcelain vases.
+          </p>
+          
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[10px] text-stone-300 font-sans">
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Lamps</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Mirrors</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Silk Rugs</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Wall Décor</span>
+            <span class="bg-black/60 border border-white/10 px-2 py-0.5 rounded-md">Vases</span>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <a href="living-room.html?cat=decor" class="btn-outline-gold w-full py-2.5 rounded-xl text-center font-cinzel font-bold text-xs uppercase tracking-wider block">
+              EXPLORE HOME DECOR →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Royal Palace Footer -->
+  <footer class="bg-[#050505] text-stone-400 border-t border-antiqueGold/25 text-xs py-8 mt-12">
+    <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left font-sans">
+      <div>
+        <span class="font-cinzelDecor text-lg font-black gold-gradient-text block">👑 FRIENDS FURNITURE</span>
+        <p class="font-pinyon text-sm text-champagne mt-0.5">“Where Luxury Meets Comfort.” • Master Royal Furniture Categories Hub</p>
+      </div>
+      <div class="text-xs text-champagne font-cinzel font-semibold flex items-center gap-1.5 badge-gold px-3 py-1 rounded-full">
+        <span>👑</span> Customer Command Center (Hari)
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function updateCount() {
+      const cards = document.querySelectorAll('.category-card');
+      let visible = 0;
+      cards.forEach(c => {
+        if (c.style.display !== 'none') visible++;
+      });
+      const countEl = document.getElementById('categoryCount');
+      if (countEl) countEl.innerText = visible;
+    }
+
+    function handleCategorySearch(query) {
+      const q = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('.category-card');
+      
+      cards.forEach(card => {
+        const keywords = card.getAttribute('data-keywords') || '';
+        const text = card.innerText.toLowerCase();
+        
+        if (!q || keywords.includes(q) || text.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      updateCount();
+    }
+
+    function filterByKeyword(kw) {
+      const input = document.getElementById('categorySearchInput');
+      input.value = kw;
+      handleCategorySearch(kw);
+    }
+
+    function filterByTab(tab) {
+      document.querySelectorAll('.cat-tab').forEach(b => {
+        b.classList.remove('active', 'bg-antiqueGold', 'text-black');
+        b.classList.add('bg-white/5', 'text-stone-300');
+      });
+
+      const activeBtn = document.getElementById(`tab-${tab}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-antiqueGold', 'text-black');
+        activeBtn.classList.remove('bg-white/5', 'text-stone-300');
+      }
+
+      if (tab === 'all') {
+        document.getElementById('categorySearchInput').value = '';
+        handleCategorySearch('');
+      } else if (tab === 'royal') {
+        filterByKeyword('royal');
+      } else if (tab === 'ai') {
+        filterByKeyword('ai');
+      } else if (tab === 'living') {
+        filterByKeyword('living room');
+      } else if (tab === 'bedroom') {
+        filterByKeyword('bedroom');
+      } else if (tab === 'dining') {
+        filterByKeyword('dining');
+      }
+    }
+  </script>
+  <!-- Master Shared Interactivity & Free-Tier Ecosystem Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/supabase-auth.js"></script>
+  <script src="assets/ai-service.js"></script>
+  <script src="assets/image-optimizer.js"></script>
+  <script src="assets/analytics.js"></script>
+  <script src="assets/app-shared.js"></script>
+</body>
+</html>

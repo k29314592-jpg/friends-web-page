@@ -2116,15 +2116,28 @@
     }
   }
 
-  // --- 14. PWA SERVICE WORKER AUTO-REGISTRATION ---
+  // --- 14. UNIVERSAL SELF-HEALING IMAGE FALLBACK & PWA REGISTRATION ---
+  const UNIVERSAL_IMAGE_FALLBACK = "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80";
+
+  // Capture all image load errors across the entire site and apply fallback
+  window.addEventListener('error', function (e) {
+    if (e.target && e.target.tagName === 'IMG') {
+      const img = e.target;
+      if (!img.dataset.failed) {
+        img.dataset.failed = "true";
+        img.src = UNIVERSAL_IMAGE_FALLBACK;
+      }
+    }
+  }, true);
+
   function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('sw.js')
           .then((reg) => {
             console.log('👑 [PWA] Friends Furniture ServiceWorker active with scope:', reg.scope);
           })
-          .catch((err) => {
+          .catch(() => {
             // Silently handle file protocol / demo restrictions
           });
       });

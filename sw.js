@@ -4,22 +4,22 @@
  * ==========================================================================
  */
 
-const CACHE_NAME = 'friends-furniture-v1';
+const CACHE_NAME = 'friends-furniture-v2';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/catalog.html',
-  '/categories.html',
-  '/customer-dashboard.html',
-  '/furniture-twin.html',
-  '/furniture-passport.html',
-  '/smart-studio.html',
-  '/login.html',
-  '/styles.css',
-  '/assets/app-shared.js',
-  '/assets/furniture-twin.js',
-  '/assets/friends-furniture-logo.jpg',
-  '/manifest.json'
+  './',
+  './index.html',
+  './catalog.html',
+  './categories.html',
+  './customer-dashboard.html',
+  './furniture-twin.html',
+  './furniture-passport.html',
+  './smart-studio.html',
+  './login.html',
+  './styles.css',
+  './assets/app-shared.js',
+  './assets/furniture-twin.js',
+  './assets/friends-furniture-logo.jpg',
+  './manifest.json'
 ];
 
 // Install Event: Cache Core Static Shell
@@ -83,7 +83,7 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // Fallback for HTML navigation if offline
         if (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
-          return caches.match('/index.html');
+          return caches.match('./index.html');
         }
       });
     })

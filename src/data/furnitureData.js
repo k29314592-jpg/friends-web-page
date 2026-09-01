@@ -410,7 +410,7 @@ const LUXURY_PRODUCTS = [
     shortDescription: "Curved cocoon lounge armchair wrapped in textured ivory bouclé with gold leg tips.",
     description: "An architectural throne for quiet palace reading. Features 360-degree cocoon curvature, stain-guarded bouclé fabric, and reinforced hardwood frame.",
     images: [
-      "https://images.unsplash.com/photo-1580481077195-c3a824552965?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=80"
     ],
     careInstructions: [
@@ -492,7 +492,7 @@ const LUXURY_PRODUCTS = [
     shortDescription: "Nesting circular coffee tables featuring hand-sealed Carrara marble and fluted walnut gold base.",
     description: "Versatile, opulent, and sculpted for grand living halls. The smaller companion table slides beneath the main table or serves as an independent side table.",
     images: [
-      "https://images.unsplash.com/photo-1533779283484-84e14c8e7093?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=1200&q=80"
     ],
     careInstructions: [
@@ -944,7 +944,7 @@ const ROYAL_COLLECTIONS_DATA = [
     id: "col-modern-royal",
     title: "Modern Royal",
     subtitle: "Curved contemporary silhouettes draped in textured bouclé.",
-    image: "https://images.unsplash.com/photo-1580481077195-c3a824552965?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
     count: "10 Masterpieces",
     category: "Living Room"
   },
@@ -952,7 +952,7 @@ const ROYAL_COLLECTIONS_DATA = [
     id: "col-classic-wood",
     title: "Classic Wood Collection",
     subtitle: "Timeless handcrafted hardwood tables, consoles & bookcases.",
-    image: "https://images.unsplash.com/photo-1533779283484-84e14c8e7093?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=80",
     count: "15 Masterpieces",
     category: "Storage"
   }

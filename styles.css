@@ -72,6 +72,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* 🖼️ Resilient Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+
 /* ==========================================================================
    1. GLOBAL CONTAINER ALIGNMENT
    ========================================================================== */

@@ -343,7 +343,7 @@
       tagline: "Solid 4-inch seasoned teak dining table with 8 hand-tufted imperial chairs.",
       imageUrl: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80",
       secondaryImages: [
-        "https://images.unsplash.com/photo-1533779283484-84e14c8e7093?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=800&q=80"
       ],
       price: 145000,
       originalMSRP: 185000,
@@ -506,7 +506,7 @@
       tagline: "Solid teak four-poster canopy with orthopaedic dual-zone latex mattress support.",
       imageUrl: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
       secondaryImages: [
-        "https://images.unsplash.com/photo-1540518614846-7ede433c4570?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=800&q=80"
       ],
       price: 119999,
       originalMSRP: 155000,

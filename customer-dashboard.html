@@ -1352,12 +1352,16 @@
 
     function askConcierge(type) {
       const speech = document.getElementById('conciergeSpeechText');
+      if (!speech) return;
       if (type === 'fengshui') {
         speech.innerText = "✨ Feng Shui Audit Complete: The Grand Salon orientation allows natural sunrise illumination across the Nilambur teak grain with 98% positive spatial chi and 4.5ft walking clearance.";
       } else if (type === 'teak') {
         speech.innerText = "📈 Teak Valuation Simulation: Prime seasoned Nilambur teak is projected to appreciate by +14.5% over the next 10 years, yielding an estimated market value of ₹1,03,000.";
       } else if (type === 'beeswax') {
         speech.innerText = "🐝 Organic Beeswax Protocol Initiated: Bi-annual nourishing cycle pre-booked for 15 October 2026 under your Gold Palace membership with zero deductible charge.";
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       try {
         const user = window.FF_Auth ? window.FF_Auth.getCurrentUser() : null;

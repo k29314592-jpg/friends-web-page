@@ -407,7 +407,8 @@
     async function handleCustomerLogin(e) {
       if (e) e.preventDefault();
       const email = document.getElementById('custEmail').value.trim();
-      const pass = document.getElementById('custPass') ? document.getElementById('custPass').value : "demo123";
+      const passEl = document.getElementById('custPassword') || document.getElementById('custPass');
+      const pass = passEl ? passEl.value : "royalpassword123";
       
       const btn = document.getElementById('custLoginBtn');
       if (btn) {

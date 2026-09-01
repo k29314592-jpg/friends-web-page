@@ -1,0 +1,47 @@
+{
+  "name": "Friends Furniture — Royal Luxury & Comfort",
+  "short_name": "FriendsFurniture",
+  "description": "Where Luxury Meets Comfort. Furniture For Friends. Comfort For Life. Digital Twins, Nilambur Teak Provenance & Smart Studio.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#C9A227",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/friends-furniture-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/friends-furniture-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Luxury Catalog",
+      "url": "catalog.html",
+      "description": "Explore Nilambur Teak & Velvet Furniture"
+    },
+    {
+      "name": "Furniture Digital Twin",
+      "url": "furniture-twin.html",
+      "description": "Real-Time IoT Sensor Telemetry"
+    },
+    {
+      "name": "Smart Studio 3D",
+      "url": "smart-studio.html",
+      "description": "3D Room Planner & Fabric Customizer"
+    },
+    {
+      "name": "Palace Dashboard",
+      "url": "customer-dashboard.html",
+      "description": "Order Tracking & VIP Rewards"
+    }
+  ]
+}

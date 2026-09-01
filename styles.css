@@ -3,9 +3,20 @@
    “Where Luxury Meets Comfort. Furniture For Friends. Comfort For Life.”
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Marcellus&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
+  /* Royal Palace Typography Suite */
+  --font-cinzel: 'Cinzel', serif;
+  --font-cinzel-decor: 'Cinzel Decorative', serif;
+  --font-cormorant: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --font-bodoni: 'Bodoni Moda', 'Didot', Georgia, serif;
+  --font-marcellus: 'Marcellus', serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-pinyon: 'Pinyon Script', cursive;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
   /* Brand Color Palette */
   --royal-navy: #07142F;
   --royal-purple: #1B0B36;
@@ -46,7 +57,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   background-color: #050505;
   background-image: 
     radial-gradient(circle at 50% -10%, rgba(201, 162, 39, 0.14) 0%, transparent 45%),
@@ -88,14 +99,87 @@ body {
 }
 
 /* ==========================================================================
-   2. TYPOGRAPHY SYSTEM
+   2. ROYAL PALACE TYPOGRAPHY SYSTEM
    ========================================================================== */
-.font-cinzel { font-family: 'Cinzel', serif; }
-.font-cinzelDecor { font-family: 'Cinzel Decorative', serif; }
-.font-pinyon { font-family: 'Pinyon Script', cursive; }
-.font-serif { font-family: 'Playfair Display', Georgia, serif; }
-.font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
-.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-cinzel { font-family: var(--font-cinzel); }
+.font-cinzelDecor, .font-cinzel-decor { font-family: var(--font-cinzel-decor); }
+.font-cormorant { font-family: var(--font-cormorant); }
+.font-bodoni { font-family: var(--font-bodoni); }
+.font-marcellus { font-family: var(--font-marcellus); }
+.font-playfair { font-family: var(--font-playfair); }
+.font-serif { font-family: var(--font-playfair); }
+.font-pinyon, .font-royal-script { font-family: var(--font-pinyon); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Royal Typography Component Classes */
+.royal-heading-imperial {
+  font-family: var(--font-cinzel-decor);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.royal-heading-palace {
+  font-family: var(--font-cinzel);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.royal-heading-noble {
+  font-family: var(--font-cormorant);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.royal-heading-haute {
+  font-family: var(--font-bodoni);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.royal-tagline {
+  font-family: var(--font-pinyon);
+  font-size: 1.35rem;
+  color: #F1D78B;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-shadow: 0 0 15px rgba(241, 215, 139, 0.4);
+}
+
+.royal-badge {
+  font-family: var(--font-cinzel);
+  font-weight: 800;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(241, 215, 139, 0.08));
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  color: #FFF8E7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.royal-quote {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #FFF8E7;
+}
+
+.royal-seal {
+  font-family: var(--font-pinyon);
+  font-size: 1.85rem;
+  color: #F1D78B;
+  display: inline-block;
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 2px 8px rgba(201, 162, 39, 0.5));
+}
 
 .gold-gradient-text {
   background: linear-gradient(135deg, #FFF8E7 0%, #F1D78B 35%, #C9A227 75%, #8A6510 100%);
@@ -784,6 +868,196 @@ button:active,
     font-size: 8.5px !important;
     padding: 3px 6px !important;
     letter-spacing: 0.05em !important;
+  }
+}
+
+/* ==========================================================================
+   14. ROYAL MULTI-STEP CHECKOUT & PAYMENT SIMULATION STYLES
+   ========================================================================== */
+.checkout-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.checkout-step-node {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  background: #050505;
+  border: 2px solid rgba(201, 162, 39, 0.4);
+  color: #a8a29e;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+.checkout-step-node.active {
+  border-color: #F1D78B;
+  background: linear-gradient(135deg, #C9A227, #F1D78B);
+  color: #050505;
+  box-shadow: 0 0 18px rgba(201, 162, 39, 0.7);
+}
+.checkout-step-node.completed {
+  border-color: #10b981;
+  background: #10b981;
+  color: #ffffff;
+}
+.checkout-step-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(201, 162, 39, 0.25);
+  margin: 0 8px;
+}
+.checkout-step-line.completed {
+  background: #10b981;
+}
+
+/* Simulated QR Pulse */
+.qr-scanner-box {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0 35px rgba(201, 162, 39, 0.4);
+  position: relative;
+  display: inline-block;
+}
+.qr-scanner-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C9A227, #F1D78B, transparent);
+  box-shadow: 0 0 12px #F1D78B;
+  animation: qrScanLine 2s infinite ease-in-out;
+}
+@keyframes qrScanLine {
+  0% { top: 5%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 95%; opacity: 0; }
+}
+
+/* ==========================================================================
+   15. ROYAL AI INTERIOR CONCIERGE FLOATING WIDGET
+   ========================================================================== */
+.ff-ai-concierge-trigger {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #07142F 0%, #1B0B36 50%, #050505 100%);
+  border: 1.5px solid #C9A227;
+  border-radius: 9999px;
+  color: #FFF8E7;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 11px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(201, 162, 39, 0.35);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ff-ai-concierge-trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: #F1D78B;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(201, 162, 39, 0.6);
+}
+.ff-ai-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #F1D78B;
+  border-radius: 50%;
+  animation: pulseDot 1.8s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.ff-ai-chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 540px;
+  max-height: calc(100vh - 120px);
+  background: linear-gradient(135deg, rgba(7, 20, 47, 0.95) 0%, rgba(27, 11, 54, 0.97) 50%, rgba(5, 5, 5, 0.99) 100%);
+  backdrop-filter: blur(28px);
+  border: 1.5px solid rgba(201, 162, 39, 0.6);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(201, 162, 39, 0.3);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ff-ai-chat-window.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ai-bubble-user {
+  background: linear-gradient(135deg, #C9A227, #F1D78B);
+  color: #050505;
+  font-weight: 600;
+  border-radius: 18px 18px 4px 18px;
+  padding: 10px 14px;
+  font-size: 11.5px;
+  max-width: 85%;
+  align-self: flex-end;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.ai-bubble-bot {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  color: #FFF8E7;
+  border-radius: 18px 18px 18px 4px;
+  padding: 12px 14px;
+  font-size: 11.5px;
+  max-width: 90%;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   16. PRINTABLE ROYAL CERTIFICATE & INVOICE (@media print)
+   ========================================================================== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #ff-invoice-printable-area, #ff-invoice-printable-area * {
+    visibility: visible;
+  }
+  #ff-invoice-printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 3px double #C9A227 !important;
+  }
+  .no-print {
+    display: none !important;
   }
 }
 

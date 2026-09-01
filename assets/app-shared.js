@@ -1049,9 +1049,651 @@
     }
   };
 
-  // --- 10. DOM INJECTION & INITIALIZATION ---
+  // --- 10. UNIVERSAL ROYAL CHECKOUT & PRINTABLE DIGITAL INVOICE ENGINE ---
+  window.FF_Checkout = {
+    currentStep: 1,
+    selectedSlot: "Morning (09:00 AM – 01:00 PM White-Glove)",
+    selectedPayment: "upi_qr",
+    lastOrder: null,
+
+    openModal: function () {
+      const cart = window.FF_Cart.getCart();
+      if (!cart || cart.length === 0) {
+        window.FF_Toast("Your Palace Cart is empty. Select a furniture masterwork first! 🛋️", "info");
+        return;
+      }
+      this.currentStep = 1;
+      const modal = document.getElementById('ff-checkout-modal');
+      if (modal) {
+        this.renderStep1();
+        modal.classList.add('open');
+      }
+    },
+
+    closeModal: function () {
+      const modal = document.getElementById('ff-checkout-modal');
+      if (modal) modal.classList.remove('open');
+    },
+
+    goToStep: function (step) {
+      this.currentStep = step;
+      document.querySelectorAll('.checkout-step-node').forEach((node, idx) => {
+        const nodeStep = idx + 1;
+        node.classList.remove('active', 'completed');
+        if (nodeStep < step) node.classList.add('completed');
+        else if (nodeStep === step) node.classList.add('active');
+      });
+      document.querySelectorAll('.checkout-step-line').forEach((line, idx) => {
+        if (idx + 1 < step) line.classList.add('completed');
+        else line.classList.remove('completed');
+      });
+
+      const body = document.getElementById('ff-checkout-body');
+      if (!body) return;
+
+      if (step === 1) this.renderStep1();
+      else if (step === 2) this.renderStep2();
+      else if (step === 3) this.renderStep3();
+    },
+
+    selectSlot: function (slot) {
+      this.selectedSlot = slot;
+      document.querySelectorAll('[data-slot-btn]').forEach(btn => {
+        if (btn.getAttribute('data-slot-btn') === slot) {
+          btn.className = 'p-3 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-champagne font-bold text-xs text-left cursor-pointer transition';
+        } else {
+          btn.className = 'p-3 rounded-xl border border-white/10 bg-black/60 text-stone-300 font-medium text-xs text-left cursor-pointer hover:border-antiqueGold/40 transition';
+        }
+      });
+    },
+
+    selectPayment: function (method) {
+      this.selectedPayment = method;
+      document.querySelectorAll('[data-pay-tab]').forEach(tab => {
+        if (tab.getAttribute('data-pay-tab') === method) {
+          tab.className = 'px-3 py-2 rounded-xl bg-antiqueGold text-black font-cinzel font-black text-xs whitespace-nowrap shadow';
+        } else {
+          tab.className = 'px-3 py-2 rounded-xl bg-black/60 text-stone-300 hover:text-white border border-white/10 font-cinzel font-bold text-xs whitespace-nowrap transition';
+        }
+      });
+
+      const upiSection = document.getElementById('ff-pay-upi-section');
+      const cardSection = document.getElementById('ff-pay-card-section');
+      const emiSection = document.getElementById('ff-pay-emi-section');
+      const codSection = document.getElementById('ff-pay-cod-section');
+
+      if (upiSection) upiSection.style.display = method === 'upi_qr' ? 'block' : 'none';
+      if (cardSection) cardSection.style.display = method === 'card' ? 'block' : 'none';
+      if (emiSection) emiSection.style.display = method === 'emi' ? 'block' : 'none';
+      if (codSection) codSection.style.display = method === 'cod' ? 'block' : 'none';
+    },
+
+    renderStep1: function () {
+      const body = document.getElementById('ff-checkout-body');
+      const cart = window.FF_Cart.getCart();
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+      body.innerHTML = `
+        <div class="space-y-5">
+          <!-- Customer Palace Delivery Details -->
+          <div class="space-y-3">
+            <h4 class="font-cinzel font-bold text-xs text-champagne uppercase flex items-center gap-2">
+              <span>📍</span> Step 1: Palace Delivery Address & White-Glove Slot
+            </h4>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">VIP Full Name</label>
+                <input id="ff-chk-name" type="text" value="Maharaja S. Verma" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-champagne" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">Contact Phone</label>
+                <input id="ff-chk-phone" type="text" value="+91 98480 22100" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-champagne" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="sm:col-span-2">
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">Residence / Estate Address</label>
+                <input id="ff-chk-address" type="text" value="Villa 42, Lotus Palace Enclave, Road No. 36, Jubilee Hills" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-champagne" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">PIN Code (Auto ETA)</label>
+                <input id="ff-chk-pincode" type="text" value="500033" class="w-full bg-black/70 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-champagne font-mono font-bold focus:outline-none focus:border-champagne" />
+              </div>
+            </div>
+          </div>
+
+          <!-- White-Glove Installation Slot Selection -->
+          <div class="space-y-2">
+            <label class="block text-[10px] font-cinzel text-stone-400 uppercase">Select White-Glove VIP Delivery Window</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div data-slot-btn="Morning (09:00 AM – 01:00 PM White-Glove)" onclick="FF_Checkout.selectSlot('Morning (09:00 AM – 01:00 PM White-Glove)')" class="p-3 rounded-xl border border-antiqueGold bg-antiqueGold/20 text-champagne font-bold text-xs text-left cursor-pointer transition">
+                <span class="block text-sm mb-0.5">🌅 Morning</span>
+                <span class="text-[10px] text-stone-300 font-sans block">9:00 AM – 1:00 PM</span>
+                <span class="badge-gold text-[8px] mt-1">Pad & Polish Included</span>
+              </div>
+              <div data-slot-btn="Afternoon (02:00 PM – 06:00 PM White-Glove)" onclick="FF_Checkout.selectSlot('Afternoon (02:00 PM – 06:00 PM White-Glove)')" class="p-3 rounded-xl border border-white/10 bg-black/60 text-stone-300 font-medium text-xs text-left cursor-pointer hover:border-antiqueGold/40 transition">
+                <span class="block text-sm mb-0.5">☀️ Afternoon</span>
+                <span class="text-[10px] text-stone-400 font-sans block">2:00 PM – 6:00 PM</span>
+                <span class="badge-gold text-[8px] mt-1">Air-Suspension Van</span>
+              </div>
+              <div data-slot-btn="Evening (06:00 PM – 09:00 PM Royal Setup)" onclick="FF_Checkout.selectSlot('Evening (06:00 PM – 09:00 PM Royal Setup)')" class="p-3 rounded-xl border border-white/10 bg-black/60 text-stone-300 font-medium text-xs text-left cursor-pointer hover:border-antiqueGold/40 transition">
+                <span class="block text-sm mb-0.5">🌙 Evening Twilight</span>
+                <span class="text-[10px] text-stone-400 font-sans block">6:00 PM – 9:00 PM</span>
+                <span class="badge-gold text-[8px] mt-1">VIP Placement</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary Pill -->
+          <div class="p-3.5 bg-black/80 rounded-xl border border-antiqueGold/30 flex justify-between items-center text-xs">
+            <div>
+              <span class="text-stone-400 block text-[10px]">Cart Total (${cart.length} item${cart.length > 1 ? 's' : ''}):</span>
+              <span class="font-cinzel font-bold text-white text-sm">${window.formatINR(subtotal)}</span>
+            </div>
+            <div class="text-right">
+              <span class="badge-gold text-[9px] text-emerald-400">✨ Free Royal Delivery</span>
+              <span class="text-[10px] text-champagne block mt-0.5 font-mono">+${Math.round(subtotal * 0.05)} VIP Points Earned</span>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex justify-end gap-2 pt-2">
+            <button onclick="FF_Checkout.closeModal()" class="btn-outline-gold text-xs px-4 py-2 rounded-xl">Cancel</button>
+            <button onclick="FF_Checkout.goToStep(2)" class="btn-gold text-xs px-6 py-2.5 rounded-xl shadow-xl">Continue to VIP Payment →</button>
+          </div>
+        </div>
+      `;
+    },
+
+    renderStep2: function () {
+      const body = document.getElementById('ff-checkout-body');
+      const cart = window.FF_Cart.getCart();
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+      const pointsDiscount = 0;
+      const finalTotal = subtotal - pointsDiscount;
+
+      body.innerHTML = `
+        <div class="space-y-5">
+          <div class="flex items-center justify-between">
+            <h4 class="font-cinzel font-bold text-xs text-champagne uppercase flex items-center gap-2">
+              <span>💳</span> Step 2: Select Royal Payment Method
+            </h4>
+            <span class="font-mono text-sm text-champagne font-black">${window.formatINR(finalTotal)}</span>
+          </div>
+
+          <!-- Payment Tabs -->
+          <div class="flex gap-2 overflow-x-auto pb-1">
+            <button data-pay-tab="upi_qr" onclick="FF_Checkout.selectPayment('upi_qr')" class="px-3 py-2 rounded-xl bg-antiqueGold text-black font-cinzel font-black text-xs whitespace-nowrap shadow">⚡ Instant UPI QR</button>
+            <button data-pay-tab="card" onclick="FF_Checkout.selectPayment('card')" class="px-3 py-2 rounded-xl bg-black/60 text-stone-300 hover:text-white border border-white/10 font-cinzel font-bold text-xs whitespace-nowrap transition">👑 VIP Card</button>
+            <button data-pay-tab="emi" onclick="FF_Checkout.selectPayment('emi')" class="px-3 py-2 rounded-xl bg-black/60 text-stone-300 hover:text-white border border-white/10 font-cinzel font-bold text-xs whitespace-nowrap transition">💎 0% No-Cost EMI</button>
+            <button data-pay-tab="cod" onclick="FF_Checkout.selectPayment('cod')" class="px-3 py-2 rounded-xl bg-black/60 text-stone-300 hover:text-white border border-white/10 font-cinzel font-bold text-xs whitespace-nowrap transition">📦 White-Glove COD</button>
+          </div>
+
+          <!-- Tab Content 1: UPI QR -->
+          <div id="ff-pay-upi-section" class="p-5 bg-black/70 rounded-2xl border border-antiqueGold/40 text-center space-y-3">
+            <span class="badge-gold text-[9px]">GPay • PhonePe • Paytm • BHIM UPI</span>
+            
+            <div class="py-2 flex justify-center">
+              <div class="qr-scanner-box">
+                <!-- Live SVG QR Code -->
+                <svg width="150" height="150" viewBox="0 0 100 100" class="mx-auto">
+                  <rect width="100" height="100" fill="#ffffff" rx="8"/>
+                  <path d="M10 10h30v30h-30z M15 15h20v20h-20z M20 20h10v10h-10z" fill="#07142F"/>
+                  <path d="M60 10h30v30h-30z M65 15h20v20h-20z M70 20h10v10h-10z" fill="#07142F"/>
+                  <path d="M10 60h30v30h-30z M15 65h20v20h-20z M20 70h10v10h-10z" fill="#07142F"/>
+                  <!-- Data Dots Pattern -->
+                  <circle cx="50" cy="20" r="3" fill="#C9A227"/>
+                  <circle cx="50" cy="35" r="3" fill="#07142F"/>
+                  <circle cx="50" cy="50" r="4" fill="#C9A227"/>
+                  <circle cx="65" cy="50" r="3" fill="#07142F"/>
+                  <circle cx="80" cy="50" r="3" fill="#C9A227"/>
+                  <circle cx="50" cy="65" r="3" fill="#07142F"/>
+                  <circle cx="65" cy="65" r="3" fill="#C9A227"/>
+                  <circle cx="80" cy="65" r="3" fill="#07142F"/>
+                  <circle cx="50" cy="80" r="3" fill="#C9A227"/>
+                  <circle cx="65" cy="80" r="3" fill="#07142F"/>
+                  <circle cx="80" cy="80" r="3" fill="#C9A227"/>
+                </svg>
+              </div>
+            </div>
+
+            <p class="text-xs text-stone-300 font-mono">Scan QR to pay <strong class="text-champagne">${window.formatINR(finalTotal)}</strong> to <span class="text-stone-400">friendsfurniture@icici</span></p>
+            <span class="text-[10px] text-emerald-400 flex items-center justify-center gap-1">🔒 256-bit Royal Cryptographic Escrow Protection</span>
+          </div>
+
+          <!-- Tab Content 2: VIP Card -->
+          <div id="ff-pay-card-section" style="display:none;" class="p-4 bg-black/70 rounded-2xl border border-antiqueGold/40 space-y-3">
+            <div>
+              <label class="block text-[10px] font-cinzel text-stone-400 mb-1">Card Number</label>
+              <input type="text" placeholder="4242 •••• •••• 4242" value="4852 9901 3340 7712" class="w-full bg-black/90 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-champagne font-mono focus:outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">Expiry Date</label>
+                <input type="text" placeholder="MM/YY" value="08/29" class="w-full bg-black/90 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-cinzel text-stone-400 mb-1">CVV / CVC</label>
+                <input type="password" placeholder="•••" value="882" class="w-full bg-black/90 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content 3: 0% EMI -->
+          <div id="ff-pay-emi-section" style="display:none;" class="p-4 bg-black/70 rounded-2xl border border-antiqueGold/40 space-y-3 text-center">
+            <span class="badge-gold text-[10px]">⚡ 0% Interest Subsidized by Royal Guild</span>
+            <div class="text-2xl font-cinzel font-bold text-champagne">${window.formatINR(Math.round(finalTotal / 24))}/month</div>
+            <p class="text-xs text-stone-300 font-sans">24 Months Flexible Installments via HDFC, ICICI, Axis & Amex.</p>
+          </div>
+
+          <!-- Tab Content 4: COD -->
+          <div id="ff-pay-cod-section" style="display:none;" class="p-4 bg-black/70 rounded-2xl border border-antiqueGold/40 space-y-2 text-center">
+            <span class="text-2xl block">🤝</span>
+            <h5 class="font-cinzel font-bold text-xs text-white">White-Glove Cash / Card on Delivery</h5>
+            <p class="text-xs text-stone-400">Inspect the timber grain, velvet feel, and joinery in your residence before making the payment to our lead artisan butler.</p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex justify-between gap-2 pt-2">
+            <button onclick="FF_Checkout.goToStep(1)" class="btn-outline-gold text-xs px-4 py-2 rounded-xl">← Back</button>
+            <button id="ff-chk-pay-btn" onclick="FF_Checkout.processPayment()" class="btn-gold text-xs px-6 py-2.5 rounded-xl shadow-xl flex items-center gap-2">
+              <span>Authorize & Place Royal Order</span> <span>👑</span>
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    processPayment: function () {
+      const btn = document.getElementById('ff-chk-pay-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳ Verifying Escrow Ledger...</span>`;
+      }
+
+      setTimeout(() => {
+        const cart = window.FF_Cart.getCart();
+        const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+        const randNum = Math.floor(1000 + Math.random() * 9000);
+        const orderId = `FF-2026-${randNum}`;
+        const passportId = `FF-PASS-${randNum}-TK`;
+        const pointsEarned = Math.round(subtotal * 0.05);
+
+        const newOrder = {
+          id: orderId,
+          orderId: orderId,
+          passportId: passportId,
+          date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+          items: cart.map(i => ({
+            name: i.name,
+            qty: i.quantity,
+            price: i.price,
+            image: i.image,
+            color: i.color,
+            material: i.material
+          })),
+          total: subtotal,
+          status: "Order Confirmed",
+          deliverySlot: this.selectedSlot,
+          paymentMethod: this.selectedPayment.toUpperCase(),
+          pointsEarned: pointsEarned,
+          address: (document.getElementById('ff-chk-address') || {}).value || "Villa 42, Lotus Palace Enclave, Jubilee Hills, Hyderabad",
+          customerName: (document.getElementById('ff-chk-name') || {}).value || "Maharaja S. Verma"
+        };
+
+        // Save order to LocalStorage
+        try {
+          const existingOrders = JSON.parse(localStorage.getItem('ff_multi_orders_v3') || '[]');
+          existingOrders.unshift(newOrder);
+          localStorage.setItem('ff_multi_orders_v3', JSON.stringify(existingOrders));
+        } catch(e) {}
+
+        this.lastOrder = newOrder;
+
+        // Clear cart
+        window.FF_Cart.saveCart([]);
+        window.FF_Toast(`Order ${orderId} Confirmed! +${pointsEarned} VIP Points Added! 👑`);
+
+        this.goToStep(3);
+      }, 1200);
+    },
+
+    renderStep3: function () {
+      const body = document.getElementById('ff-checkout-body');
+      const order = this.lastOrder || {
+        orderId: "FF-2026-9948",
+        passportId: "FF-PASS-9948-TK",
+        total: 89999,
+        pointsEarned: 4500,
+        items: [{ name: "The Imperial Royal Sofa", qty: 1, price: 89999, color: "Royal Blue", material: "Royal Velvet" }],
+        deliverySlot: this.selectedSlot
+      };
+
+      body.innerHTML = `
+        <div class="text-center space-y-4 py-2">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-antiqueGold to-champagne text-black flex items-center justify-center text-3xl mx-auto shadow-[0_0_30px_rgba(201,162,39,0.8)] animate-bounce">
+            👑
+          </div>
+
+          <div>
+            <span class="badge-gold text-[9px] uppercase">Royal Acquisition Successful</span>
+            <h3 class="font-cinzelDecor font-black text-xl text-white gold-gradient-text mt-1">CONGRATULATIONS, YOUR ROYAL ORDER IS SECURED</h3>
+            <p class="text-xs text-stone-300 max-w-md mx-auto font-sans mt-1">Your cryptographic furniture deed and White-Glove dispatch telemetry have been registered into the Royal Guild Ledger.</p>
+          </div>
+
+          <!-- Order & Passport Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto text-left">
+            <div class="p-3 bg-black/70 rounded-xl border border-antiqueGold/40">
+              <span class="text-[10px] text-stone-400 font-cinzel block">ORDER NUMBER</span>
+              <span class="font-mono text-sm text-champagne font-bold">${order.orderId}</span>
+            </div>
+            <div class="p-3 bg-black/70 rounded-xl border border-antiqueGold/40">
+              <span class="text-[10px] text-stone-400 font-cinzel block">DIGITAL PASSPORT ID</span>
+              <span class="font-mono text-xs text-emerald-400 font-bold">${order.passportId}</span>
+            </div>
+          </div>
+
+          <!-- VIP Reward Points Pill -->
+          <div class="p-3 bg-gradient-to-r from-royalNavy/80 via-royalPurple/80 to-black rounded-xl border border-antiqueGold/50 max-w-md mx-auto flex items-center justify-between">
+            <div class="text-left">
+              <span class="text-[10px] text-stone-300 font-cinzel block">VIP REWARDS EARNED</span>
+              <span class="font-mono text-xs text-champagne font-bold">+${order.pointsEarned} PTS Credited</span>
+            </div>
+            <span class="badge-gold text-[9px]">👑 VIP Gold Tier</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap justify-center gap-2 pt-3">
+            <button onclick="FF_Checkout.openInvoiceModal('${order.orderId}')" class="btn-outline-gold text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5">
+              <span>🖨️</span> View & Print Royal Invoice
+            </button>
+            <button onclick="location.href='furniture-passport.html?id=${order.orderId}'" class="btn-outline-gold text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5">
+              <span>🧬</span> View Digital Passport
+            </button>
+            <button onclick="location.href='customer-dashboard.html#ordersSec'" class="btn-gold text-xs px-5 py-2.5 rounded-xl shadow-xl">
+              Track Order on Live Map →
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    openInvoiceModal: function (orderId) {
+      const modal = document.getElementById('ff-invoice-modal');
+      const container = document.getElementById('ff-invoice-printable-area');
+      const order = this.lastOrder || {
+        orderId: orderId || "FF-2026-9948",
+        passportId: "FF-PASS-9948-TK",
+        date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }),
+        customerName: "Maharaja S. Verma",
+        address: "Villa 42, Lotus Palace Enclave, Road No. 36, Jubilee Hills, Hyderabad 500033",
+        items: [{ name: "The Imperial Royal Sofa", qty: 1, price: 89999, color: "Royal Blue", material: "Nilambur Teak & Velvet" }],
+        total: 89999,
+        pointsEarned: 4500,
+        paymentMethod: "UPI (256-BIT ESCROW VERIFIED)"
+      };
+
+      if (container) {
+        container.innerHTML = `
+          <div class="p-8 bg-white text-stone-900 border-4 border-double border-[#C9A227] rounded-xl font-sans max-w-2xl mx-auto shadow-2xl space-y-6">
+            
+            <!-- Header with Royal Emblem -->
+            <div class="flex items-center justify-between border-b-2 border-[#C9A227] pb-4">
+              <div class="flex items-center gap-3">
+                <img src="assets/friends-furniture-logo.jpg" class="w-16 h-16 rounded-xl border border-[#C9A227] object-cover" />
+                <div>
+                  <h2 class="font-serif font-black text-xl tracking-wider text-[#07142F]">FRIENDS FURNITURE</h2>
+                  <p class="text-xs text-[#C9A227] font-semibold italic">Where Luxury Meets Comfort • Royal Atelier</p>
+                  <p class="text-[10px] text-stone-500">GSTIN: 36AAACF1029K1Z5 | Nilambur Teak Guild Certified</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="inline-block px-3 py-1 bg-[#C9A227]/20 text-[#07142F] font-bold text-xs rounded-full border border-[#C9A227]">ROYAL CERTIFIED INVOICE</span>
+                <p class="font-mono text-xs font-bold text-stone-700 mt-1">Invoice: ${order.orderId}</p>
+                <p class="text-[10px] text-stone-500">Date: ${order.date || new Date().toLocaleDateString()}</p>
+              </div>
+            </div>
+
+            <!-- Customer & Deed Summary -->
+            <div class="grid grid-cols-2 gap-4 text-xs bg-stone-50 p-4 rounded-xl border border-stone-200">
+              <div>
+                <p class="text-[10px] font-bold text-[#C9A227] uppercase tracking-wider">Billed & Delivered To:</p>
+                <p class="font-bold text-stone-900 mt-0.5">${order.customerName}</p>
+                <p class="text-stone-600 text-[11px] leading-relaxed">${order.address}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-[10px] font-bold text-[#C9A227] uppercase tracking-wider">Provenance Deed & Passport:</p>
+                <p class="font-mono font-bold text-stone-900 mt-0.5">${order.passportId}</p>
+                <p class="text-[11px] text-emerald-700 font-semibold">✓ 100% Solid Seasoned Teak Authenticated</p>
+                <p class="text-[10px] text-stone-500">Payment: ${order.paymentMethod || 'PREPAID ESCROW'}</p>
+              </div>
+            </div>
+
+            <!-- Itemized Table -->
+            <table class="w-full text-xs text-left border-collapse">
+              <thead>
+                <tr class="border-b-2 border-stone-300 text-stone-600 font-bold uppercase text-[10px]">
+                  <th class="py-2">Masterpiece Description</th>
+                  <th class="py-2 text-center">Qty</th>
+                  <th class="py-2 text-right">Unit Price</th>
+                  <th class="py-2 text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-stone-200">
+                ${(order.items || []).map(item => `
+                  <tr>
+                    <td class="py-2.5">
+                      <p class="font-bold text-stone-900">${item.name}</p>
+                      <p class="text-[10px] text-stone-500">${item.color || ''} • ${item.material || 'Seasoned Timber'} • 10-Yr Guarantee</p>
+                    </td>
+                    <td class="py-2.5 text-center font-mono">${item.qty || 1}</td>
+                    <td class="py-2.5 text-right font-mono">${window.formatINR(item.price)}</td>
+                    <td class="py-2.5 text-right font-mono font-bold text-stone-900">${window.formatINR((item.price) * (item.qty || 1))}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+
+            <!-- Financial Calculation Breakdown -->
+            <div class="border-t-2 border-stone-300 pt-3 space-y-1.5 text-xs text-stone-700">
+              <div class="flex justify-between">
+                <span>Subtotal:</span>
+                <span class="font-mono font-bold">${window.formatINR(order.total)}</span>
+              </div>
+              <div class="flex justify-between text-stone-500">
+                <span>White-Glove Air-Suspension Delivery:</span>
+                <span class="font-bold text-emerald-700">FREE (₹0)</span>
+              </div>
+              <div class="flex justify-between text-stone-500">
+                <span>GST (Luxury Timber 18%):</span>
+                <span>Included in Price</span>
+              </div>
+              <div class="flex justify-between text-base font-bold text-stone-900 pt-2 border-t border-stone-300">
+                <span class="font-serif">Grand Total Paid:</span>
+                <span class="font-mono text-[#07142F]">${window.formatINR(order.total)}</span>
+              </div>
+            </div>
+
+            <!-- Footer Seal & Cryptographic QR -->
+            <div class="flex items-center justify-between pt-4 border-t border-dashed border-stone-300 text-[10px] text-stone-500">
+              <div>
+                <p class="font-bold text-[#07142F]">👑 Friends Furniture Guild Guarantee</p>
+                <p>This deed grants the holder lifetime white-glove warranty privileges.</p>
+              </div>
+              <div class="text-center font-mono text-[9px]">
+                <div class="w-12 h-12 bg-stone-900 text-white rounded flex items-center justify-center mx-auto text-base">QR</div>
+                <span>VERIFY DEED</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (modal) modal.classList.add('open');
+    },
+
+    closeInvoiceModal: function () {
+      const modal = document.getElementById('ff-invoice-modal');
+      if (modal) modal.classList.remove('open');
+    }
+  };
+
+  // --- 11. UNIVERSAL ROYAL AI INTERIOR CONCIERGE ASSISTANT ---
+  window.FF_AI_Concierge = {
+    isOpen: false,
+
+    toggle: function () {
+      if (this.isOpen) this.close();
+      else this.open();
+    },
+
+    open: function () {
+      this.isOpen = true;
+      const chatWin = document.getElementById('ff-ai-chat-window');
+      if (chatWin) chatWin.classList.add('open');
+    },
+
+    close: function () {
+      this.isOpen = false;
+      const chatWin = document.getElementById('ff-ai-chat-window');
+      if (chatWin) chatWin.classList.remove('open');
+    },
+
+    sendPrompt: function (promptText) {
+      const container = document.getElementById('ff-ai-messages-container');
+      const input = document.getElementById('ff-ai-input');
+      if (input) input.value = '';
+      if (!container) return;
+
+      // Add user message
+      const userBubble = document.createElement('div');
+      userBubble.className = 'ai-bubble-user';
+      userBubble.innerText = promptText;
+      container.appendChild(userBubble);
+      container.scrollTop = container.scrollHeight;
+
+      // Bot typing state
+      const botBubble = document.createElement('div');
+      botBubble.className = 'ai-bubble-bot space-y-2';
+      botBubble.innerHTML = `<span class="animate-pulse">✨ Consulting Royal Atelier Intelligence...</span>`;
+      container.appendChild(botBubble);
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(() => {
+        const textLower = promptText.toLowerCase();
+        let responseHtml = "";
+
+        if (textLower.includes('living') || textLower.includes('sofa') || textLower.includes('room') || textLower.includes('16x14')) {
+          responseHtml = `
+            <p>👑 For a spacious luxury living room, our master artisans recommend <strong>The Imperial Royal Sofa</strong> paired with <strong>The Empress Bouclé Armchair</strong> and <strong>The Versailles Calacatta Marble Table</strong>.</p>
+            <div class="p-2.5 bg-black/60 rounded-xl border border-antiqueGold/40 mt-2 space-y-2">
+              <div class="flex items-center gap-2.5">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=150&q=80" class="w-10 h-10 rounded-lg object-cover" />
+                <div class="flex-1 min-w-0">
+                  <p class="font-cinzel font-bold text-xs text-champagne truncate">The Imperial Royal Sofa</p>
+                  <p class="font-mono text-[10px] text-white">₹89,999 • 0% EMI ₹3,750/mo</p>
+                </div>
+              </div>
+              <button onclick="FF_Cart.addItem('ff-101')" class="btn-gold text-[10px] w-full py-1 rounded-lg">1-Click Add to Cart 🛒</button>
+            </div>
+          `;
+        } else if (textLower.includes('teak') || textLower.includes('care') || textLower.includes('monsoon') || textLower.includes('wood')) {
+          responseHtml = `
+            <p>🌿 <strong>Nilambur Teak Care Protocol:</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-[11px] text-stone-300 mt-1">
+              <li>Maintain indoor humidity between <strong>45%–60%</strong> to preserve cellular grain moisture.</li>
+              <li>Apply cold-pressed organic beeswax twice annually for natural water repellency.</li>
+              <li>Your digital twin automatically alerts you when ambient varnish strain exceeds 85%.</li>
+            </ul>
+          `;
+        } else if (textLower.includes('emi') || textLower.includes('installment') || textLower.includes('loan') || textLower.includes('cost')) {
+          responseHtml = `
+            <p>💳 <strong>0% No-Cost EMI Privilege:</strong></p>
+            <p class="text-[11px] text-stone-300 mt-1">Enjoy 3, 6, 12, 18, or 24-month zero-interest installments across all Indian credit cards. Zero processing fees, ₹0 down payment.</p>
+            <button onclick="FF_EMI.openModal(89999, 'The Imperial Sofa')" class="btn-outline-gold text-[10px] py-1 px-3 rounded-lg mt-2 inline-block">Open EMI Calculator ⚡</button>
+          `;
+        } else if (textLower.includes('twin') || textLower.includes('passport') || textLower.includes('iot')) {
+          responseHtml = `
+            <p>🧬 <strong>Cryptographic Digital Twin™:</strong></p>
+            <p class="text-[11px] text-stone-300 mt-1">Every Friends Furniture piece is permanently minted with a life passport tracking Nilambur forest coordinates, stress sensor telemetry, and authentic craftsmanship lineage.</p>
+            <a href="furniture-twin.html" class="text-champagne font-bold text-[11px] underline block mt-1">Inspect Live Digital Twin →</a>
+          `;
+        } else {
+          responseHtml = `
+            <p>👑 I am at your service. Here are our top curated palace suggestions:</p>
+            <div class="flex flex-wrap gap-1.5 mt-2">
+              <button onclick="FF_AI_Concierge.sendPrompt('Recommend best living room set')" class="interactive-chip text-[10px]">🛋️ Living Room</button>
+              <button onclick="FF_AI_Concierge.sendPrompt('How does 0% EMI work?')" class="interactive-chip text-[10px]">💳 0% EMI</button>
+              <button onclick="FF_AI_Concierge.sendPrompt('Monsoon care for Nilambur teak')" class="interactive-chip text-[10px]">🌿 Teak Care</button>
+            </div>
+          `;
+        }
+
+        botBubble.innerHTML = responseHtml;
+        container.scrollTop = container.scrollHeight;
+      }, 500);
+    }
+  };
+
+  // --- 12. UNIVERSAL QUICK-VIEW PRODUCT MODAL ENGINE ---
+  window.FF_QuickView = {
+    openModal: function (productId = "ff-101") {
+      const modal = document.getElementById('ff-quickview-modal');
+      const container = document.getElementById('ff-quickview-content');
+      const all = (window.LUXURY_PRODUCTS || DEFAULT_PRODUCTS);
+      const p = all.find(item => item.id === productId) || DEFAULT_PRODUCTS[0];
+
+      if (container) {
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="relative rounded-2xl overflow-hidden border border-antiqueGold/40 aspect-square">
+              <img src="${p.image || p.images[0]}" alt="${p.name}" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 badge-gold text-[9px]">10-Year Royal Warranty</span>
+            </div>
+            <div class="space-y-3.5">
+              <div>
+                <span class="badge-gold text-[8px] uppercase">${p.category} • ${p.subcategory || 'Palace Edition'}</span>
+                <h3 class="font-cinzelDecor font-black text-lg sm:text-xl text-white gold-gradient-text mt-1">${p.name}</h3>
+                <p class="text-xs text-stone-300 font-sans mt-1 leading-relaxed">${p.roomRecommendationReason || 'Mastercrafted with solid Nilambur teak and high-density luxury upholstery.'}</p>
+              </div>
+
+              <div class="p-3 bg-black/60 rounded-xl border border-antiqueGold/30 flex items-center justify-between">
+                <div>
+                  <span class="font-mono text-xl font-bold text-champagne">${window.formatINR(p.price)}</span>
+                  <span class="text-xs text-stone-400 line-through ml-2">${window.formatINR(p.originalPrice || p.price * 1.25)}</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-bold">★ ${p.rating || 4.9} (${p.reviewsCount || 140} Reviews)</span>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-stone-300 font-sans">
+                <p>🌳 Timber: <strong class="text-white">${p.material || 'Solid Nilambur Teak'}</strong></p>
+                <p>📐 Dimensions: <strong class="text-white font-mono">${p.dimensions ? (p.dimensions.display || p.dimensions) : '92" L x 38" W x 36" H'}</strong></p>
+                <p>🚚 Dispatch: <strong class="text-emerald-400">${p.estimatedDelivery || '4–6 Days'} White-Glove</strong></p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 pt-2">
+                <button onclick="FF_Cart.addItem('${p.id}'); FF_QuickView.closeModal();" class="btn-gold text-xs py-2.5 rounded-xl">Add to Cart 🛒</button>
+                <button onclick="location.href='furniture-passport.html?id=${p.id}'" class="btn-outline-gold text-xs py-2.5 rounded-xl">Digital Passport 🧬</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (modal) modal.classList.add('open');
+    },
+
+    closeModal: function () {
+      const modal = document.getElementById('ff-quickview-modal');
+      if (modal) modal.classList.remove('open');
+    }
+  };
+
+  // --- 13. DOM INJECTION & INITIALIZATION ---
   function injectUniversalModals() {
-    // 1. Cart Drawer
+    // 1. Cart Drawer with Direct Checkout Integration
     if (!document.getElementById('ff-cart-drawer')) {
       const cartHtml = `
         <div id="ff-cart-backdrop" class="drawer-backdrop" onclick="FF_Cart.closeDrawer()"></div>
@@ -1073,8 +1715,8 @@
               ⚡ 0% No-Cost EMI Available
             </div>
             <div class="grid grid-cols-2 gap-2">
-              <a href="smart-studio.html" class="btn-outline-gold text-xs py-2 rounded-xl text-center">Smart Studio</a>
-              <a href="customer-dashboard.html#ordersSec" class="btn-gold text-xs py-2 rounded-xl text-center">Checkout</a>
+              <a href="smart-studio.html" class="btn-outline-gold text-xs py-2.5 rounded-xl text-center">Smart Studio</a>
+              <button onclick="FF_Checkout.openModal(); FF_Cart.closeDrawer();" class="btn-gold text-xs py-2.5 rounded-xl text-center font-bold">Proceed to Checkout 👑</button>
             </div>
           </div>
         </div>
@@ -1082,7 +1724,131 @@
       document.body.insertAdjacentHTML('beforeend', cartHtml);
     }
 
-    // 2. Notification Drawer
+    // 2. Royal Multi-Step Checkout Modal
+    if (!document.getElementById('ff-checkout-modal')) {
+      const checkoutModalHtml = `
+        <div id="ff-checkout-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_Checkout.closeModal()">
+          <div class="search-modal-panel max-w-2xl p-6 space-y-5 max-h-[92vh] overflow-y-auto">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-antiqueGold/30 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">👑</span>
+                <h3 class="font-cinzelDecor font-black text-base text-white gold-gradient-text">ROYAL PALACE CHECKOUT</h3>
+              </div>
+              <button onclick="FF_Checkout.closeModal()" class="text-stone-400 hover:text-white text-lg p-1">✕</button>
+            </div>
+
+            <!-- 3-Step Indicator -->
+            <div class="checkout-step-indicator px-4 py-2 bg-black/40 rounded-2xl border border-white/5">
+              <div class="checkout-step-node active" id="chk-node-1">1</div>
+              <div class="checkout-step-line" id="chk-line-1"></div>
+              <div class="checkout-step-node" id="chk-node-2">2</div>
+              <div class="checkout-step-line" id="chk-line-2"></div>
+              <div class="checkout-step-node" id="chk-node-3">3</div>
+            </div>
+
+            <!-- Dynamic Body Content -->
+            <div id="ff-checkout-body"></div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', checkoutModalHtml);
+    }
+
+    // 3. Royal Invoice Modal
+    if (!document.getElementById('ff-invoice-modal')) {
+      const invoiceModalHtml = `
+        <div id="ff-invoice-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_Checkout.closeInvoiceModal()">
+          <div class="search-modal-panel max-w-3xl p-6 space-y-4 max-h-[95vh] overflow-y-auto">
+            <div class="flex items-center justify-between no-print border-b border-antiqueGold/30 pb-3">
+              <h3 class="font-cinzel font-black text-sm text-champagne">ROYAL CERTIFIED INVOICE PREVIEW</h3>
+              <div class="flex gap-2">
+                <button onclick="window.print()" class="btn-gold text-xs px-4 py-1.5 rounded-xl flex items-center gap-1">
+                  <span>🖨️</span> Print / Save PDF
+                </button>
+                <button onclick="FF_Checkout.closeInvoiceModal()" class="text-stone-400 hover:text-white text-base px-2">✕</button>
+              </div>
+            </div>
+            <div id="ff-invoice-printable-area"></div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', invoiceModalHtml);
+    }
+
+    // 4. Royal AI Concierge Floating Button & Chat Window
+    if (!document.getElementById('ff-ai-concierge-widget')) {
+      const aiConciergeHtml = `
+        <div id="ff-ai-concierge-widget">
+          <!-- Floating Button -->
+          <button class="ff-ai-concierge-trigger" onclick="FF_AI_Concierge.toggle()" aria-label="Open Royal AI Concierge">
+            <span class="ff-ai-pulse-dot"></span>
+            <span>✨ Royal AI Concierge</span>
+          </button>
+
+          <!-- Chat Window -->
+          <div id="ff-ai-chat-window" class="ff-ai-chat-window">
+            <div class="p-3.5 border-b border-antiqueGold/30 bg-black/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-antiqueGold to-champagne text-black flex items-center justify-center font-bold text-xs">✨</div>
+                <div>
+                  <h4 class="font-cinzel font-black text-xs text-white">ROYAL AI INTERIOR CONCIERGE</h4>
+                  <span class="text-[9px] text-emerald-400 font-mono">● Spatial & Timber Intelligence Online</span>
+                </div>
+              </div>
+              <button onclick="FF_AI_Concierge.close()" class="text-stone-400 hover:text-white text-base p-1">✕</button>
+            </div>
+
+            <!-- Messages Stream -->
+            <div id="ff-ai-messages-container" class="flex-1 p-3.5 space-y-3 overflow-y-auto flex flex-col">
+              <div class="ai-bubble-bot">
+                👑 <strong>Namaste & Welcome.</strong> I am your personal Royal Interior Stylist. How may I assist in elevating your living space today?
+              </div>
+              
+              <!-- Starter Quick Chips -->
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                <button onclick="FF_AI_Concierge.sendPrompt('Best living room sofa set for 16x14 ft')" class="interactive-chip text-[10px]">🛋️ Living Room Set</button>
+                <button onclick="FF_AI_Concierge.sendPrompt('Monsoon care for Nilambur teak wood')" class="interactive-chip text-[10px]">🌿 Teak Care</button>
+                <button onclick="FF_AI_Concierge.sendPrompt('How does 0% EMI work?')" class="interactive-chip text-[10px]">💳 0% No-Cost EMI</button>
+              </div>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="p-3 border-t border-antiqueGold/30 bg-black/80 flex items-center gap-2">
+              <input 
+                id="ff-ai-input" 
+                type="text" 
+                placeholder="Ask about dimensions, teak care, styling..." 
+                class="flex-1 bg-black/60 border border-antiqueGold/40 rounded-xl px-3 py-2 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-champagne"
+                onkeypress="if(event.key === 'Enter' && this.value.trim()) FF_AI_Concierge.sendPrompt(this.value)"
+              />
+              <button onclick="const input = document.getElementById('ff-ai-input'); if(input.value.trim()) FF_AI_Concierge.sendPrompt(input.value)" class="btn-gold text-xs px-3 py-2 rounded-xl">
+                ➤
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', aiConciergeHtml);
+    }
+
+    // 5. QuickView Modal
+    if (!document.getElementById('ff-quickview-modal')) {
+      const quickViewHtml = `
+        <div id="ff-quickview-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_QuickView.closeModal()">
+          <div class="search-modal-panel max-w-2xl p-6 space-y-4 max-h-[92vh] overflow-y-auto">
+            <div class="flex justify-end">
+              <button onclick="FF_QuickView.closeModal()" class="text-stone-400 hover:text-white text-lg p-1">✕</button>
+            </div>
+            <div id="ff-quickview-content"></div>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', quickViewHtml);
+    }
+
+    // 6. Notification Drawer
     if (!document.getElementById('ff-notif-drawer')) {
       const notifHtml = `
         <div id="ff-notif-backdrop" class="drawer-backdrop" onclick="FF_Notifications.closeDrawer()"></div>
@@ -1115,7 +1881,7 @@
       document.body.insertAdjacentHTML('beforeend', notifHtml);
     }
 
-    // 3. Search Modal
+    // 7. Search Modal
     if (!document.getElementById('ff-search-modal')) {
       const searchHtml = `
         <div id="ff-search-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_Search.closeModal()">
@@ -1139,7 +1905,7 @@
       document.body.insertAdjacentHTML('beforeend', searchHtml);
     }
 
-    // 4. Comparison Dock & Modal
+    // 8. Comparison Dock & Modal
     if (!document.getElementById('ff-compare-dock')) {
       const compareDockHtml = `
         <div id="ff-compare-dock" class="comparison-dock py-3 px-4">
@@ -1171,7 +1937,7 @@
       document.body.insertAdjacentHTML('beforeend', compareDockHtml);
     }
 
-    // 5. EMI Modal
+    // 9. EMI Modal
     if (!document.getElementById('ff-emi-modal')) {
       const emiModalHtml = `
         <div id="ff-emi-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_EMI.closeModal()">
@@ -1192,7 +1958,7 @@
               </div>
             </div>
 
-            <!-- Tenure Selector (3, 6, 12, 18, 24) -->
+            <!-- Tenure Selector -->
             <div class="space-y-2">
               <span class="text-xs font-cinzel font-bold text-champagne block">SELECT INSTALLMENT TENURE</span>
               <div class="grid grid-cols-5 gap-2">
@@ -1231,7 +1997,7 @@
       document.body.insertAdjacentHTML('beforeend', emiModalHtml);
     }
 
-    // 6. Live Tracking Modal with Leaflet Map
+    // 10. Live Tracking Modal with Leaflet Map
     if (!document.getElementById('ff-tracking-modal')) {
       const trackingModalHtml = `
         <div id="ff-tracking-modal" class="search-modal-backdrop" onclick="if(event.target === this) FF_Tracking.closeModal()">
@@ -1263,7 +2029,7 @@
               </div>
             </div>
 
-            <!-- 🗺️ Interactive Free OpenStreetMap Leaflet Radar -->
+            <!-- Interactive Free OpenStreetMap Leaflet Radar -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center text-[10px] font-cinzel">
                 <span class="text-champagne font-bold">📡 SATELLITE TRANSIT RADAR (OPENSTREETMAP)</span>
@@ -1314,7 +2080,7 @@
       document.body.insertAdjacentHTML('beforeend', trackingModalHtml);
     }
 
-    // Inject Responsive Mobile Phone Navigation Dock
+    // 11. Inject Responsive Mobile Phone Navigation Dock
     if (!document.getElementById('ff-mobile-nav-dock')) {
       const currentPath = window.location.pathname.toLowerCase();
       const mobileDockHtml = `
@@ -1350,9 +2116,25 @@
     }
   }
 
-  // --- 11. GLOBAL INITIALIZATION ---
+  // --- 14. PWA SERVICE WORKER AUTO-REGISTRATION ---
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => {
+            console.log('👑 [PWA] Friends Furniture ServiceWorker active with scope:', reg.scope);
+          })
+          .catch((err) => {
+            // Silently handle file protocol / demo restrictions
+          });
+      });
+    }
+  }
+
+  // --- 15. GLOBAL INITIALIZATION ---
   document.addEventListener('DOMContentLoaded', function () {
     injectUniversalModals();
+    registerServiceWorker();
     FF_Cart.updateBadges();
     FF_Wishlist.updateBadges();
     FF_Wishlist.updateCardButtons();

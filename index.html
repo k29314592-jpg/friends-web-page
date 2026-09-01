@@ -5,10 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FRIENDS FURNITURE — Where Luxury Meets Comfort | Smart Furniture E-Commerce</title>
 
-  <!-- Google Fonts: Cinzel Decorative, Cinzel, Playfair Display, Pinyon Script, Plus Jakarta Sans & JetBrains Mono -->
+  <meta name="description" content="Friends Furniture — Luxury smart furniture atelier crafted from solid Nilambur teak with cryptographic Digital Twins, 0% No-Cost EMI, and white-glove installation." />
+  <meta name="keywords" content="luxury furniture, teak wood sofa, digital twin furniture, friends furniture, Nilambur teak, king canopy bed, live edge dining" />
+  <meta name="theme-color" content="#C9A227" />
+
+  <!-- PWA Web App Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/friends-furniture-logo.jpg" />
+
+  <!-- OpenGraph / Facebook / WhatsApp Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FRIENDS FURNITURE — Where Luxury Meets Comfort" />
+  <meta property="og:description" content="Nilambur Teak Craftsmanship, Cryptographic Digital Twins & Smart Interior Studio." />
+  <meta property="og:image" content="assets/friends-furniture-logo.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FRIENDS FURNITURE — Luxury Smart Furniture" />
+  <meta name="twitter:description" content="Where Luxury Meets Comfort. Comfort For Life." />
+  <meta name="twitter:image" content="assets/friends-furniture-logo.jpg" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FurnitureStore",
+    "name": "Friends Furniture",
+    "image": "assets/friends-furniture-logo.jpg",
+    "description": "Luxury smart furniture platform crafted with seasoned Nilambur teak, digital twin telemetry, and white-glove delivery.",
+    "priceRange": "₹34,999 - ₹1,59,999",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Road No. 36, Jubilee Hills",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500033",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.4319,
+      "longitude": 78.4073
+    },
+    "openingHours": "Mo-Su 10:00-21:00",
+    "telephone": "+919848022100"
+  }
+  </script>
+
+  <!-- Google Fonts: Royal Palace Typography Suite (Cinzel, Cinzel Decorative, Cormorant Garamond, Bodoni Moda, Marcellus, Playfair Display, Pinyon Script, Plus Jakarta Sans, JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Marcellus&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,9 +76,13 @@
           fontFamily: {
             cinzel: ['"Cinzel"', 'serif'],
             cinzelDecor: ['"Cinzel Decorative"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', '"Garamond"', 'Georgia', 'serif'],
+            bodoni: ['"Bodoni Moda"', '"Didot"', 'serif'],
+            marcellus: ['"Marcellus"', 'serif'],
             pinyon: ['"Pinyon Script"', 'cursive'],
             serif: ['"Playfair Display"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace']
           }
         }
